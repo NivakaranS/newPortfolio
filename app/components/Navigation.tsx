@@ -12,7 +12,7 @@ const Navigation : React.FC<ContactModelProps> = ({onContactClick}) => {
                 <div className="cursor-pointer text-[20px] text-white">
                     <p>Nivakaran</p>
                 </div>
-                <div className="flex flex-row items-center text-[17px] justify-between text-white 2xl:w-[50%] w-[35%]">
+                <div className="flex flex-row items-center text-[17px] justify-between text-white  w-[35%]">
                     <div className="cursor-pointer hover:text-[#FFD700]">
                         <p>Home</p>
                     </div>
