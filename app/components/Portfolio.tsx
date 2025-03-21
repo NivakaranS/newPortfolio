@@ -2,14 +2,13 @@
 import PortfolioCard from "./PortfolioCard";
 import PrimaryBtn from "./PrimaryBtn";
 import React, {useEffect} from "react";
-const ScrollReveal = typeof window !== 'undefined' ? require('scrollreveal') : null;
-
 
 const Portfolio = () => {
 
     useEffect(() => {
         if(typeof window !== 'undefined'){
-            ScrollReveal().reveal('.portfolio1', {
+            import('scrollreveal').then((ScrollReveal) => { 
+                ScrollReveal.default().reveal('.portfolio1', {
                 origin: 'bottom',
                 distance: '20px',
                 duration: 800,
@@ -17,12 +16,14 @@ const Portfolio = () => {
                 easing: 'ease-in-out',
                 reset: false
             })
+        })
         }
     }, [])
 
     useEffect(() => {
         if(typeof window !== 'undefined'){
-            ScrollReveal().reveal('.portfolio2', {
+            import('scrollreveal').then((ScrollReveal) => { 
+                ScrollReveal.default().reveal('.portfolio2', {
                 origin: 'bottom',
                 distance: '20px',
                 duration: 800,
@@ -30,12 +31,14 @@ const Portfolio = () => {
                 easing: 'ease-in-out',
                 reset: false
             })
+        })
         }
     }, [])
 
     useEffect(() => {
         if(typeof window !== 'undefined'){
-            ScrollReveal().reveal('.portfolio3', {
+            import('scrollreveal').then((ScrollReveal) => { 
+                ScrollReveal.default().reveal('.portfolio3', {
                 origin: 'bottom',
                 distance: '20px',
                 duration: 800,
@@ -43,12 +46,14 @@ const Portfolio = () => {
                 easing: 'ease-in-out',
                 reset: false
             })
+        })
         }
     }, [])
 
     useEffect(() => {
         if(typeof window !== 'undefined'){
-            ScrollReveal().reveal('.portfolio4', {
+            import('scrollreveal').then((ScrollReveal) => { 
+                ScrollReveal.default().reveal('.portfolio4', {
                 origin: 'bottom',
                 distance: '20px',
                 duration: 800,
@@ -56,12 +61,14 @@ const Portfolio = () => {
                 easing: 'ease-in-out',
                 reset: false
             })
+        })
         }
     }, [])
 
     useEffect(() => {
         if(typeof window !== 'undefined'){
-            ScrollReveal().reveal('.portfolio5', {
+            import('scrollreveal').then((ScrollReveal) => { 
+                ScrollReveal.default().reveal('.portfolio5', {
                 origin: 'bottom',
                 distance: '20px',
                 duration: 800,
@@ -69,12 +76,14 @@ const Portfolio = () => {
                 easing: 'ease-in-out',
                 reset: false
             })
+        })
         }
     }, [])
 
     useEffect(() => {
         if(typeof window !== 'undefined'){
-            ScrollReveal().reveal('.portfolio6', {
+            import('scrollreveal').then((ScrollReveal) => { 
+                ScrollReveal.default().reveal('.portfolio6', {
                 origin: 'bottom',
                 distance: '20px',
                 duration: 800,
@@ -82,6 +91,7 @@ const Portfolio = () => {
                 easing: 'ease-in-out',
                 reset: false
             })
+        })
         }
     }, [])
 

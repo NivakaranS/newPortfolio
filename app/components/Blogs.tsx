@@ -2,7 +2,6 @@
 import BlogCard from "./BlogCard";
 import PrimaryBtn from "./PrimaryBtn";
 import React, {useEffect} from "react";
-const ScrollReveal = typeof window !== 'undefined' ? require('scrollreveal') : null;
 
 
 
@@ -11,7 +10,8 @@ const Blogs = () => {
 
     useEffect(() => {
         if(typeof window !== 'undefined'){
-            ScrollReveal().reveal('.blogs1', {
+            import('scrollreveal').then((ScrollReveal) => { 
+                ScrollReveal.default().reveal('.blogs1', {
                 origin: 'bottom',
                 distance: '20px',
                 duration: 800,
@@ -19,12 +19,14 @@ const Blogs = () => {
                 easing: 'ease-in-out',
                 reset: false
             })
+        })
         }
     }, [])
 
     useEffect(() => {
         if(typeof window !== 'undefined'){
-            ScrollReveal().reveal('.blogs2', {
+            import('scrollreveal').then((ScrollReveal) => { 
+                ScrollReveal.default().reveal('.blogs2', {
                 origin: 'right',
                 distance: '20px',
                 duration: 800,
@@ -32,12 +34,14 @@ const Blogs = () => {
                 easing: 'ease-in-out',
                 reset: false
             })
+        })
         }
     }, [])
 
     useEffect(() => {
         if(typeof window !== 'undefined'){
-            ScrollReveal().reveal('.blogs3', {
+            import('scrollreveal').then((ScrollReveal) => { 
+                ScrollReveal.default().reveal('.blogs3', {
                 origin: 'left',
                 distance: '20px',
                 duration: 800,
@@ -45,12 +49,14 @@ const Blogs = () => {
                 easing: 'ease-in-out',
                 reset: false
             })
+        })
         }
     }, [])
 
     useEffect(() => {
         if(typeof window !== 'undefined'){
-            ScrollReveal().reveal('.blogs4', {
+            import('scrollreveal').then((ScrollReveal) => { 
+                ScrollReveal.default().reveal('.blogs4', {
                 origin: 'bottom',
                 distance: '20px',
                 duration: 800,
@@ -58,6 +64,7 @@ const Blogs = () => {
                 easing: 'ease-in-out',
                 reset: false
             })
+        })
         }
     }, [])
 

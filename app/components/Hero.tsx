@@ -1,7 +1,6 @@
 
 import Image from "next/image";
 import Nivakaran from '../images/nivakaranText.png'
-const ScrollReveal = typeof window !== 'undefined' ? require('scrollreveal') : null;
 
 import React, {useEffect} from "react";
 
@@ -10,7 +9,8 @@ const Hero = () => {
 
     useEffect(() => {
         if(typeof window !== 'undefined'){
-            ScrollReveal().reveal('.hero1', {
+            import('scrollreveal').then((ScrollReveal) => { 
+                ScrollReveal.default().reveal('.hero1', {
                 origin: 'bottom',
                 distance: '20px',
                 duration: 800,
@@ -18,12 +18,14 @@ const Hero = () => {
                 easing: 'ease-in-out',
                 reset: false
             })
+        })
         }
     }, [])
 
     useEffect(() => {
         if(typeof window !== 'undefined'){
-            ScrollReveal().reveal('.hero2', {
+            import('scrollreveal').then((ScrollReveal) => { 
+                ScrollReveal.default().reveal('.hero2', {
                 origin: 'bottom',
                 distance: '20px',
                 duration: 800,
@@ -31,12 +33,14 @@ const Hero = () => {
                 easing: 'ease-in-out',
                 reset: false
             })
+        })
         }
     }, [])
 
     useEffect(() => {
         if(typeof window !== 'undefined'){
-            ScrollReveal().reveal('.hero3', {
+            import('scrollreveal').then((ScrollReveal) => { 
+                ScrollReveal.default().reveal('.hero3', {
                 origin: 'bottom',
                 distance: '50px',
                 duration: 800,
@@ -44,6 +48,7 @@ const Hero = () => {
                 easing: 'ease-in-out',
                 reset: false
             })
+        })
         }
     }, [])
     

@@ -1,6 +1,5 @@
 
 import React, { useEffect } from 'react';
-const ScrollReveal = typeof window !== 'undefined' ? require('scrollreveal') : null;
 
 import Image from 'next/image';
 import Certificate1 from '../certificates/UC-0aeb6d1d-dc7b-4ba6-aecf-2cc774b2c29c.jpg';
@@ -15,7 +14,8 @@ import Certificate8 from '../certificates/UC-f40d10df-c93e-4d1e-af98-b8802f58431
 const Certification = () => {
     useEffect(() => {
         if(typeof window !== 'undefined'){
-            ScrollReveal().reveal('.certification1', {
+            import('scrollreveal').then((ScrollReveal) => { 
+                ScrollReveal.default().reveal('.certification1', {
                 origin: 'bottom',
                 distance: '20px',
                 duration: 800,
@@ -23,12 +23,14 @@ const Certification = () => {
                 easing: 'ease-in-out',
                 reset: false
             })
+        })
         }
     }, [])
 
     useEffect(() => {
         if(typeof window !== 'undefined'){
-            ScrollReveal().reveal('.certification2', {
+            import('scrollreveal').then((ScrollReveal) => { 
+                ScrollReveal.default().reveal('.certification2', {
                 origin: 'right',
                 distance: '50px',
                 duration: 800,
@@ -36,12 +38,14 @@ const Certification = () => {
                 easing: 'ease-in-out',
                 reset: false
             })
+        })
         }
     }, [])
 
     useEffect(() => {
         if(typeof window !== 'undefined'){
-            ScrollReveal().reveal('.certification3', {
+            import('scrollreveal').then((ScrollReveal) => { 
+                ScrollReveal.default().reveal('.certification3', {
                 origin: 'left',
                 distance: '50px',
                 duration: 800,
@@ -49,6 +53,7 @@ const Certification = () => {
                 easing: 'ease-in-out',
                 reset: false
             })
+        })
         }
     }, [])
 

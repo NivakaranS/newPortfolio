@@ -1,13 +1,13 @@
 
 import React, { useEffect } from 'react';
-const ScrollReveal = typeof window !== 'undefined' ? require('scrollreveal') : null;
 
 
 const Services = () => {
 
     useEffect(() => {
         if(typeof window !== 'undefined'){
-            ScrollReveal().reveal('.services1', {
+            import('scrollreveal').then((ScrollReveal) => { 
+                ScrollReveal.default().reveal('.services1', {
                 origin: 'bottom',
                 distance: '20px',
                 duration: 800,
@@ -15,12 +15,14 @@ const Services = () => {
                 easing: 'ease-in-out',
                 reset: false
             })
+        })
         }
     }, [])
 
     useEffect(() => {
         if(typeof window !== 'undefined'){
-            ScrollReveal().reveal('.services2', {
+            import('scrollreveal').then((ScrollReveal) => { 
+                ScrollReveal.default().reveal('.services2', {
                 origin: 'right',
                 distance: '50px',
                 duration: 800,
@@ -28,12 +30,14 @@ const Services = () => {
                 easing: 'ease-in-out',
                 reset: false
             })
+        })
         }
     }, [])
 
     useEffect(() => {
         if(typeof window !== 'undefined'){
-            ScrollReveal().reveal('.services3', {
+            import('scrollreveal').then((ScrollReveal) => { 
+                ScrollReveal.default().reveal('.services3', {
                 origin: 'left',
                 distance: '50px',
                 duration: 800,
@@ -41,6 +45,7 @@ const Services = () => {
                 easing: 'ease-in-out',
                 reset: false
             })
+        })
         }
     }, [])
 

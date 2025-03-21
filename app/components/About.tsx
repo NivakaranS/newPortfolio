@@ -3,7 +3,6 @@ import PrimaryBtn from "./PrimaryBtn";
 import SecondaryBtn from "./SecondaryBtn";
 import React, {useEffect, useRef, useState} from "react";
 
-const ScrollReveal = typeof window !== 'undefined' ? require('scrollreveal') : null;
 
 const About = () => {
 
@@ -56,11 +55,12 @@ const About = () => {
             return () => clearInterval(interval);
             
         }
-    }, [isVisible, count])
+    }, [isVisible, experience])
 
     useEffect(() => {
             if(typeof window !== 'undefined'){
-                ScrollReveal().reveal('.about1', {
+                import('scrollreveal').then((ScrollReveal) => { 
+                    ScrollReveal.default().reveal('.about1', {
                     origin: 'bottom',
                     distance: '20px',
                     duration: 800,
@@ -68,12 +68,14 @@ const About = () => {
                     easing: 'ease-in-out',
                     reset: false
                 })
+            })
             }
         }, [])
 
         useEffect(() => {
             if(typeof window !== 'undefined'){
-                ScrollReveal().reveal('.about2', {
+                import('scrollreveal').then((ScrollReveal) => { 
+                    ScrollReveal.default().reveal('.about2', {
                     origin: 'bottom',
                     distance: '20px',
                     duration: 800,
@@ -81,12 +83,14 @@ const About = () => {
                     easing: 'ease-in-out',
                     reset: false
                 })
+            })
             }
         }, [])
 
         useEffect(() => {
             if(typeof window !== 'undefined'){
-                ScrollReveal().reveal('.about3', {
+                import('scrollreveal').then((ScrollReveal) => { 
+                    ScrollReveal.default().reveal('.about3', {
                     origin: 'bottom',
                     distance: '20px',
                     duration: 800,
@@ -94,12 +98,14 @@ const About = () => {
                     easing: 'ease-in-out',
                     reset: false
                 })
+            })
             }
         }, [])
 
         useEffect(() => {
             if(typeof window !== 'undefined'){
-                ScrollReveal().reveal('.about4', {
+                import('scrollreveal').then((ScrollReveal) => { 
+                    ScrollReveal.default().reveal('.about4', {
                     origin: 'bottom',
                     distance: '20px',
                     duration: 800,
@@ -107,6 +113,7 @@ const About = () => {
                     easing: 'ease-in-out',
                     reset: false
                 })
+            })
             }
         }, [])
 
