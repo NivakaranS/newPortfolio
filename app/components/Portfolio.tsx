@@ -104,9 +104,10 @@ const Portfolio = () => {
     }
 
     const onMoreProjectsClick = () => {
-        console.log("More projects clicked")
+
         Router.push('/portfolio')
     }
+    
 
     return(
         <div className="bg-[#000] h-[200vh] flex items-center justify-center w-screen ">
@@ -128,7 +129,7 @@ const Portfolio = () => {
                     <PortfolioCard text2="This project focuses on predicting stock prices using Machine Learning & Deep Learning models. The goal is to analyze historical stock market data, identify trends, and forecast future stock prices with high accuracy. The model can be used by traders and investors to make data-driven investment decisions." text="Stock Market Prediction" onClick={onPortfolioCard1Click}/>
                     
                 </div>
-                <div className=" portfolio5 flex items-center justify-center mt-[30px]">
+                <div  className=" portfolio5 flex items-center justify-center mt-[30px]">
                     <PrimaryBtn text="More Projects" onClick={onMoreProjectsClick}/>
                 </div>
 

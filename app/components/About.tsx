@@ -1,8 +1,9 @@
 'use client'
+
 import PrimaryBtn from "./PrimaryBtn";
 import SecondaryBtn from "./SecondaryBtn";
 import React, {useEffect, useRef, useState} from "react";
-
+import { useRouter } from "next/navigation";
 
 const About = () => {
 
@@ -13,7 +14,7 @@ const About = () => {
 
     const [experience, setExperience] = useState(0);
     const targetExperience = 2;
-
+    const router = useRouter();
     useEffect(() => {
         const observer = new IntersectionObserver(
             ([entry]) => {
@@ -118,7 +119,8 @@ const About = () => {
         }, [])
 
     const onLearnMoreClick = () => {
-        console.log("Learn more clicked")
+        router.push('/about')
+        
     }
 
     const onDownloadResumeClick = () => {

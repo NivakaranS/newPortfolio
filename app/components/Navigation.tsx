@@ -4,36 +4,37 @@ import { MouseEvent } from "react";
 
 interface ContactModelProps {
     onContactClick: () => void;
+    navSelection: string;
 
   }
 
-const Navigation : React.FC<ContactModelProps> = ({onContactClick}) => {
-    const [navSelection, setNavSelection] = useState('Home');
+const Navigation : React.FC<ContactModelProps> = ({navSelection, onContactClick}) => {
+    
 
     const Router = useRouter()
 
     const onHomeClick = (e:MouseEvent<HTMLDivElement>) => {
-        setNavSelection(e.currentTarget.innerText);
+
         Router.push('/')
     }
 
     const onAboutClick = (e:MouseEvent<HTMLDivElement>) => {
-        setNavSelection(e.currentTarget.innerText);
+        
         Router.push('/about')
     }
 
     const onServicesClick = (e:MouseEvent<HTMLDivElement>) => {
-        setNavSelection(e.currentTarget.innerText);
+        
         Router.push('/services')
     }
 
     const onPortfolioClick = (e:MouseEvent<HTMLDivElement>) => {
-        setNavSelection(e.currentTarget.innerText);
+
         Router.push('/portfolio')
     }
 
     const onBlogsClick = (e:MouseEvent<HTMLDivElement>) => {
-        setNavSelection(e.currentTarget.innerText);
+        
         Router.push('/blogs')
     }
 

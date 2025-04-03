@@ -15,6 +15,7 @@ import Certification from "./components/Certification";
 
 export default function Home() {
   const [showContactModel, setShowContactModel] = useState(false);
+  const [navSelection, setNavSelection] = useState('Home');
 
   const onContactClick = () => {
     setShowContactModel(!showContactModel);
@@ -23,7 +24,7 @@ export default function Home() {
   return (
     <div className="flex flex-col">
     
-      <Navigation onContactClick={onContactClick}/>
+      <Navigation navSelection={navSelection} onContactClick={onContactClick}/>
       <ContactModel showContactModel={showContactModel} onContactClick={onContactClick}/>
       <Hero/>
       <Top/>

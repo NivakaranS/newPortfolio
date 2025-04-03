@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 
 const Portfolio = () => {
     const [showContactModel, setShowContactModel] = useState(false);
+    const [navSelection, setNavSelection] = useState('Portfolio');
     
       const onContactClick = () => {
         setShowContactModel(!showContactModel);
@@ -13,7 +14,7 @@ const Portfolio = () => {
 
     return(
         <div>
-            <Navigation onContactClick={onContactClick}/>
+            <Navigation navSelection={navSelection} onContactClick={onContactClick}/>
             <div className="h-[50vh]">
 
             </div>
