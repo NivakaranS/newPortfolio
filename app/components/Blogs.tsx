@@ -2,7 +2,7 @@
 import BlogCard from "./BlogCard";
 import PrimaryBtn from "./PrimaryBtn";
 import React, {useEffect} from "react";
-
+import { useRouter } from "next/navigation";
 
 
 
@@ -73,8 +73,11 @@ const Blogs = () => {
     }
 
     const onAllBlogsClick = () => {
-        console.log("All blogs clicked")
+        Router.push('/blogs')
+
     }
+
+    const Router = useRouter()
 
     return(
         <div className="bg-[#000] h-[120vh] w-screen flex items-center justify-center">
@@ -85,12 +88,12 @@ const Blogs = () => {
                 </div>
                 <div className="flex flex-row items-center justify-center space-x-[20px] mt-[30px]">
                     <div className="blogs2 flex flex-row items-center justify-center space-x-[20px]">
-                    <BlogCard text="Blog 1" onClick={onBlog1Click}/>
-                    <BlogCard text="Blog 1" onClick={onBlog1Click}/>
+                    <BlogCard text="Blog 1" text1="Blog Title" onClick={onBlog1Click}/>
+                    <BlogCard text="Blog 1" text1="Blog Title" onClick={onBlog1Click}/>
                     </div>
                     <div className="blogs3 flex flex-row items-center justify-center space-x-[20px]">
-                    <BlogCard text="Blog 1" onClick={onBlog1Click}/>
-                    <BlogCard text="Blog 1" onClick={onBlog1Click}/>
+                    <BlogCard text="Blog 1" text1=" Blog Title" onClick={onBlog1Click}/>
+                    <BlogCard text="Blog 1" text1="Blog Title" onClick={onBlog1Click}/>
                     </div>
                     
                     

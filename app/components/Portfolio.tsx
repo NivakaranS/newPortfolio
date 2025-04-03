@@ -2,6 +2,7 @@
 import PortfolioCard from "./PortfolioCard";
 import PrimaryBtn from "./PrimaryBtn";
 import React, {useEffect} from "react";
+import { useRouter } from "next/navigation";
 
 const Portfolio = () => {
 
@@ -96,6 +97,7 @@ const Portfolio = () => {
     }, [])
 
 
+    const Router = useRouter()
 
     const onPortfolioCard1Click = () => {
         console.log("Clicked")
@@ -103,6 +105,7 @@ const Portfolio = () => {
 
     const onMoreProjectsClick = () => {
         console.log("More projects clicked")
+        Router.push('/portfolio')
     }
 
     return(

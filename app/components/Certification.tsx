@@ -67,75 +67,91 @@ const Certification = () => {
 
                 <div className=" mt-[30px]">
                     <div className=" grid grid-cols-1 md:grid-cols-4 gap-[15px] items-center justify-center">
-                        <div className="cursor-pointer certification2 relative group bg-[#000] overflow-hidden w-[100%] ring-[0.5px] ring-[#4d4d4d] h-[195px] rounded-[10px] flex items-center justify-center">
-                            <div className='hidden group-hover:flex flex-col items-center justify-center'>
+                        <div className="cursor-pointer  certification2 relative group bg-[#000] overflow-hidden w-[100%] ring-[0.5px] ring-[#4d4d4d] h-[195px] rounded-[10px] flex items-center justify-center">
+                            <div className=' absolute transition-transform duration-500 group-hover:translate-y-0  translate-y-[200%] flex flex-col items-center justify-center'>
                                 <Image alt="" src={Certificate1} className='h-[100%] w-[100%]'  />
                             </div>
-                            <div className=' group-hover:hidden flex flex-col px-[20px]'>
-                                <p>Complete Web Developer in 2023</p>
+                            <div className=' transition-transform duration-500 group-hover:scale-0  flex flex-col px-[20px]'>
+                                <p>The Complete Web Developer in 2023: Zero to Mastery</p>
+                                <p className='text-[15px]'>Udemy</p>
+                                <p className='text-[14px] text-gray-400'>Date: Nov 25, 2023</p>
                             </div>
                         </div>
 
                         <div className="cursor-pointer certification2 relative group bg-[#000] overflow-hidden w-[100%] ring-[0.5px] ring-[#4d4d4d] h-[195px] rounded-[10px] flex items-center justify-center">
-                            <div className='hidden group-hover:flex flex-col items-center justify-center'>
+                        <div className=' absolute transition-transform duration-500 group-hover:translate-y-0  translate-y-[200%] flex flex-col items-center justify-center'>
                                 <Image alt="" src={Certificate2} className='h-[100%] w-[100%]'  />
                             </div>
-                            <div className=' group-hover:hidden flex flex-col px-[20px]'>
-                                <p>The Complete Data Structures and Algorithms in Python</p>
+                            <div className=' transition-transform duration-500 group-hover:scale-0  flex flex-col px-[20px]'>
+                                <p>The Complete Data Structures and Algorithms Course in Python</p>
+                                <p className='text-[15px]'>Udemy</p>
+                                <p className='text-[14px] text-gray-400'>Date: Jan 12, 2025</p>
                             </div>
                         </div>
 
                         <div className="cursor-pointer certification3 relative group bg-[#000] overflow-hidden w-[100%] ring-[0.5px] ring-[#4d4d4d] h-[195px] rounded-[10px] flex items-center justify-center">
-                            <div className='hidden group-hover:flex flex-col items-center justify-center'>
+                        <div className=' absolute transition-transform duration-500 group-hover:translate-y-0  translate-y-[200%] flex flex-col items-center justify-center'>
                                 <Image alt="" src={Certificate3} className='h-[100%] w-[100%]'  />
                             </div>
-                            <div className=' group-hover:hidden flex flex-col px-[20px]'>
+                            <div className=' transition-transform duration-500 group-hover:scale-0  flex flex-col px-[20px]'>
                                 <p>Learn Python & Ethial Hacking from Scratch</p>
+                                <p className='text-[15px]'>Udemy</p>
+                                <p className='text-[14px] text-gray-400'>Date: April 23, 2024</p>
                             </div>
                         </div>
 
                         <div className="cursor-pointer certification3 relative group bg-[#000] overflow-hidden w-[100%] ring-[0.5px] ring-[#4d4d4d] h-[195px] rounded-[10px] flex items-center justify-center">
-                            <div className='hidden group-hover:flex flex-col items-center justify-center'>
+                        <div className=' absolute transition-transform duration-500 group-hover:translate-y-0  translate-y-[200%] flex flex-col items-center justify-center'>
                                 <Image alt="" src={Certificate4} className='h-[100%] w-[100%]'  />
                             </div>
-                            <div className=' group-hover:hidden flex flex-col px-[20px]'>
+                            <div className=' transition-transform duration-500 group-hover:scale-0  flex flex-col px-[20px]'>
                                 <p>TensorFlow for Deep Learning Bootcamp</p>
+                                <p className='text-[15px]'>Udemy</p>
+                                <p className='text-[14px] text-gray-400'>Date: July 31, 2024</p>
                             </div>
                         </div>
 
                         <div className="cursor-pointer certification2 relative group bg-[#000] overflow-hidden w-[100%] ring-[0.5px] ring-[#4d4d4d] h-[195px] rounded-[10px] flex items-center justify-center">
-                            <div className='hidden group-hover:flex flex-col items-center justify-center'>
+                        <div className=' absolute transition-transform duration-500 group-hover:translate-y-0  translate-y-[200%] flex flex-col items-center justify-center'>
                                 <Image alt="" src={Certificate5} className='h-[100%] w-[100%]'  />
                             </div>
-                            <div className='group-hover:hidden flex flex-col px-[20px]'>
+                            <div className=' transition-transform duration-500 group-hover:scale-0  flex flex-col px-[20px]'>
                                 <p>Complete NodeJS Developer (GraphQL, MongoDB & more)</p>
+                                <p className='text-[15px]'>Udemy</p>
+                                <p className='text-[14px] text-gray-400'>Date: March 07, 2025</p>
                             </div>
                         </div>
 
                         <div className="cursor-pointer certification2 relative group bg-[#000] overflow-hidden w-[100%] ring-[0.5px] ring-[#4d4d4d] h-[195px] rounded-[10px] flex items-center justify-center">
-                            <div className='hidden group-hover:flex flex-col items-center justify-center'>
+                        <div className=' absolute transition-transform duration-500 group-hover:translate-y-0  translate-y-[200%] flex flex-col items-center justify-center'>
                                 <Image alt="" src={Certificate6} className='h-[100%] w-[100%]'  />
                             </div>
-                            <div className='group-hover:hidden flex flex-col px-[20px]'>
+                            <div className=' transition-transform duration-500 group-hover:scale-0  flex flex-col px-[20px]'>
                                 <p>Complete Generative AI Course With Langchain and Huggingface</p>
+                                <p className='text-[15px]'>Udemy</p>
+                                <p className='text-[14px] text-gray-400'>Date: Dec 07, 2023</p>
                             </div>
                         </div>
 
                         <div className="cursor-pointer certification3 relative group bg-[#000] overflow-hidden w-[100%] ring-[0.5px] ring-[#4d4d4d] h-[195px] rounded-[10px] flex items-center justify-center">
-                            <div className='hidden group-hover:flex flex-col items-center justify-center'>
+                        <div className=' absolute transition-transform duration-500 group-hover:translate-y-0  translate-y-[200%] flex flex-col items-center justify-center'>
                                 <Image alt="" src={Certificate7} className='h-[100%] w-[100%]'  />
                             </div>
-                            <div className=' group-hover:hidden flex flex-col px-[20px]'>
+                            <div className=' transition-transform duration-500 group-hover:scale-0  flex flex-col px-[20px]'>
                                 <p>React Native - The Practical Guide [2024]</p>
+                                <p className='text-[15px]'>Udemy</p>
+                                <p className='text-[14px] text-gray-400'>Date: June 12, 2024</p>
                             </div>
                         </div>
 
                         <div className="cursor-pointer certification3 relative group bg-[#000] overflow-hidden w-[100%] ring-[0.5px] ring-[#4d4d4d] h-[195px] rounded-[10px] flex items-center justify-center">
-                            <div className='hidden group-hover:flex flex-col items-center justify-center'>
+                        <div className=' absolute transition-transform duration-500 group-hover:translate-y-0  translate-y-[200%] flex flex-col items-center justify-center'>
                                 <Image alt="" src={Certificate8} className='h-[100%] w-[100%]'  />
                             </div>
-                            <div className=' group-hover:hidden flex flex-col px-[20px]'>
+                            <div className=' transition-transform duration-500 group-hover:scale-0  flex flex-col px-[20px]'>
                                 <p>Complete AI & Machine Learning, Data Science Bootcamp</p>
+                                <p className='text-[15px]'>Udemy</p>
+                                <p className='text-[14px] text-gray-400'>Date: Feb 28, 2024</p>
                             </div>
                         </div>
 
