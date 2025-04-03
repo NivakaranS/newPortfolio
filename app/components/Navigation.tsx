@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { MouseEvent } from "react";
 
 interface ContactModelProps {
     onContactClick: () => void;
@@ -11,27 +12,27 @@ const Navigation : React.FC<ContactModelProps> = ({onContactClick}) => {
 
     const Router = useRouter()
 
-    const onHomeClick = (e:any) => {
+    const onHomeClick = (e:MouseEvent<HTMLDivElement>) => {
         setNavSelection(e.currentTarget.innerText);
         Router.push('/')
     }
 
-    const onAboutClick = (e:any) => {
+    const onAboutClick = (e:MouseEvent<HTMLDivElement>) => {
         setNavSelection(e.currentTarget.innerText);
         Router.push('/about')
     }
 
-    const onServicesClick = (e:any) => {
+    const onServicesClick = (e:MouseEvent<HTMLDivElement>) => {
         setNavSelection(e.currentTarget.innerText);
         Router.push('/services')
     }
 
-    const onPortfolioClick = (e:any) => {
+    const onPortfolioClick = (e:MouseEvent<HTMLDivElement>) => {
         setNavSelection(e.currentTarget.innerText);
         Router.push('/portfolio')
     }
 
-    const onBlogsClick = (e:any) => {
+    const onBlogsClick = (e:MouseEvent<HTMLDivElement>) => {
         setNavSelection(e.currentTarget.innerText);
         Router.push('/blogs')
     }
