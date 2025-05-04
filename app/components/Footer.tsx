@@ -16,7 +16,7 @@ const Footer = () => {
     const subcribeNewsLetter = async () => {
         try {
             console.log('Email to subscribe:', email)
-            const response = await axios.post('https://new-portfolio-backend-dti1hglqu-nivakarans-projects.vercel.app/newsletter', {
+            const response = await axios.post('https://new-portfolio-backend-roan.vercel.app/newsletter', {
                 email: email
             })
             console.log('Response from backend', response.data)
