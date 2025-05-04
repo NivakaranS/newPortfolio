@@ -6,10 +6,25 @@ import LinkedIn from '../images/linkedin.png';
 import Instagram from '../images/instagram.png';
 import Mail from '../images/mail.png';
 import Phone from '../images/phone.png';
-
+import axios from "axios";
+import { useState } from "react";
 
 
 const Footer = () => {
+    const [email, setEmail] = useState('')
+
+    const subcribeNewsLetter = async () => {
+        try {
+            console.log('Email to subscribe:', email)
+            const response = await axios.post('https://new-portfolio-backend-dti1hglqu-nivakarans-projects.vercel.app/newsletter', {
+                email: email
+            })
+            console.log('Response from backend', response.data)
+        } catch (error) {
+            console.error("Error subscribing to newsletter:", error)
+        }
+    }
+
     return(
         <div className="overflow-x-hidden bg-[#101010]  w-screen">
             <div className="relative flex justify-center py-[10px] overflow-hidden">
@@ -64,9 +79,9 @@ const Footer = () => {
                         <p>Subscribe to our newsletter</p>
                         <div className="flex flex-row items-center  justify-center">
                             <div className="relative mt-[20px] bg-[#727376] rounded-[5px]  w-[100%] h-[35px] flex items-center justify-center">
-                                <input className="w-[100%] text-black focus:outline-none px-[10px] placeholder-black " placeholder="Enter email "/>
+                                <input onChange={(e)=>setEmail(e.currentTarget.value)} className="w-[100%] text-black focus:outline-none px-[10px] placeholder-black " placeholder="Enter email "/>
                                  
-                                <div className="absolute cursor-pointer  right-[5px] bg-[#373435] text-[15px]  px-[10px] py-[3px] rounded ">
+                                <div onClick={subcribeNewsLetter} className="absolute cursor-pointer  right-[5px] bg-[#373435] text-[15px]  px-[10px] py-[3px] rounded ">
                                     <p>Subscribe</p>
                                 </div>
                             </div>
