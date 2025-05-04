@@ -3,8 +3,25 @@ import PortfolioCard from "./PortfolioCard";
 import PrimaryBtn from "./PrimaryBtn";
 import React, {useEffect} from "react";
 import { useRouter } from "next/navigation";
+import axios from "axios";
 
 const Portfolio = () => {
+
+    const [portfolio, setPortfolio] = React.useState([])
+
+    useEffect(() => {
+        const fetchPortfolio = async () => {
+            try {
+                const response = await axios.get('https://new-portfolio-backend-roan.vercel.app/portfolio')
+                setPortfolio(response.data)
+                console.log('Portfolio list', response.data)
+            } catch (error) {
+                console.error("Error fetching portfolio data:", error)
+            }
+        }
+        fetchPortfolio()
+    }
+    , [])
 
     useEffect(() => {
         if(typeof window !== 'undefined'){
@@ -132,6 +149,7 @@ const Portfolio = () => {
 
                 <p className=" portfolio3 text-[40px] mt-[40px]">Computer Vision</p>
                 <div className=" portfolio4 mt-[20px] flex flex-row space-x-[20px] items-center justify-center">
+
                     <PortfolioCard lang1="Django" lang2="Matplotlib" lang3="Tensorflow" lang4="Pandas" lang5="" lang6="" text2="This project aims to build a Machine Learning model that predicts house prices based on various features such as location, number of bedrooms, square footage, and amenities. By analyzing historical real estate data, the model provides accurate prices estimates, helping buyers, sellers, real estate agents make data-driven solutions." text="House Price Prediction" onClick={onPortfolioCard1Click}/>
                     <PortfolioCard lang1="FastApi" lang2="Matplotlib" lang3="Tensorflow" lang4="Pandas" lang5="" lang6="" text2="This project focuses on predicting stock prices using Machine Learning & Deep Learning models. The goal is to analyze historical stock market data, identify trends, and forecast future stock prices with high accuracy. The model can be used by traders and investors to make data-driven investment decisions." text="Stock Market Prediction" onClick={onPortfolioCard1Click}/>
                     
