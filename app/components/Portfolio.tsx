@@ -12,7 +12,7 @@ const Portfolio = () => {
     useEffect(() => {
         const fetchPortfolio = async () => {
             try {
-                const response = await axios.get('https://new-portfolio-backend-roan.vercel.app/portfolio')
+                const response = await axios.get('https://new-portfolio-backend-roan.vercel.app/project')
                 setPortfolio(response.data)
                 console.log('Portfolio list', response.data)
             } catch (error) {
