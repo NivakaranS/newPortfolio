@@ -1,26 +1,372 @@
-'use client'
-import Navigation from "../components/Navigation"
-import { useState } from "react";
+"use client";
+import Navigation from "../components/Navigation";
+import { useState, useEffect } from "react";
 import Footer from "../components/Footer";
+import ContactModel from "../components/ContactModel";
+import Contact from "../components/Contact";
+import Image from "next/image";
+import NextImage from '../images/next.png';
+import Certification from "../components/Certification";
+import GroqImage from '../images/groq.png';
+import PythonImage from '../images/python.png';
+import KotlinImage from '../images/kotlin.png';
+import JavaImage from '../images/java.png';
+import JavascriptImage from '../images/javascript.png';
+import PostgresqlImage from '../images/postgresql.png';
+import FlaskImage from '../images/flask.png';
+import FirebaseImage from '../images/firebase2.png';
+import GradioImage from '../images/gradio.png';
+import GraphqlImage from '../images/graphql.png';
+import HuggingFaceImage from '../images/huggingface.png';
+import KerasImage from '../images/keras.png';
+import MongoDbImage from '../images/mongodb.png';
+import MysqlImage from '../images/mysql.png';
+import NodeImage from '../images/node.png';
+import PytorchImage from '../images/pytorch2.png';
+import ReactImage from '../images/react.png';
+import ReactNativeImage from '../images/reactNative.png';
+import ReduxImage from '../images/redux.png';
+import ScikitlearnImage from '../images/scikitlearn.png';
+import TensorFlowImage from '../images/tensorflow.png';
+import TypescriptImage from '../images/typescript.png';
+import DjangoImage from '../images/django.png';
+import DockerImage from '../images/docker.png';
+import ExpressImage from '../images/express.png';
+
+
+
 
 
 const About = () => {
-    const [showContactModel, setShowContactModel] = useState(false);
-    const [navSelection, setNavSelection] = useState('About');
-    
-      const onContactClick = () => {
-        setShowContactModel(!showContactModel);
+  const [showContactModel, setShowContactModel] = useState(false);
+  const [navSelection, setNavSelection] = useState("About");
+
+  const onContactClick = () => {
+    setShowContactModel(!showContactModel);
+  };
+
+   useEffect(() => {
+          if(typeof window !== 'undefined'){
+              import('scrollreveal').then((ScrollReveal) => { 
+                  ScrollReveal.default().reveal('.aboutTitle1', {
+                  origin: 'bottom',
+                  distance: '40px',
+                  duration: 800,
+                  delay: 400,
+                  easing: 'ease-in-out',
+                  reset: false
+              })
+          })
+          }
+      }, [])
+
+      useEffect(() => {
+        if(typeof window !== 'undefined'){
+            import('scrollreveal').then((ScrollReveal) => { 
+                ScrollReveal.default().reveal('.aboutTitle2', {
+                origin: 'bottom',
+                distance: '40px',
+                duration: 800,
+                delay: 600,
+                easing: 'ease-in-out',
+                reset: false
+            })
+        })
+        }
+    }, [])
+
+    useEffect(() => {
+      if(typeof window !== 'undefined'){
+          import('scrollreveal').then((ScrollReveal) => { 
+              ScrollReveal.default().reveal('.aboutTitle3', {
+              origin: 'bottom',
+              distance: '40px',
+              duration: 800,
+              delay: 800,
+              easing: 'ease-in-out',
+              reset: false
+          })
+      })
       }
+  }, [])
 
-    return(
-        <div>
-            <Navigation navSelection={navSelection} onContactClick={onContactClick}/>
-            <div className="h-[50vh]">
 
+  useEffect(() => {
+    if(typeof window !== 'undefined'){
+        import('scrollreveal').then((ScrollReveal) => { 
+            ScrollReveal.default().reveal('.aboutText4', {
+            origin: 'left',
+            distance: '40px',
+            duration: 800,
+            delay: 400,
+            easing: 'ease-in-out',
+            reset: false
+        })
+    })
+    }
+}, [])
+
+useEffect(() => {
+  if(typeof window !== 'undefined'){
+      import('scrollreveal').then((ScrollReveal) => { 
+          ScrollReveal.default().reveal('.aboutText5', {
+          origin: 'right',
+          distance: '40px',
+          duration: 800,
+          delay: 400,
+          easing: 'ease-in-out',
+          reset: false
+      })
+  })
+  }
+}, [])
+
+  return (
+    <div>
+      <Navigation navSelection={navSelection} onContactClick={onContactClick} />
+      <ContactModel
+        showContactModel={showContactModel}
+        onContactClick={onContactClick}
+      />
+      <div className="text-white space-y-[30px] bg-[#000] px-[10vw] flex flex-col items-center justify-center pt-[20vh] min-h-[100vh]">
+      <div className="w-[80%] text-center leading-[70px] h-[100%]">
+                <p className="text-[60px] aboutText4 aboutTitle1 bg-gradient-to-t from-[#433D3A] via-[#C6C4C3]  to-[#CAC8C6] bg-clip-text text-transparent">About Me</p>
+                <p className="text-[80px] aboutTitle2 bg-gradient-to-t from-[#433D3A] via-[#C6C4C3] font-[600] to-[#CAC8C6] bg-clip-text text-transparent" >An Introduction</p>
+              </div>
+              <div className="w-[50%] text-center h-[100%]">
+                <p className=" aboutTitle3">Welcome to the story behind the code. I’m not just here to build software, I’m here to bring your vision to life through purposeful design, powerful technology, and a passion for problem-solving. Whether you're dreaming big or scaling fast, I'm the tech partner who’s got your back.</p>
+              </div>
             </div>
-            <Footer/>
-        </div>
-    )
-}
+      <div className="flex items-center justify-center  min-h-[100vh]">
+        <div className="w-[85%] h-[100%] flex flex-row items-center justify-center space-x-[20px] about2">
+          <div className="w-[50%] h-[100%] flex flex-col items-center justify-center">
+          <p className="text-[80px] aboutText4 bg-gradient-to-t from-[#433D3A] via-[#C6C4C3] font-[600] to-[#CAC8C6] bg-clip-text text-transparent" >About Me</p>
+          </div>
+          <div className="w-[50%] aboutText5 h-[100%] flex flex-col space-y-[20px] items-center justify-center">
+            <p>
+              Hello! I am Nivakaran, currently pursuing a B.Sc. in Information
+              Technology with a specialization in Data Science at the Sri Lanka
+              Institute of Information Technology (SLIIT). My academic journey
+              driven by a passion for exploring the dynamic intersection of data
+              science and software engineering.
+            </p>
 
-export default About
+            <p>
+              In the words of Steve Jobs, "Stay hungry, stay foolish", I embrace
+              a philosophy that encourages perpetual curiosity, a relentless
+              pursuit of new knowledge, and a fearless approach to exploring
+              uncharted territories. This mindset fuels both my personal growth
+              and professional ambitions.
+            </p>
+
+            <p>
+              Let's join on this exhilarating quest as we navigate the complexities
+              of data science and software engineering together. Let's embrace
+              curiosity, defy conventions, and forge ahead into a future where
+              possibilities are limitless.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div className="text-white space-y-[30px] bg-[#000] px-[10vw] flex flex-row items-center justify-center  min-h-[50vh]">
+              
+              <div className="aboutText4 w-[55%] text-center h-[100%]">
+                <p>To become a leading force in shaping the future of technology by blending curiosity with creativity. I envision a world where data and software empower people to solve real-world challenges, drive innovation, and unlock boundless possibilities for the generations to come.</p>
+              </div>
+              <div className="w-[45%] aboutText5 text-center leading-[70px] h-[100%]">
+              <p className="text-[50px] bg-gradient-to-t from-[#433D3A] via-[#C6C4C3] font-[600] to-[#CAC8C6] bg-clip-text text-transparent" >The</p>
+                <p className="text-[100px] bg-gradient-to-t from-[#433D3A] via-[#C6C4C3] font-[600] to-[#CAC8C6] bg-clip-text text-transparent" >Vision</p>
+              </div>
+      </div>
+      <div className="text-white space-y-[30px]  px-[10vw] flex flex-row items-center justify-center  min-h-[50vh]">
+          <div className="w-[45%] aboutText4 text-center leading-[70px] h-[100%]">
+          <p className="text-[50px] bg-gradient-to-t from-[#433D3A] via-[#C6C4C3] font-[600] to-[#CAC8C6] bg-clip-text text-transparent" >The</p>
+            <p className="text-[90px] bg-gradient-to-t from-[#433D3A] via-[#C6C4C3] font-[600] to-[#CAC8C6] bg-clip-text text-transparent" >Mission</p>
+          </div>
+          <div className="w-[55%] aboutText5 text-center h-[100%]">
+            <p>To leverage the power of data science and software engineering to build intelligent, impactful, and user-centric digital solutions. I strive to continuously learn, innovate, and collaborate, transforming ideas into reality through thoughtful design, clean code, and data-driven insights.</p>
+          </div>
+              
+      </div>
+      <div className="text-white space-y-[30px] bg-[#000] px-[10vw] flex flex-col items-center justify-center  min-h-[100vh]">
+              
+      <div className="w-[50%] text-center leading-[85px] h-[100%]">
+                
+                <p className="text-[100px] aboutTitle1 bg-gradient-to-t from-[#433D3A] via-[#C6C4C3] font-[600] to-[#CAC8C6] bg-clip-text text-transparent" >Tech Stack</p>
+              </div>
+              <div className="w-[55%] aboutTitle2 mt-[15px] grid grid-cols-6 gap-[5px] space-x-[15px] flex flex-row  justify-center text-center h-[100%]">
+                <div className="flex flex-col items-center justify-center">
+                  <Image src={DjangoImage} height={75} width={75} alt="" />
+                </div>
+                <div className="flex flex-col items-center justify-center">
+                  <Image src={DockerImage} height={80} width={80} alt="" />
+                </div>
+                
+                <div className="flex flex-col items-center justify-center">
+                  <Image src={ExpressImage} height={65} width={65} alt="" />
+                </div>
+                
+                <div className="flex flex-col items-center justify-center">
+                  <Image src={FirebaseImage} height={130} width={130} alt="" />
+                </div>
+                
+                <div className="flex flex-col items-center justify-center">
+                  <Image src={NextImage} height={55} width={55} alt="" />
+                </div>
+                
+                <div className="flex flex-col px-[5px] rounded-[10px] items-center bg-white justify-center">
+                  <Image src={FlaskImage} height={120} width={120} alt="" />
+                </div>
+                
+                <div className="flex flex-col items-center justify-center">
+                  <Image src={GradioImage} height={110} width={110} alt="" />
+                </div>
+                
+                <div className="flex flex-col items-center justify-center">
+                  <Image src={GraphqlImage} height={110} width={110} alt="" />
+                </div>
+                
+                <div className="flex flex-col items-center justify-center">
+                  <Image src={GroqImage} height={100} width={100} alt="" />
+                </div>
+                
+                <div className="flex flex-col items-center justify-center">
+                  <Image src={HuggingFaceImage} height={100} width={100} alt="" />
+                </div>
+                
+                <div className="flex flex-col items-center justify-center">
+                  <Image src={MongoDbImage} height={80} width={80} alt="" />
+                </div>
+                
+                <div className="flex flex-col items-center justify-center">
+                  <Image src={KerasImage} height={120} width={120} alt="" />
+                </div>
+                
+                <div className="flex flex-col items-center justify-center">
+                  <Image src={KotlinImage} height={80} width={80} alt="" />
+                </div>
+                
+                <div className="flex flex-col items-center justify-center">
+                  <Image src={MysqlImage} height={70} width={70} alt="" />
+                </div>
+                
+                <div className="flex flex-col items-center justify-center">
+                  <Image src={NodeImage} height={100} width={100} alt="" />
+                </div>
+                
+                <div className="flex flex-col items-center justify-center">
+                  <Image src={PostgresqlImage} height={80} width={80} alt="" />
+                </div>
+                
+                <div className="flex flex-col items-center justify-center">
+                  <Image src={PythonImage} height={55} width={55} alt="" />
+                </div>
+                
+                <div className="flex flex-col items-center justify-center">
+                  <Image src={PytorchImage} height={110} width={110} alt="" />
+                </div>
+                
+                <div className="flex flex-col items-center justify-center">
+                  <Image src={ReactImage} height={70} width={70} alt="" />
+                </div>
+                
+                <div className="flex flex-col items-center justify-center">
+                  <Image src={ReactNativeImage} height={100} width={100} alt="" />
+                </div>
+                
+                <div className="flex flex-col items-center justify-center">
+                  <Image src={ReduxImage} height={90} width={90} alt="" />
+                </div>
+                
+                <div className="flex flex-col items-center justify-center">
+                  <Image src={ScikitlearnImage} height={90} width={90} alt="" />
+                </div>
+                
+                <div className="flex flex-col items-center justify-center">
+                  <Image src={TensorFlowImage} height={100} width={100} alt="" />
+                </div>
+                
+                <div className="flex flex-col items-center justify-center">
+                  <Image src={TypescriptImage} height={60} width={60} alt="" />
+                </div>
+                
+                <div className="flex flex-col items-center justify-center">
+                  <Image src={JavaImage} height={80} width={80} alt="" />
+                </div>
+                
+                <div className="flex flex-col items-center justify-center">
+                  <Image src={JavascriptImage} height={80} width={80} alt="" />
+                </div>
+                
+              </div>
+              
+      </div>
+      <div className="text-white space-y-[30px]  px-[10vw] flex flex-col items-center justify-center min-h-[100vh]">            
+        <div className="w-[80%] text-center leading-[80px] h-[100%]">
+          <p className="text-[85px] aboutTitle1 bg-gradient-to-t from-[#433D3A] via-[#C6C4C3] font-[600] to-[#CAC8C6] bg-clip-text text-transparent" >Work Experience</p>
+        </div>
+        <div className="w-[150%] h-[100%] flex flex-col items-center justify-center">
+          <div className="w-[55%] aboutTitle2 h-[100%]">
+            
+
+            <div className="flex flex-row items-center w-[100%]  space-x-[100px]">
+              <div className="leading-[30px]">
+                <p className="text-[30px]">+ Medical Documentation Specialist(Medical Scribe)</p>
+                <p className="text-[20px]">Medsource Healthcare LLC</p>
+              </div>
+
+              <div>
+              <p>2022 July - 2024 December</p>
+              </div>
+              
+            </div>
+            <div>
+              <p className="text-[19px] text-gray-300">Responsibilities</p>
+              <ul className="pl-[10px] mt-[5px] space-y-[5px]">
+                <li>- Managed structured documentation of patient records, ensuring precision and compliance with HIPPA, strengthening skills in data accuracy, organization, and analytical reporting.</li>
+                <li>- Assisted a cardiologist in U.S., maintaining real-time transcription and note creation that optimized workflow, demostrating efficiency in handling structured data.</li>
+                <li>- Navigatted Electronic Health Records(EHR), contributing to data integrity, and compliance, critical in data-driven environments.</li>
+              </ul>
+            </div>
+          </div>      
+
+          <div className="w-[55%] aboutTitle3 mt-[20px] h-[100%]">
+            
+            <div className="flex flex-row items-center w-[100%] space-x-[100px]">
+              <div className="leading-[30px]">
+                <p className="text-[30px]">+ Customer Service Executive</p>
+                <p className="text-[20px]">Startek - Commercial bank PLC process</p>
+              </div>
+
+              <div>
+              <p>2022 February - 2022 June</p>
+              </div>
+              
+            </div>
+
+            
+            
+            
+            <div>
+            <p className="text-[19px] text-gray-300">Responsibilities</p>
+            <ul className="pl-[10px] mt-[5px] space-y-[5px]">
+                <li>- Managed high-volume customer interactions, ensuring efficient query resolution and data accuracy.</li>
+                <li>- Processed financial transactions and account inquiries, demostrated structured problem-solving and attention to detail</li>
+                <li>- Communicated with the clients to ensure clarity and compliance strenghtening analytical documentation skills.</li>
+              </ul>
+            </div>
+          </div>
+        </div>      
+      </div>  
+      <Certification/>
+      
+      <Contact onContactClick={onContactClick} />
+      <Footer />
+    </div>
+  );
+};
+
+export default About;
+
+
+ 

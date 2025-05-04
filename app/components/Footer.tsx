@@ -7,13 +7,22 @@ import Instagram from '../images/instagram.png';
 import Mail from '../images/mail.png';
 import Phone from '../images/phone.png';
 
+
+
 const Footer = () => {
     return(
         <div className="overflow-x-hidden bg-[#101010]  w-screen">
+            <div className="relative flex justify-center py-[10px] overflow-hidden">
+                <p className="text-[100px] font-bold text-transparent bg-clip-text relative z-10 spotlight-text">
+                    Nivakaran
+                </p>
+            </div>
+
+
         
-            <div className="flex flex-row py-[40px] mb-[20px] justify-center mx-[7%] mt-[30px]">
+            <div className="flex flex-row pb-[40px] mb-[20px] justify-center mx-[7%] ">
                 <div className="w-[30%] ">
-                    <p className="text-[40px]">Nivakaran</p>
+                    
                     <p className="text-[13px] leading-[20px]">I'm currently pursuing a B.Sc in Information Technology, specializing in
                         Data Science at Sri Lanka Institute of Information Technology (SLIIT). 
                         I am passionate about data science, software engineering, and AI, 
@@ -77,7 +86,7 @@ const Footer = () => {
                 </div>
             </div>
 
-            <div className="flex flex-col space-y-[7px] text-[13px] mb-[5px] items-center justify-center">
+            <div className="flex flex-col space-y-[7px]  text-[13px] mb-[5px] items-center justify-center">
                 
                 <p>Nivakaran &copy; 2025 Copyright. All Rights Reserved.</p>
             </div>

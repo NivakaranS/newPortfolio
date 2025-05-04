@@ -51,6 +51,20 @@ const Hero = () => {
         })
         }
     }, [])
+
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+          import('scrollreveal').then((ScrollReveal) => {
+            ScrollReveal.default().reveal('.hero4', {
+              duration: 1000,
+              delay: 1200,
+              easing: 'ease-in-out',
+              reset: false,
+              opacity: 0, 
+            });
+          });
+        }
+      }, []);
     
     return(
         <div className="bg-[url('./images/heroBackground3.png')] bg-[#000] w-[100vw] bg-contain bg-no-repeat bg-center h-[100vh] flex items-center justify-center">
@@ -58,7 +72,7 @@ const Hero = () => {
                 <p className="hero1">Hello there!</p>
                 <p className=" hero2  text-[30px]">This is</p>
                 <Image className="hero3" alt="Nivakaran" height={80} src={Nivakaran} />
-                <p className="text-[35px]">Full Stack Developer</p>
+                <p className="text-[35px] hero4">Developer</p>
             </div>
         </div>
     )

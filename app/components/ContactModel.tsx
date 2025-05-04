@@ -39,12 +39,14 @@ const ContactModel: React.FC<ContactModelProps> = ({ onContactClick, showContact
     } transition-opacity ease-in-out w-[20%] h-screen bg-black`}
   ></div>
 
-  
+
   <div className="w-[80%] h-screen flex justify-center py-2 bg-[#433D3A] transition-transform ease-in-out duration-700">
     <div className="flex flex-row w-[90%] justify-between">
       <div className=" w-[50%] h-[100%] flex flex-col items-center justify-center">
         <p className="text-[45px] leading-[50px] w-[90%]">Let's Talk About <span className="text-[#101010]">Your Next Project</span></p>
-        <p className="w-[90%] mt-[5px]" >We'd love to hear from you whether it's a project inquiry, feedback, or just a friendly hello, don't hesitate to reach out: Let's create something amazing.</p>
+        <div className="ml-[40px]">
+          <p className="w-[80%] mt-[5px]" >We'd love to hear from you whether it's a project inquiry, feedback, or just a friendly hello, don't hesitate to reach out: Let's create something amazing.</p>
+        </div>
       </div>
       <div className="text-[45px] leading-[50px] w-[50%]">
         <div className="text-[18px] flex justify-end  cursor-pointer" onClick={onContactClick}>
