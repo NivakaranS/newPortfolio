@@ -32,6 +32,7 @@ import TypescriptImage from '../images/typescript.png';
 import DjangoImage from '../images/django.png';
 import DockerImage from '../images/docker.png';
 import ExpressImage from '../images/express.png';
+import LangchainImage from '../images/langchain2.png';
 
 
 
@@ -296,6 +297,9 @@ useEffect(() => {
                 
                 <div className="flex flex-col items-center justify-center">
                   <Image src={JavascriptImage} height={80} width={80} alt="" />
+                </div>
+                <div className="flex flex-col items-center justify-center">
+                  <Image src={LangchainImage} height={120} width={120} alt="" />
                 </div>
                 
               </div>
