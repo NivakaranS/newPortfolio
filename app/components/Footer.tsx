@@ -12,14 +12,35 @@ import { useState } from "react";
 
 const Footer = () => {
     const [email, setEmail] = useState('')
+    const [showSubcriptionSuccess, setSubcriptionSuccess] = useState(false)
+    const [showInvalidEmail, setShowInvalidEmail] = useState(false)
 
     const subcribeNewsLetter = async () => {
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!emailRegex.test(email)) {
+            setShowInvalidEmail(true)
+
+            setTimeout(() => {
+                setShowInvalidEmail(false);
+
+            }, 5000);
+            return;
+        }
+
         try {
             console.log('Email to subscribe:', email)
             const response = await axios.post('https://new-portfolio-backend-roan.vercel.app/newsletter', {
                 email: email
             })
-            console.log('Response from backend', response.data)
+            
+            setSubcriptionSuccess(true)
+
+            setTimeout(() => {
+                setSubcriptionSuccess(false);
+            }, 5000);
+
         } catch (error) {
             console.error("Error subscribing to newsletter:", error)
         }
@@ -27,6 +48,17 @@ const Footer = () => {
 
     return(
         <div className="overflow-x-hidden bg-[#101010]  w-screen">
+
+            {showSubcriptionSuccess && <div className="flex bg-green-500 text-green-950 ring-green-300 ring-[1px] pl-[15px] opacity-75 pr-[20px] rounded-[5px] py-[10px]  fixed flex-row items-center justify-center mt-[20px] absolute bottom-[20px] left-[30px] ">
+                <div className="h-[30px] mr-[10px] w-[5px] bg-green-950"></div>
+                    <p>Subcription Successful</p>
+            </div>}
+
+            {showInvalidEmail && <div className="flex transition duration-500 ease-in-out bg-red-500 text-red-950 ring-red-300 ring-[1px] pl-[15px] opacity-75 pr-[20px] rounded-[5px] py-[10px]  fixed flex-row items-center justify-center mt-[20px] absolute bottom-[20px] left-[30px] ">
+                <div className="h-[30px] mr-[10px] w-[5px] bg-red-950"></div>
+                    <p>Invalid Email Address</p>
+            </div>}
+
             <div className="relative flex justify-center py-[10px] overflow-hidden">
                 <p className="text-[100px] font-bold text-transparent bg-clip-text relative z-10 spotlight-text">
                     Nivakaran

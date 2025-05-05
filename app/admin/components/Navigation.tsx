@@ -14,7 +14,7 @@ const Navigation: React.FC<NavigationProps> = ({ handleNavClick, navClick }) => 
             <div className="bg-[#101010] border-r-[1px] w-[17vw]  border-gray-400 flex flex-col justify-between text-black py-[15px]  h-[100vh]">
                 <div>
                     <div className="pb-[15px] rounded-[px]  px-[30px]">
-                        <p className="text-[35px] text-white font-bold">NivakaranS</p>
+                        <p className="text-[30px] text-white font-bold">NivakaranS</p>
                     </div>
                     {/* <div className="bg-black h-[1px] "></div> */}
                     <div className=" h-[100%]">
