@@ -131,19 +131,19 @@ useEffect(() => {
       />
       <div className="text-white space-y-[30px] bg-[#000] px-[10vw] flex flex-col items-center justify-center pt-[20vh] min-h-[100vh]">
       <div className="w-[80%] text-center leading-[70px] h-[100%]">
-                <p className="text-[60px] aboutText4 aboutTitle1 bg-gradient-to-t from-[#433D3A] via-[#C6C4C3]  to-[#CAC8C6] bg-clip-text text-transparent">About Me</p>
-                <p className="text-[80px] aboutTitle2 bg-gradient-to-t from-[#433D3A] via-[#C6C4C3] font-[600] to-[#CAC8C6] bg-clip-text text-transparent" >An Introduction</p>
+                <p className=" text-[50px] md:text-[60px] aboutText4 aboutTitle1 bg-gradient-to-t from-[#433D3A] via-[#C6C4C3]  to-[#CAC8C6] bg-clip-text text-transparent">About Me</p>
+                <p className=" text-[75px] md:text-[80px] aboutTitle2 bg-gradient-to-t from-[#433D3A] via-[#C6C4C3] font-[600] to-[#CAC8C6] bg-clip-text text-transparent" >An Introduction</p>
               </div>
-              <div className="w-[50%] text-center h-[100%]">
+              <div className="w-[100%] md:w-[50%] text-center h-[100%]">
                 <p className=" aboutTitle3">Welcome to the story behind the code. I’m not just here to build software, I’m here to bring your vision to life through purposeful design, powerful technology, and a passion for problem-solving. Whether you're dreaming big or scaling fast, I'm the tech partner who’s got your back.</p>
               </div>
             </div>
-      <div className="flex items-center justify-center  min-h-[100vh]">
-        <div className="w-[85%] h-[100%] flex flex-row items-center justify-center space-x-[20px] about2">
-          <div className="w-[50%] h-[100%] flex flex-col items-center justify-center">
-          <p className="text-[80px] aboutText4 bg-gradient-to-t from-[#433D3A] via-[#C6C4C3] font-[600] to-[#CAC8C6] bg-clip-text text-transparent" >About Me</p>
+      <div className="flex items-center justify-center py-[50px]  min-h-[100vh]">
+        <div className="w-[85%] h-[100%] flex flex-col md:flex-row items-center justify-center space-x-[20px] about2">
+          <div className="w-[100%] md:w-[50%] h-[100%]  flex flex-col items-center justify-center">
+            <p className="text-[80px] text-center md:text-left aboutText4 bg-gradient-to-t from-[#433D3A] via-[#C6C4C3] font-[600] to-[#CAC8C6] bg-clip-text text-transparent" >About Me</p>
           </div>
-          <div className="w-[50%] aboutText5 h-[100%] flex flex-col space-y-[20px] items-center justify-center">
+          <div className="w-[100%] md:w-[50%] aboutText5 h-[100%] flex flex-col space-y-[20px] items-center justify-center">
             <p>
               Hello! I am Nivakaran, currently pursuing a B.Sc. in Information
               Technology with a specialization in Data Science at the Sri Lanka
@@ -169,33 +169,33 @@ useEffect(() => {
           </div>
         </div>
       </div>
-      <div className="text-white space-y-[30px] bg-[#000] px-[10vw] flex flex-row items-center justify-center  min-h-[50vh]">
+      <div className="text-white space-y-[30px] bg-[#000] px-[10vw] flex flex-col py-[60px] py-[0px] md:flex-row items-center justify-center  min-h-[50vh]">
               
-              <div className="aboutText4 w-[55%] text-center h-[100%]">
+              <div className="aboutText4 w-[100%] md:w-[55%] text-center h-[100%]">
                 <p>To become a leading force in shaping the future of technology by blending curiosity with creativity. I envision a world where data and software empower people to solve real-world challenges, drive innovation, and unlock boundless possibilities for the generations to come.</p>
               </div>
-              <div className="w-[45%] aboutText5 text-center leading-[70px] h-[100%]">
-              <p className="text-[50px] bg-gradient-to-t from-[#433D3A] via-[#C6C4C3] font-[600] to-[#CAC8C6] bg-clip-text text-transparent" >The</p>
-                <p className="text-[100px] bg-gradient-to-t from-[#433D3A] via-[#C6C4C3] font-[600] to-[#CAC8C6] bg-clip-text text-transparent" >Vision</p>
+              <div className="w-[45%] aboutText5 text-center leading-[60px] md:leading-[70px] h-[100%]">
+                <p className="text-[40px] md:text-[50px] bg-gradient-to-t from-[#433D3A] via-[#C6C4C3] font-[600] to-[#CAC8C6] bg-clip-text text-transparent" >The</p>
+                <p className=" text-[80px] md:text-[100px] bg-gradient-to-t from-[#433D3A] via-[#C6C4C3] font-[600] to-[#CAC8C6] bg-clip-text text-transparent" >Vision</p>
               </div>
       </div>
-      <div className="text-white space-y-[30px]  px-[10vw] flex flex-row items-center justify-center  min-h-[50vh]">
-          <div className="w-[45%] aboutText4 text-center leading-[70px] h-[100%]">
-          <p className="text-[50px] bg-gradient-to-t from-[#433D3A] via-[#C6C4C3] font-[600] to-[#CAC8C6] bg-clip-text text-transparent" >The</p>
-            <p className="text-[90px] bg-gradient-to-t from-[#433D3A] via-[#C6C4C3] font-[600] to-[#CAC8C6] bg-clip-text text-transparent" >Mission</p>
+      <div className="text-white space-y-[30px]  px-[10vw] flex flex-col py-[50px] md:py-[0px] md:flex-row items-center justify-center  min-h-[50vh]">
+          <div className="w-[45%] aboutText4 text-center leading-[50px] md:leading-[70px] h-[100%]">
+          <p className="text-[40px] md:text-[50px] bg-gradient-to-t from-[#433D3A] via-[#C6C4C3] font-[600] to-[#CAC8C6] bg-clip-text text-transparent" >The</p>
+            <p className="text-[68px] md:text-[100px] bg-gradient-to-t from-[#433D3A] via-[#C6C4C3] font-[600] to-[#CAC8C6] bg-clip-text text-transparent" >Mission</p>
           </div>
-          <div className="w-[55%] aboutText5 text-center h-[100%]">
+          <div className=" w-[100%] md:w-[55%] aboutText5 text-center h-[100%]">
             <p>To leverage the power of data science and software engineering to build intelligent, impactful, and user-centric digital solutions. I strive to continuously learn, innovate, and collaborate, transforming ideas into reality through thoughtful design, clean code, and data-driven insights.</p>
           </div>
               
       </div>
       <div className="text-white space-y-[30px] bg-[#000] px-[10vw] flex flex-col items-center justify-center  min-h-[100vh]">
               
-      <div className="w-[50%] text-center leading-[85px] h-[100%]">
+      <div className="md:w-[50%] w-[100%] text-center leading-[85px] h-[100%]">
                 
-                <p className="text-[100px] aboutTitle1 bg-gradient-to-t from-[#433D3A] via-[#C6C4C3] font-[600] to-[#CAC8C6] bg-clip-text text-transparent" >Tech Stack</p>
+                <p className=" text-[70px] md:text-[100px] aboutTitle1 bg-gradient-to-t from-[#433D3A] via-[#C6C4C3] font-[600] to-[#CAC8C6] bg-clip-text text-transparent" >Tech Stack</p>
               </div>
-              <div className="w-[55%] aboutTitle2 mt-[15px] grid grid-cols-6 gap-[5px] space-x-[15px] flex flex-row  justify-center text-center h-[100%]">
+              <div className="md:w-[55%] aboutTitle2 mt-[15px] grid grid-cols-6 gap-[5px] space-x-[15px] flex flex-row  justify-center text-center h-[100%]">
                 <div className="flex flex-col items-center justify-center">
                   <Image src={DjangoImage} height={75} width={75} alt="" />
                 </div>
@@ -305,18 +305,18 @@ useEffect(() => {
               </div>
               
       </div>
-      <div className="text-white space-y-[30px]  px-[10vw] flex flex-col items-center justify-center min-h-[100vh]">            
-        <div className="w-[80%] text-center leading-[80px] h-[100%]">
-          <p className="text-[85px] aboutTitle1 bg-gradient-to-t from-[#433D3A] via-[#C6C4C3] font-[600] to-[#CAC8C6] bg-clip-text text-transparent" >Work Experience</p>
+      <div className="text-white space-y-[30px] py-[80px]  px-[10vw] flex flex-col items-center justify-center min-h-[100vh]">            
+        <div className="w-[80%] text-center leading-[60px] md:leading-[80px] h-[100%]">
+          <p className="text-[65px] md:text-[85px] aboutTitle1 bg-gradient-to-t from-[#433D3A] via-[#C6C4C3] font-[600] to-[#CAC8C6] bg-clip-text text-transparent" >Work Experience</p>
         </div>
         <div className="w-[150%] h-[100%] flex flex-col items-center justify-center">
-          <div className="w-[55%] aboutTitle2 h-[100%]">
+          <div className="w-[70%] md:w-[55%] aboutTitle2 h-[100%]">
             
 
             <div className="flex flex-row items-center w-[100%]  space-x-[100px]">
               <div className="leading-[30px]">
-                <p className="text-[30px]">+ Medical Documentation Specialist(Medical Scribe)</p>
-                <p className="text-[20px]">Medsource Healthcare LLC</p>
+                <p className=" text-[20px]  md:text-[30px]">+ Medical Documentation Specialist (Medical Scribe)</p>
+                <p className="text-[17px] md:text-[20px]">Medsource Healthcare LLC</p>
               </div>
 
               <div>
@@ -325,7 +325,7 @@ useEffect(() => {
               
             </div>
             <div>
-              <p className="text-[19px] text-gray-300">Responsibilities</p>
+              <p className="text-[17px] md:text-[19px] text-gray-300">Responsibilities</p>
               <ul className="pl-[10px] mt-[5px] space-y-[5px]">
                 <li>- Managed structured documentation of patient records, ensuring precision and compliance with HIPPA, strengthening skills in data accuracy, organization, and analytical reporting.</li>
                 <li>- Assisted a cardiologist in U.S., maintaining real-time transcription and note creation that optimized workflow, demostrating efficiency in handling structured data.</li>
@@ -334,16 +334,16 @@ useEffect(() => {
             </div>
           </div>      
 
-          <div className="w-[55%] aboutTitle3 mt-[20px] h-[100%]">
+          <div className="w-[70%] md:w-[55%] aboutTitle3 mt-[20px] h-[100%]">
             
-            <div className="flex flex-row items-center w-[100%] space-x-[100px]">
+            <div className="flex flex-row items-center justify-between w-[100%] ">
               <div className="leading-[30px]">
-                <p className="text-[30px]">+ Customer Service Executive</p>
-                <p className="text-[20px]">Startek - Commercial bank PLC process</p>
+                <p className="text-[20px] md:text-[30px]">+ Customer Service Executive</p>
+                <p className="text-[17px] md:text-[20px]">Startek - Commercial bank PLC process</p>
               </div>
 
-              <div>
-              <p>2022 February - 2022 June</p>
+              <div className="w-[25%]">
+                <p>2022 February - 2022 June</p>
               </div>
               
             </div>

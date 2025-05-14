@@ -166,7 +166,7 @@ const Portfolio = () => {
               <p className="text-[50px] bg-gradient-to-t  from-[#433D3A] via-[#C6C4C3]  to-[#CAC8C6] bg-clip-text text-transparent portfolioTitle1 ">Explore </p>
               <p className="text-[85px] bg-gradient-to-t leading-[95px]  from-[#433D3A] via-[#C6C4C3] font-[600] to-[#CAC8C6] portfolioTitle2 bg-clip-text text-transparent" >My Work</p>
               </div>
-              <div className="w-[70%] portfolioTitle3 text-center h-[100%]">
+              <div className="w-[100%] md:w-[70%] portfolioTitle3 text-center h-[100%]">
                 <p>Welcome to a showcase of my work, a curated collection of projects that reflect my passion for building smart, user-focused, and scalable digital solutions. From full-stack web apps and mobile experiences to data-driven insights and intelligent AI models, each project tells a story of creativity, problem-solving, and innovation.</p>
               </div>
             </div>
@@ -177,21 +177,24 @@ const Portfolio = () => {
                     <p className="text-[60px] bg-gradient-to-t from-[#433D3A] via-[#C6C4C3] font-bold to-[#CAC8C6] bg-clip-text text-transparent">Explore the</p>
                     <p className="text-[60px] bg-gradient-to-t from-[#433D3A] via-[#C6C4C3] font-bold to-[#CAC8C6] bg-clip-text text-transparent">Development Journey</p>
                 </div>
+               
+
                 <p className=" portfolio2 text-[40px] mt-[40px]">Software Engineering</p>
-                <div className=" portfolio3 mt-[30px] flex flex-row space-x-[20px] items-center justify-center">
+                <div className=" portfolio3 mt-[30px] flex md:flex-row flex-col space-y-[40px] md:space-x-[20px] items-center justify-center">
                     <PortfolioCard lang1="Python" lang2="Next.js" lang3="Node.js" lang4="MongoDB" lang5="Express.js" lang6="Docker" text2="This project is a full-stack news web application built using the MENN (MongoDB, Express.js, Next.js, Node.js) stack. It features a dual-interface system, where regular users can browse, search, and bookmark news, while admins have a dedicated panel to manage news articles, categories, and user permissions. The integrated LLM chatbot provides real-time news summeries, making articles easier to digest and enhance user experience." text="News Web App" onClick={onPortfolioCard1Click}/>
                     <PortfolioCard lang1="Python" lang2="MongoDB" lang3="Next.js" lang4="Node.js" lang5="Express.js" lang6="Docker" text2="This project is a full-stack logistics management web app (MENN: MongoDB, Express.js, Next.js, Node.js) streamlines shipment tracking, fleet, and warehouse management. It includes an admin panel for managing deliveries, drivers, and warehouses, while users track shipments in real-time. An LLM-powered chatbot enhances support with shipment updates, logistics queries, and warehouse inventory assistance, improving efficiency and automation." text="Logistics Web App" onClick={onPortfolioCard1Click}/>
                    
                 </div>
                 <p className=" portfolio3 text-[40px] mt-[40px]">Data Science</p>
-                <div className=" portfolio4 mt-[20px] flex flex-row space-x-[20px] items-center justify-center">
+                <div className=" portfolio3 mt-[30px] flex md:flex-row flex-col space-y-[40px] md:space-x-[20px] items-center justify-center">
                     <PortfolioCard lang1="Django" lang2="Matplotlib" lang3="Tensorflow" lang4="Pandas" lang5="" lang6="" text2="This project aims to build a Machine Learning model that predicts house prices based on various features such as location, number of bedrooms, square footage, and amenities. By analyzing historical real estate data, the model provides accurate prices estimates, helping buyers, sellers, real estate agents make data-driven solutions." text="House Price Prediction" onClick={onPortfolioCard1Click}/>
                     <PortfolioCard lang1="FastApi" lang2="Matplotlib" lang3="Tensorflow" lang4="Pandas" lang5="" lang6="" text2="This project focuses on predicting stock prices using Machine Learning & Deep Learning models. The goal is to analyze historical stock market data, identify trends, and forecast future stock prices with high accuracy. The model can be used by traders and investors to make data-driven investment decisions." text="Stock Market Prediction" onClick={onPortfolioCard1Click}/>
                     
                 </div>
 
+
                 <p className=" portfolio3 text-[40px] mt-[40px]">Computer Vision</p>
-                <div className=" portfolio4 mt-[20px] flex flex-row space-x-[20px] items-center justify-center">
+                <div className=" portfolio4 mt-[30px] flex md:flex-row flex-col space-y-[40px] md:space-x-[20px] items-center justify-center">
                     <PortfolioCard lang1="Django" lang2="Matplotlib" lang3="Tensorflow" lang4="Pandas" lang5="" lang6="" text2="This project aims to build a Machine Learning model that predicts house prices based on various features such as location, number of bedrooms, square footage, and amenities. By analyzing historical real estate data, the model provides accurate prices estimates, helping buyers, sellers, real estate agents make data-driven solutions." text="House Price Prediction" onClick={onPortfolioCard1Click}/>
                     <PortfolioCard lang1="FastApi" lang2="Matplotlib" lang3="Tensorflow" lang4="Pandas" lang5="" lang6="" text2="This project focuses on predicting stock prices using Machine Learning & Deep Learning models. The goal is to analyze historical stock market data, identify trends, and forecast future stock prices with high accuracy. The model can be used by traders and investors to make data-driven investment decisions." text="Stock Market Prediction" onClick={onPortfolioCard1Click}/>
                     

@@ -50,11 +50,11 @@ const Services = () => {
     }, [])
 
     return(
-        <div className="bg-[#101010] h-[100vh] w-screen flex items-center justify-center">
+        <div className="bg-[#101010] min-h-[100vh] py-[80px] w-screen flex items-center justify-center">
             <div className="w-[80%]  flex flex-col ">
                 <p className="text-[40px] services1 bg-gradient-to-t from-[#433D3A] via-[#C6C4C3] to-[#CAC8C6] bg-clip-text text-transparent">Discover the Services Provided</p>
 
-                <div className="flex flex-row items-center justify-center space-x-[70px] mt-[30px]">
+                <div className="flex flex-col md:flex-row items-center justify-center space-y-[30px] md:space-y-[0px] md:space-x-[70px] mt-[30px]">
                     <div className=" services2 space-y-[20px] flex flex-col items-center justify-center">
                         <div className="bg-[#000] w-[400px] ring-[0.5px] ring-[#4d4d4d] h-[115px] rounded-[20px] flex items-center justify-center">
                             <p className="text-[25px]">UI/UX Designing</p>

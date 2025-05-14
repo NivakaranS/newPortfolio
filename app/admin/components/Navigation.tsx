@@ -34,6 +34,12 @@ const Navigation: React.FC<NavigationProps> = ({ handleNavClick, navClick }) => 
                                 <p>Blogs Organization </p>
                             </div>
                         </div>
+
+                        <div onClick={handleNavClick} className={`${navClick == 'Contact' ? 'bg-gray-200' : 'hover:bg-gray-500'} text-gray-300 cursor-pointer py-[5px]`} >
+                            <div className={`${navClick == 'Contact' ? 'border-l-4 ' : 'ml-[14px]' }   border-gray-600 ml-[10px] py-[5px] px-[25px]`}>
+                                <p>Contact</p>
+                            </div>
+                        </div>
                         
                         
                         

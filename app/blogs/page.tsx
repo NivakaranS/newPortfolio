@@ -118,11 +118,11 @@ const Blogs = () => {
             <Navigation navSelection={navSelection} onContactClick={onContactClick}/>
             <ContactModel showContactModel={showContactModel} onContactClick={onContactClick}/>
             <div className="text-white space-y-[30px] bg-[#000] px-[10vw] flex flex-col items-center justify-center pt-[20vh] min-h-[100vh]">
-              <div className="w-[80%] text-center leading-[100px] h-[100%]">
+              <div className="w-[80%] text-center leading-[85px] md:leading-[100px] h-[100%]">
                 
-                <p className="text-[90px] bg-gradient-to-t blogsTitle1 from-[#433D3A] via-[#C6C4C3] font-[600] to-[#CAC8C6] bg-clip-text text-transparent" >Blogs & Insights</p>
+                <p className=" text-[75px] md:text-[90px] bg-gradient-to-t blogsTitle1 from-[#433D3A] via-[#C6C4C3] font-[600] to-[#CAC8C6] bg-clip-text text-transparent" >Blogs & Insights</p>
               </div>
-              <div className="w-[70%] blogsTitle2 text-center h-[100%]">
+              <div className="w-[100%] md:w-[70%] blogsTitle2 text-center h-[100%]">
                 <p>Welcome to my digital journal, a space where I share my thoughts, experiences, and learnings from the world of technology. From web development and mobile apps to data science, AI, and everything in between, this is where ideas turn into knowledge. Whether you're here to learn, explore, or get inspired, there's something for every curious mind.</p>
               </div>
             </div>

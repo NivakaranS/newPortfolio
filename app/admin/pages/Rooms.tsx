@@ -4,6 +4,7 @@ import Image from "next/image"
 import Bed from '../images/aii.jpg'
 import React, {useEffect, useState} from "react"
 import axios from "axios";
+import { useRouter } from "next/navigation"
 
 
 
@@ -22,7 +23,7 @@ const Rooms = () => {
     const [addingCategory, setAddingCategory] = useState<string>('')
 
 
-
+    const router = useRouter()
     const [projectCategories, setProjectCategories] = useState<any[]>([])
 
     useEffect(() => {
@@ -32,6 +33,9 @@ const Rooms = () => {
                 
                 setProjectCategories(response.data)
                 console.log('Project categories', response.data)
+                
+                
+
             } catch (error) {
                 console.error("Error fetching news data:", error)
             }
@@ -45,6 +49,7 @@ const Rooms = () => {
                 name: addingCategory
             })
             console.log('Project category added successfully')
+            window.location.reload()
         } catch (error) {
             console.error("Error adding project category:", error)
         }

@@ -67,8 +67,8 @@ const Footer = () => {
 
 
         
-            <div className="flex flex-row pb-[40px] mb-[20px] justify-center mx-[7%] ">
-                <div className="w-[30%] ">
+            <div className="grid grid-cols-1 gap-[20px] sm:grid-cols-2 md:grid-cols-4  pb-[40px] mb-[20px] justify-center mx-[7%] ">
+                <div className="w-[100%] ">
                     
                     <p className="text-[13px] leading-[20px]">I'm currently pursuing a B.Sc in Information Technology, specializing in
                         Data Science at Sri Lanka Institute of Information Technology (SLIIT). 
@@ -84,7 +84,7 @@ const Footer = () => {
                         <p>nivakaran@hotmail.com</p>
                     </div>
                 </div>
-                <div className="w-[20%] flex flex-col items-center  ">
+                <div className="w-[100%] flex flex-col items-center  ">
                     <p className="text-[24.72px] text-[#96989A]">Quick Links</p>
                     <div className="flex flex-col space-y-[10px] mt-[10px]">
                         <p>Home</p>
@@ -94,7 +94,7 @@ const Footer = () => {
                         <p>Contact</p>
                     </div>
                 </div>
-                <div className="w-[25%] ">
+                <div className="w-[100%] ">
                     <p className="text-[24.72px] text-[#96989A]">Services</p>
                     <div className="flex flex-col text-[15px] space-y-[10px] mt-[10px]">
                         <p>UI/UX Designing</p>
@@ -106,7 +106,7 @@ const Footer = () => {
                     </div>
 
                 </div>
-                <div className="w-[30%] ">
+                <div className="w-[100%] ">
                     <div className="bg-[#101010] mb-[20px] rounded-[15px] py-[20px] px-[20px] ring-[0.5px] ring-[#4d4d4d]">
                         <p>Subscribe to our newsletter</p>
                         <div className="flex flex-row items-center  justify-center">
@@ -127,7 +127,7 @@ const Footer = () => {
                             <div className="h-[38px] cursor-pointer w-[38px] overflow-hidden rounded-[5px]  ">
                                 <Image src={Github} alt="" height={38}/>
                             </div>
-                            <Image className="cursor-pointer" src={Instagram} alt="" height={38}/>
+                            
                         </div>
                     </div>
                 </div>

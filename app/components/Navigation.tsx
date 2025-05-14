@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { MouseEvent } from "react";
+import Image from "next/image";
+import Menu from '../images/menu.png';
 
 interface ContactModelProps {
     onContactClick: () => void;
@@ -9,7 +11,7 @@ interface ContactModelProps {
   }
 
 const Navigation : React.FC<ContactModelProps> = ({navSelection, onContactClick}) => {
-    
+    const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false)
 
     const Router = useRouter()
 
@@ -38,10 +40,14 @@ const Navigation : React.FC<ContactModelProps> = ({navSelection, onContactClick}
         Router.push('/blogs')
     }
 
+    const onMenuClick = (e:MouseEvent<HTMLDivElement>) => {
+        setIsMenuOpen(!isMenuOpen)
+    }
+
     return(
         <div className="flex items-center z-[50] fixed top-0 w-[100vw] justify-center">
             
-            <div className="flex flex-row  justify-between items-center px-[20px] h-[60px] 2xl:h-[55px] rounded-[8px] ring-[0.5px] ring-[#727376] w-[90vw] mt-[13px]  bg-[#373435] text-black ">
+            <div className="md:flex hidden flex-row  justify-between items-center px-[20px] h-[60px] 2xl:h-[55px] rounded-[8px] ring-[0.5px] ring-[#727376] w-[90vw] mt-[13px]  bg-[#373435] text-black ">
                 <div className="cursor-pointer text-[20px] text-white">
                     <p>NivakaranS</p>
                 </div>
@@ -67,6 +73,58 @@ const Navigation : React.FC<ContactModelProps> = ({navSelection, onContactClick}
                     <div onClick={onContactClick} className="cursor-pointer bg-[#4B4B4D] text-white px-[18px] text-[15px] ring-[0.8px] ring-gray-800 py-[7px] rounded-[20px]">
                         <p>Let's talk</p>
                     </div>
+                </div>
+            </div>
+
+            <div className="md:hidden flex flex-row  justify-between items-center px-[20px] h-[60px] 2xl:h-[55px] rounded-[8px] ring-[0.5px] ring-[#727376] w-[90vw] mt-[13px]  bg-[#373435] text-black ">
+                <div onClick={onMenuClick} className="flex select-none flex-row items-center justify-center cursor-pointer">
+                    <Image alt="menu" className="select-none" src={Menu} height={23} />
+
+                </div>
+                <div className="cursor-pointer text-[20px] text-white">
+                    <p>NivakaranS</p>
+                </div>
+             
+                <div>
+                    <div onClick={onContactClick} className="cursor-pointer bg-[#4B4B4D] text-white px-[18px] text-[15px] ring-[0.8px] ring-gray-800 py-[7px] rounded-[20px]">
+                        <p>Let's talk</p>
+                    </div>
+                </div>
+            </div>
+            <div className={`${isMenuOpen ? 'translate-x-0' : 'translate-x-[-100vw]' }  duration-500 md:hidden flex flex-row items-center  w-[100vw]  absolute top-0 left-0   cursor-pointer`}>
+                
+                <div className="bg-[#373435] w-[400px] z-[9999] h-[100vh]">
+                    <div>
+                        <div className="cursor-pointer text-[30px] flex items-center justify-center pt-[40px] pb-[10px] text-white">
+                            <p>NivakaranS</p>
+                        </div>
+
+                    </div>
+                    <div className="flex flex-col items-center justify-center text-[18px] space-y-[15px] mt-[20px] ">
+                        <div className="bg-gray-950 w-[80%] h-[0.5px] "></div>
+                        <div onClick={onHomeClick} className={`${navSelection=='Home' ? 'text-[#FFD700]' : ''} cursor-pointer hover:text-[#FFD700]`}>
+                            <p>Home</p>
+                        </div>
+                        <div className="bg-gray-950 w-[80%] h-[0.5px] "></div>
+                        <div onClick={onAboutClick} className={`${navSelection=='About' ? 'text-[#FFD700]' : ''} cursor-pointer hover:text-[#FFD700]`}>
+                            <p>About</p>
+                        </div>
+                        <div className="bg-gray-950 w-[80%] h-[0.5px] "></div>
+                        <div onClick={onServicesClick} className={`${navSelection=='Services' ? 'text-[#FFD700]' : ''} cursor-pointer hover:text-[#FFD700]`}>
+                            <p>Services</p>
+                        </div>
+                        <div className="bg-gray-950 w-[80%] h-[0.5px] "></div>
+                        <div onClick={onPortfolioClick} className={`${navSelection=='Portfolio' ? 'text-[#FFD700]' : ''} cursor-pointer hover:text-[#FFD700]`}>
+                            <p>Portfolio</p>
+                        </div>
+                        <div className="bg-gray-950 w-[80%] h-[0.5px] "></div>
+                        <div onClick={onBlogsClick} className={`${navSelection=='Blogs' ? 'text-[#FFD700]' : ''} cursor-pointer hover:text-[#FFD700]`}>
+                            <p>Blogs</p>
+                        </div>
+                    </div>
+                </div>
+                <div onClick={onMenuClick} className={` ${isMenuOpen ? 'opacity-80 delay-300 duration-500 ' : 'opacity-0'}  md:hidden flex flex-col items-center w-[100%] h-[100vh] justify-center  bg-black ring-[0.5px] ring-[#727376]`}>
+
                 </div>
             </div>
         </div>

@@ -66,7 +66,7 @@ const Certification = () => {
                 </div>
 
                 <div className=" mt-[30px]">
-                    <div className=" grid grid-cols-1 md:grid-cols-4 gap-[15px] items-center justify-center">
+                    <div className=" grid grid-cols-1 sm:grid-cols-2  md:grid-cols-4 gap-[15px] items-center justify-center">
                         <div className="cursor-pointer  certification2 relative group bg-[#000] overflow-hidden w-[100%] ring-[0.5px] ring-[#4d4d4d] h-[195px] rounded-[10px] flex items-center justify-center">
                             <div className=' absolute transition-transform duration-500 group-hover:translate-y-0  translate-y-[200%] flex flex-col items-center justify-center'>
                                 <Image alt="" src={Certificate1} className='h-[100%] w-[100%]'  />
