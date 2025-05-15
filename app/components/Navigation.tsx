@@ -52,7 +52,7 @@ const Navigation : React.FC<ContactModelProps> = ({navSelection, onContactClick}
                     <p>NivakaranS</p>
                 </div>
                 <div className="flex flex-row items-center text-[17px] justify-between text-white  w-[35%]">
-                    <div onClick={onHomeClick} className={`${navSelection=='Home' ? 'text-[#FFD700]' : ''} cursor-pointer hover:text-[#FFD700]`}>
+                    <div onClick={onHomeClick} className={`${navSelection=='Home' ? 'text-[#FFD700] ' : ''} cursor-pointer hover:text-[#FFD700]`}>
                         <p>Home</p>
                     </div>
                     <div onClick={onAboutClick} className={`${navSelection=='About' ? 'text-[#FFD700]' : ''} cursor-pointer hover:text-[#FFD700]`}>
@@ -96,29 +96,31 @@ const Navigation : React.FC<ContactModelProps> = ({navSelection, onContactClick}
                 <div className="bg-[#373435] w-[400px] z-[9999] h-[100vh]">
                     <div>
                         <div className="cursor-pointer text-[30px] flex items-center justify-center pt-[40px] pb-[10px] text-white">
-                            <p>NivakaranS</p>
+                            <p className=" text-[35px] bg-gradient-to-t from-[#0000] ring-[0.5px]  via-[#C6C4C3] font-bold to-[#CAC8C6] bg-clip-text text-transparent">NivakaranS</p>
                         </div>
 
                     </div>
-                    <div className="flex flex-col items-center justify-center text-[18px] space-y-[15px] mt-[20px] ">
-                        <div className="bg-gray-950 w-[80%] h-[0.5px] "></div>
-                        <div onClick={onHomeClick} className={`${navSelection=='Home' ? 'text-[#FFD700]' : ''} cursor-pointer hover:text-[#FFD700]`}>
+                    <div className="flex flex-col items-center justify-center text-[18px] space-y-[5px] mt-[20px] ">
+                        
+                        <div onClick={onHomeClick} className={`${navSelection=='Home' ? 'text-[#FFD700] bg-[#808080] ring-[0.5px] ring-[#101010] ' : ''} w-[90%] rounded-[5px] py-[10px]  px-[20px] cursor-pointer hover:text-[#FFD700]`}>
                             <p>Home</p>
                         </div>
-                        <div className="bg-gray-950 w-[80%] h-[0.5px] "></div>
-                        <div onClick={onAboutClick} className={`${navSelection=='About' ? 'text-[#FFD700]' : ''} cursor-pointer hover:text-[#FFD700]`}>
+
+                        <div onClick={onAboutClick} className={`${navSelection=='About' ? 'text-[#FFD700] bg-[#808080] ring-[0.5px] ring-[#101010] ' : ''} w-[90%] rounded-[5px] py-[10px]  px-[20px] cursor-pointer hover:text-[#FFD700]`}>
                             <p>About</p>
                         </div>
-                        <div className="bg-gray-950 w-[80%] h-[0.5px] "></div>
-                        <div onClick={onServicesClick} className={`${navSelection=='Services' ? 'text-[#FFD700]' : ''} cursor-pointer hover:text-[#FFD700]`}>
+
+                        <div onClick={onServicesClick} className={`${navSelection=='Services' ? 'text-[#FFD700] bg-[#808080] ring-[0.5px] ring-[#101010] ' : ''} w-[90%] rounded-[5px] py-[10px]  px-[20px] cursor-pointer hover:text-[#FFD700]`}>
+                        
+                        
                             <p>Services</p>
                         </div>
-                        <div className="bg-gray-950 w-[80%] h-[0.5px] "></div>
-                        <div onClick={onPortfolioClick} className={`${navSelection=='Portfolio' ? 'text-[#FFD700]' : ''} cursor-pointer hover:text-[#FFD700]`}>
+
+                        <div onClick={onPortfolioClick} className={`${navSelection=='Portfolio' ? 'text-[#FFD700] bg-[#808080] ring-[0.5px] ring-[#101010] ' : ''} w-[90%] rounded-[5px] py-[10px]  px-[20px] cursor-pointer hover:text-[#FFD700]`}>
                             <p>Portfolio</p>
                         </div>
-                        <div className="bg-gray-950 w-[80%] h-[0.5px] "></div>
-                        <div onClick={onBlogsClick} className={`${navSelection=='Blogs' ? 'text-[#FFD700]' : ''} cursor-pointer hover:text-[#FFD700]`}>
+                        
+                        <div onClick={onBlogsClick} className={`${navSelection=='Blogs' ? 'text-[#FFD700] bg-[#808080] ring-[0.5px] ring-[#101010] ' : ''} w-[90%] rounded-[5px] py-[10px]  px-[20px] cursor-pointer hover:text-[#FFD700]`}>
                             <p>Blogs</p>
                         </div>
                     </div>
