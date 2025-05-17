@@ -33,6 +33,8 @@ import DjangoImage from '../images/django.png';
 import DockerImage from '../images/docker.png';
 import ExpressImage from '../images/express.png';
 import LangchainImage from '../images/langchain2.png';
+import Seaborn from '../images/logo-tall-lightbg.svg';
+import Top from "../components/Top";
 
 
 
@@ -129,13 +131,16 @@ useEffect(() => {
         showContactModel={showContactModel}
         onContactClick={onContactClick}
       />
-      <div className="text-white space-y-[30px] bg-[#000] px-[10vw] flex flex-col items-center justify-center pt-[20vh] min-h-[100vh]">
-      <div className="w-[80%] text-center leading-[70px] h-[100%]">
+      <div className="text-white bg-[url('./images/heroBackground6.png')] bg-contain bg-no-repeat bg-center  space-y-[30px] bg-[#000] px-[10vw] flex flex-col items-center justify-center pt-[20vh] min-h-[100vh]">
+          <div className="w-[100vw]  text-center leading-[70px] h-[100%]">
                 <p className=" text-[50px] md:text-[60px] aboutText4 aboutTitle1 bg-gradient-to-t from-[#433D3A] via-[#C6C4C3]  to-[#CAC8C6] bg-clip-text text-transparent">About Me</p>
                 <p className=" text-[75px] md:text-[80px] aboutTitle2 bg-gradient-to-t from-[#433D3A] via-[#C6C4C3] font-[600] to-[#CAC8C6] bg-clip-text text-transparent" >An Introduction</p>
               </div>
+              <div className="w-[100%] md:w-[50%] text-center h-[160px]">
+
+              </div>
               <div className="w-[100%] md:w-[50%] text-center h-[100%]">
-                <p className=" aboutTitle3">Welcome to the story behind the code. I’m not just here to build software, I’m here to bring your vision to life through purposeful design, powerful technology, and a passion for problem-solving. Whether you're dreaming big or scaling fast, I'm the tech partner who’s got your back.</p>
+                <p className=" aboutTitle3">Welcome to the story behind the code. </p>
               </div>
             </div>
       <div className="flex items-center justify-center py-[50px]  min-h-[100vh]">
@@ -189,11 +194,12 @@ useEffect(() => {
           </div>
               
       </div>
+      
       <div className="text-white space-y-[30px] bg-[#000] px-[10vw] flex flex-col items-center justify-center  min-h-[100vh]">
               
       <div className="md:w-[50%] w-[100%] text-center leading-[85px] h-[100%]">
                 
-                <p className=" text-[70px] md:text-[100px] aboutTitle1 bg-gradient-to-t from-[#433D3A] via-[#C6C4C3] font-[600] to-[#CAC8C6] bg-clip-text text-transparent" >Tech Stack</p>
+                <p className=" text-[70px] md:text-[85px] aboutTitle1 bg-gradient-to-t from-[#433D3A] via-[#C6C4C3] font-[600] to-[#CAC8C6] bg-clip-text text-transparent" >Tech Stack</p>
               </div>
               <div className="md:w-[55%] aboutTitle2 mt-[15px] grid grid-cols-6 gap-[5px] space-x-[15px] flex flex-row  justify-center text-center h-[100%]">
                 <div className="flex flex-col items-center justify-center">
@@ -301,68 +307,138 @@ useEffect(() => {
                 <div className="flex flex-col items-center justify-center">
                   <Image src={LangchainImage} height={120} width={120} alt="" />
                 </div>
+                <div className="flex flex-col items-center justify-center">
+                  <Image src={Seaborn} height={80} width={80} alt="" />
+                </div>
                 
               </div>
               
       </div>
-      <div className="text-white space-y-[30px] py-[80px]  px-[10vw] flex flex-col items-center justify-center min-h-[100vh]">            
+      <div className="min-h-[100vh] bg-[#101010] flex flex-col items-center justify-center">
+          <p className=" text-[70px] md:text-[85px] aboutTitle1 bg-gradient-to-t from-[#433D3A] via-[#C6C4C3] font-[600] to-[#CAC8C6] bg-clip-text text-transparent" >Education</p>
+          <div className="flex flex-row items-center min-h-[60vh] w-[100vw] justify-center">
+            <div className="w-[30%] flex flex-col space-y-[90px]">
+              <div className="bg-[#373435] ring-[0.5px] ring-[#727376] mr-[40px] px-[20px] py-[15px] rounded-[10px] ">
+                <p>B.Sc(Hons) in Information Technology specialization</p>
+                <p>Sri Lanka Institute of Information Technology (SLIIT)</p>
+                <div className="flex flex-row px-[10px] justify-between">
+                  <p className="text-[13px]">2023 - 2027</p>
+                  <p className="text-[13px]">Current GPA: 3.3</p>
+                </div>
+              </div>
+
+              <div className="bg-[#373435] ring-[0.5px] ring-[#727376] mr-[40px] px-[20px] py-[15px] rounded-[10px] ">
+                <p>Diploma in Graphic Designing</p>
+                <p>IDM Nations Campus</p>
+                <div className="flex flex-row px-[10px] justify-between">
+                  <p className="text-[13px]">2015</p>
+                  <p className="text-[13px]">Distinction</p>
+                </div>
+              </div>
+
+            </div>
+            <div className="bg-white w-[7px] min-h-[70vh] rounded-full">
+
+            </div>
+            <div className="w-[30%]">
+
+              <div className="bg-[#373435] ring-[0.5px] ring-[#727376] ml-[40px] px-[20px] py-[15px] rounded-[10px] ">
+                <p>G.C.E. Advanced Level (Bio stream)</p>
+                <p>St.Benedict's College</p>
+                <div className="flex flex-row px-[10px] justify-between">
+                  <p className="text-[13px]">2021(2022)</p>
+                  <p className="text-[13px]">3C's</p>
+                
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+
+      </div>
+
+      <div className="text-white bg-[#000] space-y-[30px] py-[80px]  px-[10vw] flex flex-col items-center justify-center min-h-[100vh]">            
         <div className="w-[80%] text-center leading-[60px] md:leading-[80px] h-[100%]">
           <p className="text-[65px] md:text-[85px] aboutTitle1 bg-gradient-to-t from-[#433D3A] via-[#C6C4C3] font-[600] to-[#CAC8C6] bg-clip-text text-transparent" >Work Experience</p>
         </div>
-        <div className="w-[150%] h-[100%] flex flex-col items-center justify-center">
-          <div className="w-[70%] md:w-[55%] aboutTitle2 h-[100%]">
+        <div className="h-[100%]  px-[200px] space-x-[50px] flex flex-row items-center justify-center">
+
             
+            <div className="flex flex-col space-y-[30px]  "> 
+              <div className="flex flex-row items-center justify-center space-x-[20px] ">
+                <div className="w-[7px] min-h-[50vh] rounded-full bg-white">
 
-            <div className="flex flex-row items-center w-[100%]  space-x-[100px]">
-              <div className="leading-[30px]">
-                <p className=" text-[20px]  md:text-[30px]">+ Medical Documentation Specialist (Medical Scribe)</p>
-                <p className="text-[17px] md:text-[20px]">Medsource Healthcare LLC</p>
-              </div>
-
-              <div>
-              <p>2022 July - 2024 December</p>
-              </div>
+                </div>     
+                
               
-            </div>
-            <div>
-              <p className="text-[17px] md:text-[19px] text-gray-300">Responsibilities</p>
-              <ul className="pl-[10px] mt-[5px] space-y-[5px]">
-                <li>- Managed structured documentation of patient records, ensuring precision and compliance with HIPPA, strengthening skills in data accuracy, organization, and analytical reporting.</li>
-                <li>- Assisted a cardiologist in U.S., maintaining real-time transcription and note creation that optimized workflow, demostrating efficiency in handling structured data.</li>
-                <li>- Navigatted Electronic Health Records(EHR), contributing to data integrity, and compliance, critical in data-driven environments.</li>
-              </ul>
-            </div>
-          </div>      
+                <div className="w-[100%] flex flex-col  items-center justify-center aboutTitle2 h-[100%]">
+                  
 
-          <div className="w-[70%] md:w-[55%] aboutTitle3 mt-[20px] h-[100%]">
-            
-            <div className="flex flex-row items-center justify-between w-[100%] ">
-              <div className="leading-[30px]">
-                <p className="text-[20px] md:text-[30px]">+ Customer Service Executive</p>
-                <p className="text-[17px] md:text-[20px]">Startek - Commercial bank PLC process</p>
-              </div>
+                  <div className="flex flex-row items-center w-[100%]  space-x-[100px]">
+                    <div className="leading-[30px]">
+                      <p className=" text-[20px]  md:text-[30px]">+ Medical Documentation Specialist (Medical Scribe)</p>
+                      <p className="text-[17px] md:text-[20px]">Medsource Healthcare LLC</p>
+                    </div>
 
-              <div className="w-[25%]">
-                <p>2022 February - 2022 June</p>
-              </div>
+                    <div>
+                    <p>2022 July - 2024 December</p>
+                    </div>
+                    
+                  </div>
+                  <div>
+                    <p className="text-[17px] md:text-[19px] text-gray-300">Responsibilities</p>
+                    <ul className="pl-[10px] mt-[5px] space-y-[5px]">
+                      <li>- Was a primary scribe for a cardiologist, documenting real-time patient encounters, diagnoses, transcriptions and treatment plans.</li>
+                      <li>- Trained and supervised junior scribes in EHR systems, cardiology-specific terminology, and efficient content capturing protocols.</li>
+                      <li>- Structured and managed high-volume clinical datasets(e.g., echocardiograms, medications, lab results)</li>
+                      <li>- Collaborated with doctors to summerize complex medical histories into actionable clinical notes, improving data usability.</li>
+                      <li>- Optimized clinical workflow by reducing documentation time.</li>
+                    </ul>
+                  </div>
+                  
+                </div>    
+              </div>  
+              <div className="flex flex-row items-center justify-center space-x-[20px] ">
+                <div className="w-[7px] min-h-[36vh] rounded-full bg-white">
+
+                </div>     
+                
               
-            </div>
+                <div className="w-[100%] flex flex-col items-center justify-center aboutTitle2 h-[100%]">
+                
+                <div className="flex flex-row items-center justify-between w-[100%] ">
+                    <div className="leading-[30px]">
+                    <p className="text-[20px] md:text-[30px]">+ Customer Service Executive</p>
+                    <p className="text-[17px] md:text-[20px]">Startek - Commercial bank PLC process</p>
+                  </div>
 
-            
-            
-            
-            <div>
-            <p className="text-[19px] text-gray-300">Responsibilities</p>
-            <ul className="pl-[10px] mt-[5px] space-y-[5px]">
-                <li>- Managed high-volume customer interactions, ensuring efficient query resolution and data accuracy.</li>
-                <li>- Processed financial transactions and account inquiries, demostrated structured problem-solving and attention to detail</li>
-                <li>- Communicated with the clients to ensure clarity and compliance strenghtening analytical documentation skills.</li>
-              </ul>
+                    <div className="w-[150px]">
+                      <p>2022 February - 2022 June</p>
+                    </div>
+                    
+                  </div>
+
+                  <div>
+                     <p className="text-[19px] text-gray-300">Responsibilities</p>
+                    <ul className="pl-[10px] mt-[5px] space-y-[5px]">
+                        <li>- Managed high-volume customer interactions, ensuring efficient query resolution and data accuracy.</li>
+                        <li>- Processed financial transactions and account inquiries, demostrated structured problem-solving and attention to detail</li>
+                        <li>- Communicated with the clients to ensure clarity and compliance strenghtening analytical documentation skills.</li>
+                      </ul>
+                  </div>
+                  
+                </div>    
+              </div>  
+
+              
             </div>
           </div>
-        </div>      
+        
       </div>  
       <Certification/>
+      <Top/>
       
       <Contact onContactClick={onContactClick} />
       <Footer />

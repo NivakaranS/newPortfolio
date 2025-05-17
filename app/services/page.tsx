@@ -37,6 +37,7 @@ import RImage from '../images/R.png';
 import FigmaImage from '../images/figma.png';
 import PhotoshopImage from '../images/photoshop2.png';
 import CorelDrawImage from '../images/coreldraw2.png';
+import Top from "../components/Top";
 
 
 
@@ -132,13 +133,16 @@ useEffect(() => {
         <div>
             <Navigation navSelection={navSelection} onContactClick={onContactClick}/>
             <ContactModel showContactModel={showContactModel} onContactClick={onContactClick}/>
-            <div className="text-white space-y-[30px] bg-[#000] px-[10vw] flex flex-col items-center justify-center pt-[20vh] min-h-[100vh]">
+            <div className="text-white bg-[url('./images/heroBackground6.png')] bg-contain bg-no-repeat bg-center space-y-[30px] bg-[#000] px-[10vw] flex flex-col items-center justify-center pt-[20vh] min-h-[100vh]">
               <div className="w-[80%] text-center leading-[70px] h-[100%]">
                 <p className="text-[60px] bg-gradient-to-t serviceTitle1 from-[#433D3A] via-[#C6C4C3]  to-[#CAC8C6] bg-clip-text text-transparent">Discover the </p>
                 <p className="text-[80px] bg-gradient-to-t serviceTitle2 from-[#433D3A] via-[#C6C4C3] font-[600] to-[#CAC8C6] bg-clip-text text-transparent" >Services Provided</p>
               </div>
+              <div className="h-[30vh]">
+
+              </div>
               <div className="w-[50%] serviceTitle3 text-center h-[100%]">
-                <p>Welcome to the heart of what I do. I transform ideas into innovative digital solutions tailored to your unique needs. Whether you're a startup looking to build your MVP or a business aiming to scale with smart tech, I’m here to help. </p>
+                <p>Welcome to the heart of what I do.  </p>
               </div>
             </div>
 
@@ -302,7 +306,7 @@ useEffect(() => {
                   </div>
                 </div>
             </div>
-            
+            <Top/> 
             <Contact onContactClick={onContactClick}/>
             <Footer/>
         </div>
