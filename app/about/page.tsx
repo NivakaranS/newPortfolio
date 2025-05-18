@@ -390,7 +390,7 @@ useEffect(() => {
                   <div>
                     <p className="text-[17px] md:text-[19px] text-gray-300">Responsibilities</p>
                     <ul className="pl-[10px] mt-[5px] space-y-[5px]">
-                      <li>- Was a primary scribe for a cardiologist, documenting real-time patient encounters, diagnoses, transcriptions and treatment plans.</li>
+                      <li>- Was a primary scribe for a cardiologist, and have worked with multiple providers across multiple specialities, documenting real-time patient encounters, diagnoses, transcriptions and treatment plans.</li>
                       <li>- Trained and supervised junior scribes in EHR systems, cardiology-specific terminology, and efficient content capturing protocols.</li>
                       <li>- Structured and managed high-volume clinical datasets(e.g., echocardiograms, medications, lab results)</li>
                       <li>- Collaborated with doctors to summerize complex medical histories into actionable clinical notes, improving data usability.</li>
