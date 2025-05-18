@@ -170,9 +170,9 @@ const Max = () => {
                         :
                         <div className='h-[350px] '>
                             <div className="mx-[30px] my-[20px] text-center">
-                                <p className="  text-[15px]" >Hello! This is Max, your AI-powered assistant for developed by EcoHarvest. </p>
+                                <p className="  text-[15px]" >Hello! I’m Max, an AI-powered assistant created by Nivakaran.</p>
                             
-                                <p className="text-[15px]">I'm here to connect you with expert insights, guide you through our services, and answer all your queries about EcoHarvest.</p>
+                                <p className="text-[15px]">I’m here to guide you through Nivakaran’s projects and answer any questions you have along the way. Let’s explore together!</p>
                             </div>
                         </div>}
 
