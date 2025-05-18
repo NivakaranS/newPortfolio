@@ -35,6 +35,7 @@ import ExpressImage from '../images/express.png';
 import LangchainImage from '../images/langchain2.png';
 import Seaborn from '../images/logo-tall-lightbg.svg';
 import Top from "../components/Top";
+import Max from "../components/Max";
 
 
 
@@ -439,7 +440,7 @@ useEffect(() => {
       </div>  
       <Certification/>
       <Top/>
-      
+      <Max/>
       <Contact onContactClick={onContactClick} />
       <Footer />
     </div>

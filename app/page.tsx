@@ -12,6 +12,7 @@ import Top from "./components/Top";
 import ContactModel from "./components/ContactModel";
 import React, {useState} from "react";
 import Certification from "./components/Certification";
+import Max from "./components/Max";
 
 export default function Home() {
   const [showContactModel, setShowContactModel] = useState(false);
@@ -33,6 +34,7 @@ export default function Home() {
       <Services/>
       <Blogs/>
       <Certification/>
+      <Max/>
       <Contact onContactClick={onContactClick}/>
       <Footer/>
     </div>

@@ -8,6 +8,7 @@ import BlogCard from "../components/BlogCard";
 import PrimaryBtn from "../components/PrimaryBtn";
 import { useRouter } from "next/navigation";
 import Top from "../components/Top";
+import Max from "../components/Max";
 
 
 const Blogs = () => {
@@ -169,6 +170,7 @@ const Blogs = () => {
                 </div>
             </div>
             <Top/>
+            <Max/>
             <Contact onContactClick={onContactClick}/>
             <Footer/>
         </div>

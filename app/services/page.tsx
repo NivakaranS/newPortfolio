@@ -38,6 +38,7 @@ import FigmaImage from '../images/figma.png';
 import PhotoshopImage from '../images/photoshop2.png';
 import CorelDrawImage from '../images/coreldraw2.png';
 import Top from "../components/Top";
+import Max from "../components/Max";
 
 
 
@@ -307,6 +308,7 @@ useEffect(() => {
                 </div>
             </div>
             <Top/> 
+            <Max/>
             <Contact onContactClick={onContactClick}/>
             <Footer/>
         </div>

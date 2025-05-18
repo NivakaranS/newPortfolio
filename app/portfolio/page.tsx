@@ -7,6 +7,7 @@ import Contact from "../components/Contact";
 import PortfolioCard from "../components/PortfolioCard";
 import PrimaryBtn from "../components/PrimaryBtn";
 import Top from "../components/Top";
+import Max from "../components/Max";
 
 
 const Portfolio = () => {
@@ -245,6 +246,7 @@ const Portfolio = () => {
             </div>
         </div>
         <Top/>
+        <Max/>
             <Contact onContactClick={onContactClick}/>
             <Footer/>
         </div>
