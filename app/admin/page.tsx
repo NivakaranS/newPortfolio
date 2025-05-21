@@ -70,9 +70,15 @@ export default function Home() {
   return (
     <div className="flex flex-row overflow-hidden">
       <Navigation navClick={navClick} handleNavClick={handleNavClick} />
-      <div className="w-[83vw] h-[100vh]">
+      <div className="w-[100vw]  h-[100vh]">
         <TopNavigation />
-        {renderContent()}
+        <div className="flex flex-col items-center justify-center ">
+          <div className="h-[90vh] w-[100%] overflow-y-scroll">
+            {renderContent()}
+          </div>
+          
+        </div>
+        
       </div>
     </div>
   );

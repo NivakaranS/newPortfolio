@@ -1,135 +1,606 @@
+import React, { useState, useEffect, useRef } from "react";
+import axios from "axios";
 
-
-
-
-import React, {useEffect, useState} from "react"
-
-import axios from "axios"
-
-const Guests = () => {
-    const [newsTitle, setNewsTitle] = useState<string>("")
-    const [newsSubtitle, setNewsSubtitle] = useState<string>("")
-    const [newsContent, setNewsContent] = useState<string>("")
-    const [newsCategory, setNewsCategory] = useState<string>("")
-    const [description, setDescription] = useState<string>("")
-    const [newsSuccess, setNewsSuccess] = useState<boolean>(false)
-    const [newsCategories, setNewsCategories] = useState<any[]>([])
-    const [newsCategoryTitle, setNewsCategoryTitle] = useState<string>("")
-    const [newsCategoryImageUrl, setNewsCategoryImageUrl] = useState<string>("")
-
-    const [file, setFile] = useState<File | null>(null)
-    const [preview, setPreview] = useState<string | null>(null)
-
-
-
-    return(
-        <div>
-            <div className="bg-gray-100 flex space-x-2 flex-row h-[90vh] px-[15px] py-[8px] text-black  w-full">
-                <div className="bg-gray-200 rounded-[10px] py-[10px] px-[15px] w-[75%]">
-                    
-                    <div className="mt-[10px] flex flex-col px-[10px]">
-                        <p className="text-[25px]">Create News</p>
-                        <div className="overflow-y-scroll overflow-x-hidden flex flex-col space-y-[8px] h-[480px]">
-                            <div className="flex flex-col  space-y-[2px] ">
-                                <p className="text-[16px]">Title</p>
-                                <input placeholder="" value={newsTitle} className="focus:outline-none border bg-white rounded-[5px] px-[10px] py-[5px] w-[98%]"/>
-                            </div>
-                            <div className="flex flex-col  space-y-[2px]">
-                                <p className="text-[16px]">Subtitle</p>
-                                <input placeholder="" value={newsSubtitle} className="focus:outline-none border bg-white rounded-[5px] px-[10px] py-[5px] w-[98%]"/>
-                            </div>
-                            <div className="flex flex-col mb-[15px] space-y-[5px]">
-                                <p className="text-[16px]">News category<span className="text-[10px] ml-[2px]">(Select one)</span></p>
-                                <div className="w-[98%] overflow-x-scroll  overflow-y-hidden no-scrollbar h-[8vh] py-[5px] px-[10px]  flex flex-row space-x-[10px] ">
-                                    
-                                    {newsCategories.map((category, index) => (
-                                        <div key={index} className={`${newsCategory== category.title ? ' ring-[3px] ring-blue-500' : ''} text-[14px] cursor-pointer rounded border-[0.5px] bg-white flex items-center justify-center w-fit px-[10px] py-[5px]`}>
-                                            <p>{category.title}</p>
-                                        </div>
-                                    ))
-                                        }
-
-                                    
-                                </div>
-                            </div>
-                            <div className="flex flex-col  space-y-[2px]">
-                                <p className="text-[16px]">Description<span className="text-[11px] ml-[3px]">(Max characters: 100)</span></p>
-                                <textarea placeholder="" value={description} className="border focus:outline-none bg-white h-[100px] rounded-[5px] px-[10px] py-[5px] w-[98%]"/>
-                            </div>
-                            <div className="flex flex-col  space-y-[2px]">
-                                <p className="text-[16px]">Content</p>
-                                <textarea placeholder="" value={newsContent} className="border focus:outline-none bg-white h-[300px] rounded-[5px] px-[10px] py-[5px] w-[98%]"/>
-                            </div>
-                            <div className="flex flex-row ml-[10px] space-x-[5px]">
-                                <input type="checkbox" className="bg-white"/>
-                                <p className="text-[13px]">I confirm that information provided is correct</p>
-                            </div>
-                            <div className="flex  px-[20px] pb-[10px]">
-                                <div  className="bg-blue-500 cursor-pointer w-fit px-[15px] py-[5px] rounded">
-                                    <p>Submit</p>
-                                </div>
-                            </div>
-                            <div className={`${newsSuccess ? ' scale-100' : 'scale-0'} absolute top-[45px] left-[40%] right-[40%] bg-green-500 ring-[1px] ring-green-900 opacity-70  flex items-center justify-center px-[10px] h-[60px] w-[210px]  rounded-[10px]`}>
-                                <p className="leading-[20px]">News successfully Created</p>
-                            </div>
-                        </div>
-                    </div>
-                        
-                    
-                    
-
-                </div>
-                <div className=" py-[10px] px-[10px] bg-gray-200 rounded-[10px] h-[85%] w-[30%]">
-                    <p>Add News Category</p>
-                    
-                    <div className="my-[5px]">
-                        <div className="text-[13px] w-[50%] flex flex-col space-y-[2px]">
-                            <p>Category Name</p>
-                            <div className="ml-[3px] ">
-                                <input  value={newsCategoryTitle} className="px-[5px] focus:outline-none py-[4px] w-[212px] border-gray-400 rounded border-[1px]"/>
-                            </div>
-                        </div>
-                    </div>
-                  
-                    <div className="text-[13px] bg-white mb-[8px] py-[7px] rounded-[8px] border-gray-400 border-[1px] ">
-                        <p className="px-[10px] mb-[5px]">Upload</p>
-                        <div className="text-center h-[100px] flex flex-col border-gray-400 items-center justify-center border-y-[1px]">
-                            <p><span className="text-blue-700 cursor-pointer">Click to upload</span> or drag and drop</p>
-                            <p className="text-[11px]">[Max File size: 25 MB]</p>
-                            <input type="file" className="bg-gray-500"  />
-                        </div>
-                        <div>
-                            <div className="leading-[14px] pt-[8px] px-[10px]">
-                                <p>Room image 1.jpge</p>
-                                <p className="text-[10px]  text-gray-500">200 KB</p>
-                            </div>
-                            <div className="flex flex-row items-center  justify-center space-x-[5px]">
-                                <div className="w-[79%] h-[3px] bg-black rounded-[10px]"></div>
-                                <p className="text-[10px] text-gray-700 ">40%</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className=" flex flex-row justify-end  space-x-[5px] text-[13px] ">
-                       
-                        <div  className="bg-blue-600 text-white flex items-center justify-center px-[15px] py-[5px] cursor-pointer rounded border-[1px] border-gray-500">
-                            <p>Add Category</p>
-                        </div>
-                    </div>
-                    <div>
-                        <p>Delete Category</p>
-                    </div>
-                    <div className="grid grid-cols-3 gap-[5px]">
-                    {newsCategories.map((category, index) => (
-                                        <div key={index}  className={`${newsCategory== category.title ? 'ring-[3px] ring-blue-500' : ''} text-[14px] cursor-pointer rounded border-[0.5px] bg-white w-[100%] flex items-center justify-center`}>
-                                            <p>{category.title}</p>
-                                        </div>
-                                    ))
-                                        }
-                    </div>
-                </div>
-            </div>
-        </div>
-    )
+interface BlogPost {
+  id: string;
+  title: string;
+  subtitle: string;
+  content: string;
+  category: string;
+  description: string;
+  imageUrl?: string;
 }
 
-export default Guests
+interface BlogCategory {
+  id: number;
+  title: string;
+  image?: string;
+}
+
+const BlogsManagement = () => {
+  // Blog post states
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
+  const [blogTitle, setBlogTitle] = useState<string>("");
+  const [blogSubtitle, setBlogSubtitle] = useState<string>("");
+  const [blogContent, setBlogContent] = useState<string>("");
+  const [blogCategory, setBlogCategory] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
+  const [blogImage, setBlogImage] = useState<File | null>(null);
+  const [blogImagePreview, setBlogImagePreview] = useState<string | null>(null);
+  const [blogSuccess, setBlogSuccess] = useState<boolean>(false);
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [editingPostId, setEditingPostId] = useState<string | null>(null);
+
+  // Category states
+  const [blogCategories, setBlogCategories] = useState<BlogCategory[]>([]);
+  const [newCategoryTitle, setNewCategoryTitle] = useState<string>("");
+  const [newCategoryImage, setNewCategoryImage] = useState<File | null>(null);
+  const [categoryPreview, setCategoryPreview] = useState<string | null>(null);
+
+  // UI states
+  const [activeTab, setActiveTab] = useState<"create" | "categories" | "manage">("create");
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const blogFileInputRef = useRef<HTMLInputElement>(null);
+
+  // Fetch initial data (simulated)
+  useEffect(() => {
+    // Simulate fetching blog posts
+    const mockPosts: BlogPost[] = [
+      {
+        id: "1",
+        title: "Getting Started with React",
+        subtitle: "A beginner's guide to React development",
+        content: "React is a popular JavaScript library for building user interfaces...",
+        category: "React",
+        description: "Learn the basics of React and how to create your first component",
+        imageUrl: "https://via.placeholder.com/300x200?text=React+Post"
+      },
+      {
+        id: "2",
+        title: "Advanced TypeScript Patterns",
+        subtitle: "Take your TypeScript skills to the next level",
+        content: "TypeScript offers powerful features that can help you write more maintainable code...",
+        category: "TypeScript",
+        description: "Explore advanced TypeScript patterns and techniques",
+        imageUrl: "https://via.placeholder.com/300x200?text=TypeScript+Post"
+      }
+    ];
+
+    // Simulate fetching categories
+    const mockCategories: BlogCategory[] = [
+      { id: 1, title: "React", image: "https://via.placeholder.com/100x100?text=React" },
+      { id: 2, title: "TypeScript", image: "https://via.placeholder.com/100x100?text=TypeScript" },
+      { id: 3, title: "JavaScript", image: "https://via.placeholder.com/100x100?text=JavaScript" }
+    ];
+
+    setBlogPosts(mockPosts);
+    setBlogCategories(mockCategories);
+  }, []);
+
+  // Handle blog image upload
+  const handleBlogImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      const file = e.target.files[0];
+      setBlogImage(file);
+
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setBlogImagePreview(reader.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  // Handle category image upload
+  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      const file = e.target.files[0];
+      setNewCategoryImage(file);
+
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setCategoryPreview(reader.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  // Handle category creation
+  const handleAddCategory = () => {
+    if (!newCategoryTitle.trim()) return;
+
+    const newCategory: BlogCategory = {
+      id: Date.now(),
+      title: newCategoryTitle,
+      image: categoryPreview || undefined
+    };
+
+    setBlogCategories([...blogCategories, newCategory]);
+    setNewCategoryTitle("");
+    setNewCategoryImage(null);
+    setCategoryPreview(null);
+    if (fileInputRef.current) fileInputRef.current.value = "";
+  };
+
+  // Handle blog submission
+  const handleSubmitBlog = () => {
+    if (!blogTitle || !blogContent || !blogCategory) {
+      alert("Please fill all required fields");
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    // Simulate API call
+    setTimeout(() => {
+      const newPost: BlogPost = {
+        id: editingPostId || Date.now().toString(),
+        title: blogTitle,
+        subtitle: blogSubtitle,
+        content: blogContent,
+        category: blogCategory,
+        description,
+        imageUrl: blogImagePreview || "https://via.placeholder.com/300x200?text=Blog+Image"
+      };
+
+      if (editingPostId) {
+        // Update existing post
+        setBlogPosts(blogPosts.map(post => 
+          post.id === editingPostId ? newPost : post
+        ));
+      } else {
+        // Add new post
+        setBlogPosts([...blogPosts, newPost]);
+      }
+
+      setBlogSuccess(true);
+      setIsSubmitting(false);
+
+      // Reset form
+      resetBlogForm();
+
+      // Hide success message after 3 seconds
+      setTimeout(() => setBlogSuccess(false), 3000);
+    }, 1500);
+  };
+
+  // Reset blog form
+  const resetBlogForm = () => {
+    setBlogTitle("");
+    setBlogSubtitle("");
+    setBlogContent("");
+    setBlogCategory("");
+    setDescription("");
+    setBlogImage(null);
+    setBlogImagePreview(null);
+    setEditingPostId(null);
+    if (blogFileInputRef.current) blogFileInputRef.current.value = "";
+  };
+
+  // Edit existing blog post
+  const handleEditBlog = (post: BlogPost) => {
+    setBlogTitle(post.title);
+    setBlogSubtitle(post.subtitle);
+    setBlogContent(post.content);
+    setBlogCategory(post.category);
+    setDescription(post.description);
+    if (post.imageUrl) setBlogImagePreview(post.imageUrl);
+    setEditingPostId(post.id);
+    setActiveTab("create");
+    window.scrollTo(0, 0);
+  };
+
+  // Delete blog post
+  const handleDeleteBlog = (id: string) => {
+    setBlogPosts(blogPosts.filter(post => post.id !== id));
+  };
+
+  // Handle category deletion
+  const handleDeleteCategories = () => {
+    if (selectedCategories.length === 0) return;
+
+    const updatedCategories = blogCategories.filter(
+      category => !selectedCategories.includes(category.title)
+    );
+
+    setBlogCategories(updatedCategories);
+    setSelectedCategories([]);
+  };
+
+  // Toggle category selection
+  const toggleCategorySelection = (title: string) => {
+    setSelectedCategories(prev =>
+      prev.includes(title)
+        ? prev.filter(t => t !== title)
+        : [...prev, title]
+    );
+  };
+
+  return (
+    <div className="w-full text-black bg-gray-100 p-4">
+      <div className="max-w-7xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
+
+
+        {/* Tabs */}
+        <div className="flex  border-b">
+          <button
+            className={`px-4 py-2 font-medium ${activeTab === "create" ? "text-blue-600 border-b-2 border-blue-600" : " cursor-pointer text-gray-600"}`}
+            onClick={() => {
+              setActiveTab("create");
+              resetBlogForm();
+            }}
+          >
+            Create Blog Post
+          </button>
+          <button
+            className={`px-4 py-2 font-medium ${activeTab === "manage" ? "text-blue-600 border-b-2 border-blue-600" : "text-gray-600 cursor-pointer"}`}
+            onClick={() => setActiveTab("manage")}
+          >
+            Manage Blog Posts
+          </button>
+          <button
+            className={`px-4 py-2 font-medium ${activeTab === "categories" ? "text-blue-600 border-b-2 border-blue-600" : "text-gray-600 cursor-pointer"}`}
+            onClick={() => setActiveTab("categories")}
+          >
+            Manage Categories
+          </button>
+        </div>
+
+        {/* Content Area */}
+        <div className="p-6">
+          {activeTab === "create" ? (
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              {/* Blog Form */}
+              <div className="lg:col-span-2">
+                <h2 className="text-xl font-semibold mb-4">
+                  {editingPostId ? "Edit Blog Post" : "Create New Blog Post"}
+                </h2>
+
+                <div className="space-y-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Blog Image</label>
+                    <div className="mt-1 flex items-center">
+                      <div className="w-full">
+                        <div className="flex items-center justify-center w-full">
+                          <label className="flex flex-col items-center justify-center w-full h-48 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100">
+                            <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                              {blogImagePreview ? (
+                                <img
+                                  src={blogImagePreview}
+                                  alt="Preview"
+                                  className="h-40 object-contain"
+                                />
+                              ) : (
+                                <>
+                                  <svg className="w-8 h-8 mb-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+                                  </svg>
+                                  <p className="mb-2 text-sm text-gray-500">
+                                    <span className="font-semibold">Click to upload</span> or drag and drop
+                                  </p>
+                                  <p className="text-xs text-gray-500">SVG, PNG, JPG (MAX. 5MB)</p>
+                                </>
+                              )}
+                            </div>
+                            <input
+                              ref={blogFileInputRef}
+                              type="file"
+                              className="hidden"
+                              onChange={handleBlogImageUpload}
+                              accept="image/*"
+                            />
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Title *</label>
+                    <input
+                      type="text"
+                      value={blogTitle}
+                      onChange={(e) => setBlogTitle(e.target.value)}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      placeholder="Enter blog title"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Subtitle</label>
+                    <input
+                      type="text"
+                      value={blogSubtitle}
+                      onChange={(e) => setBlogSubtitle(e.target.value)}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      placeholder="Enter blog subtitle"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Category *</label>
+                    <select
+                      value={blogCategory}
+                      onChange={(e) => setBlogCategory(e.target.value)}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    >
+                      <option value="">Select a category</option>
+                      {blogCategories.map((category) => (
+                        <option key={category.id} value={category.title}>
+                          {category.title}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Description (Max 100 characters)
+                    </label>
+                    <textarea
+                      value={description}
+                      onChange={(e) => setDescription(e.target.value)}
+                      maxLength={100}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 h-24"
+                      placeholder="Brief description of your blog"
+                    />
+                    <p className="text-xs text-gray-500 mt-1">
+                      {description.length}/100 characters
+                    </p>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Content *</label>
+                    <textarea
+                      value={blogContent}
+                      onChange={(e) => setBlogContent(e.target.value)}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 h-64"
+                      placeholder="Write your blog content here..."
+                    />
+                  </div>
+
+                  <div className="flex items-center">
+                    <input
+                      type="checkbox"
+                      id="confirmation"
+                      className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                    />
+                    <label htmlFor="confirmation" className="ml-2 block text-sm text-gray-700">
+                      I confirm that the information provided is correct
+                    </label>
+                  </div>
+
+                  <div className="pt-2 flex space-x-3">
+                    <button
+                      onClick={handleSubmitBlog}
+                      disabled={isSubmitting}
+                      className={`px-4 py-2 rounded-md text-white ${isSubmitting ? 'bg-blue-400' : 'bg-blue-600 hover:bg-blue-700'} focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2`}
+                    >
+                      {isSubmitting 
+                        ? 'Submitting...' 
+                        : editingPostId 
+                          ? 'Update Blog Post' 
+                          : 'Publish Blog Post'}
+                    </button>
+                    {editingPostId && (
+                      <button
+                        onClick={resetBlogForm}
+                        className="px-4 py-2 rounded-md text-gray-700 bg-gray-200 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
+                      >
+                        Cancel
+                      </button>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              {/* Preview Section */}
+              <div className="hidden lg:block">
+                <h2 className="text-xl font-semibold mb-4">Preview</h2>
+                <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                  {blogTitle ? (
+                    <>
+                      {blogImagePreview && (
+                        <img 
+                          src={blogImagePreview} 
+                          alt="Blog preview" 
+                          className="w-full h-48 object-cover rounded-md mb-4"
+                        />
+                      )}
+                      <h3 className="text-lg font-medium mb-2">{blogTitle}</h3>
+                      {blogSubtitle && <p className="text-gray-600 mb-3">{blogSubtitle}</p>}
+                      {blogCategory && (
+                        <span className="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded mb-3">
+                          {blogCategory}
+                        </span>
+                      )}
+                      {description && <p className="text-sm text-gray-700 mb-4">{description}</p>}
+                      {blogContent && (
+                        <div className="prose max-w-none">
+                          <p>{blogContent}</p>
+                        </div>
+                      )}
+                    </>
+                  ) : (
+                    <p className="text-gray-500 italic">Start typing to see a preview</p>
+                  )}
+                </div>
+              </div>
+            </div>
+          ) : activeTab === "manage" ? (
+            <div className="space-y-6 h-[70vh]">
+              <h2 className="text-xl font-semibold">Manage Blog Posts</h2>
+              
+              {blogPosts.length === 0 ? (
+                <p className="text-gray-500 italic">No blog posts yet. Create your first blog post.</p>
+              ) : (
+                <div className="space-y-4">
+                  {blogPosts.map((post) => (
+                    <div key={post.id} className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                      <div className="flex flex-col md:flex-row md:items-center md:justify-between">
+                        <div className="flex items-start space-x-4">
+                          {post.imageUrl && (
+                            <img 
+                              src={post.imageUrl} 
+                              alt={post.title} 
+                              className="w-24 h-16 object-cover rounded-md"
+                            />
+                          )}
+                          <div>
+                            <h3 className="font-medium">{post.title}</h3>
+                            <p className="text-sm text-gray-600">{post.subtitle}</p>
+                            <span className="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-0.5 rounded mt-1">
+                              {post.category}
+                            </span>
+                          </div>
+                        </div>
+                        <div className="flex space-x-2 mt-3 md:mt-0">
+                          <button
+                            onClick={() => handleEditBlog(post)}
+                            className="px-3 py-1 bg-blue-500 text-white text-sm rounded hover:bg-blue-600 focus:outline-none"
+                          >
+                            Edit
+                          </button>
+                          <button
+                            onClick={() => handleDeleteBlog(post.id)}
+                            className="px-3 py-1 bg-red-500 text-white text-sm rounded hover:bg-red-600 focus:outline-none"
+                          >
+                            Delete
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          ) : (
+            <div className="space-y-6">
+              <h2 className="text-xl font-semibold">Manage Categories</h2>
+
+              {/* Add Category Form */}
+              <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                <h3 className="font-medium mb-3">Add New Category</h3>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Category Name *</label>
+                    <input
+                      type="text"
+                      value={newCategoryTitle}
+                      onChange={(e) => setNewCategoryTitle(e.target.value)}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      placeholder="Enter category name"
+                    />
+                  </div>
+
+                  <div className="md:col-span-2">
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Category Image</label>
+                    <div className="mt-1 flex items-center">
+                      <div className="w-full">
+                        <div className="flex items-center justify-center w-full">
+                          <label className="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100">
+                            <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                              {categoryPreview ? (
+                                <img
+                                  src={categoryPreview}
+                                  alt="Preview"
+                                  className="h-24 object-contain"
+                                />
+                              ) : (
+                                <>
+                                  <svg className="w-8 h-8 mb-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+                                  </svg>
+                                  <p className="mb-2 text-sm text-gray-500">
+                                    <span className="font-semibold">Click to upload</span> or drag and drop
+                                  </p>
+                                  <p className="text-xs text-gray-500">SVG, PNG, JPG (MAX. 5MB)</p>
+                                </>
+                              )}
+                            </div>
+                            <input
+                              ref={fileInputRef}
+                              type="file"
+                              className="hidden"
+                              onChange={handleImageUpload}
+                              accept="image/*"
+                            />
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-4 flex justify-end">
+                  <button
+                    onClick={handleAddCategory}
+                    disabled={!newCategoryTitle.trim()}
+                    className={`px-4 py-2 rounded-md text-white ${!newCategoryTitle.trim() ? 'bg-gray-400' : 'bg-green-600 hover:bg-green-700'} focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2`}
+                  >
+                    Add Category
+                  </button>
+                </div>
+              </div>
+
+              {/* Categories List */}
+              <div>
+                <div className="flex justify-between items-center mb-3">
+                  <h3 className="font-medium">Existing Categories</h3>
+                  {selectedCategories.length > 0 && (
+                    <button
+                      onClick={handleDeleteCategories}
+                      className="px-3 py-1 bg-red-500 text-white text-sm rounded hover:bg-red-600 focus:outline-none"
+                    >
+                      Delete Selected
+                    </button>
+                  )}
+                </div>
+
+                {blogCategories.length === 0 ? (
+                  <p className="text-gray-500 italic">No categories yet. Add your first category above.</p>
+                ) : (
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+                    {blogCategories.map((category) => (
+                      <div
+                        key={category.id}
+                        onClick={() => toggleCategorySelection(category.title)}
+                        className={`p-3 rounded-lg border cursor-pointer flex flex-col items-center ${selectedCategories.includes(category.title) ? 'ring-2 ring-blue-500 bg-blue-50' : 'border-gray-200 bg-white'}`}
+                      >
+                        {category.image && (
+                          <img
+                            src={category.image}
+                            alt={category.title}
+                            className="w-16 h-16 object-cover rounded-md mb-2"
+                          />
+                        )}
+                        <span className="text-sm font-medium text-center">{category.title}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Success Notification */}
+      {blogSuccess && (
+        <div className="fixed top-4 right-4 z-50">
+          <div className="bg-green-500 text-white px-4 py-2 rounded-md shadow-lg flex items-center">
+            <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            {editingPostId ? 'Blog post updated successfully!' : 'Blog post published successfully!'}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default BlogsManagement;
