@@ -317,33 +317,53 @@ useEffect(() => {
       </div>
       <div className="min-h-[100vh] bg-[#101010] flex flex-col items-center justify-center">
           <p className=" text-[70px] md:text-[85px] aboutTitle1 bg-gradient-to-t from-[#433D3A] via-[#C6C4C3] font-[600] to-[#CAC8C6] bg-clip-text text-transparent" >Education</p>
-          <div className="flex flex-row items-center min-h-[60vh] w-[100vw] justify-center">
-            <div className="w-[30%] flex flex-col space-y-[90px]">
-              <div className="bg-[#373435] ring-[0.5px] ring-[#727376] mr-[40px] px-[20px] py-[15px] rounded-[10px] ">
-                <p>B.Sc(Hons) in Information Technology specialization</p>
-                <p>Sri Lanka Institute of Information Technology (SLIIT)</p>
-                <div className="flex flex-row px-[10px] justify-between">
-                  <p className="text-[13px]">2023 - 2027</p>
-                  <p className="text-[13px]">Current GPA: 3.3</p>
+          <div className="flex flex-row  items-center min-h-[60vh] w-[100vw] justify-center">
+            <div className="w-[29%] flex  flex-col space-y-[90px] ">
+              
+              <div className="flex aboutText4 flex-row items-center justify-end  ">
+                
+                
+                <div className="bg-[#373435] ring-[0.5px] ring-[#727376]  px-[20px] py-[15px] rounded-[10px] ">
+                  <p>B.Sc(Hons) in Information Technology</p>
+                  <p>Sri Lanka Institute of Information Technology (SLIIT)</p>
+                  <div className="flex flex-row px-[10px] justify-between">
+                    <p className="text-[13px]">2023 - 2027</p>
+                    <p className="text-[13px]">Current CGPA: 3.3</p>
+                  </div>
                 </div>
-              </div>
+                <div className="w-[40px] bg-white h-[7px]">
 
-              <div className="bg-[#373435] ring-[0.5px] ring-[#727376] mr-[40px] px-[20px] py-[15px] rounded-[10px] ">
-                <p>Diploma in Graphic Designing</p>
-                <p>IDM Nations Campus</p>
-                <div className="flex flex-row px-[10px] justify-between">
-                  <p className="text-[13px]">2015</p>
-                  <p className="text-[13px]">Distinction</p>
                 </div>
+              
+              </div>
+              
+              <div className="flex aboutText4 flex-row items-center  justify-end  ">
+               
+              
+                <div className="bg-[#373435] ring-[0.5px] ring-[#727376]  px-[20px] py-[15px] rounded-[10px] ">
+                  <p>Diploma in Graphic Designing</p>
+                  <p>IDM Nations Campus</p>
+                  <div className="flex flex-row px-[10px] justify-between">
+                    <p className="text-[13px]">2015</p>
+                    <p className="text-[13px]">Distinction</p>
+                  </div>
+                </div>
+                 <div className="w-[40px] bg-white h-[7px]">
+
+                </div>
+
               </div>
 
             </div>
             <div className="bg-white w-[7px] min-h-[70vh] rounded-full">
 
             </div>
-            <div className="w-[30%]">
+            <div className="w-[30%] aboutText5 flex items-center justify-cneter flex-row">
+              <div className="w-[40px] bg-white h-[7px]">
 
-              <div className="bg-[#373435] ring-[0.5px] ring-[#727376] ml-[40px] px-[20px] py-[15px] rounded-[10px] ">
+              </div>
+
+              <div className="bg-[#373435] ring-[0.5px] ring-[#727376]  px-[20px] py-[15px] rounded-[10px] ">
                 <p>G.C.E. Advanced Level (Bio stream)</p>
                 <p>St.Benedict's College</p>
                 <div className="flex flex-row px-[10px] justify-between">
@@ -379,7 +399,7 @@ useEffect(() => {
 
                   <div className="flex flex-row items-center w-[100%]  space-x-[100px]">
                     <div className="leading-[30px]">
-                      <p className=" text-[20px]  md:text-[30px]">+ Medical Documentation Specialist (Medical Scribe)</p>
+                      <p className=" text-[20px]  md:text-[25px]">+ Medical Documentation Specialist (Medical Scribe)</p>
                       <p className="text-[17px] md:text-[20px]">Medsource Healthcare LLC</p>
                     </div>
 
@@ -389,7 +409,7 @@ useEffect(() => {
                     
                   </div>
                   <div>
-                    <p className="text-[17px] md:text-[19px] text-gray-300">Responsibilities</p>
+                    <p className="text-[17px] md:text-[18px] text-gray-300">Responsibilities</p>
                     <ul className="pl-[10px] mt-[5px] space-y-[5px]">
                       <li>- Was a primary scribe for a cardiologist, and have worked with multiple providers across multiple specialities, documenting real-time patient encounters, diagnoses, transcriptions and treatment plans.</li>
                       <li>- Trained and supervised junior scribes in EHR systems, cardiology-specific terminology, and efficient content capturing protocols.</li>
@@ -411,7 +431,7 @@ useEffect(() => {
                 
                 <div className="flex flex-row items-center justify-between w-[100%] ">
                     <div className="leading-[30px]">
-                    <p className="text-[20px] md:text-[30px]">+ Customer Service Executive</p>
+                    <p className="text-[20px] md:text-[25px]">+ Customer Service Executive</p>
                     <p className="text-[17px] md:text-[20px]">Startek - Commercial bank PLC process</p>
                   </div>
 
@@ -422,7 +442,7 @@ useEffect(() => {
                   </div>
 
                   <div>
-                     <p className="text-[19px] text-gray-300">Responsibilities</p>
+                     <p className="text-[18px] text-gray-300">Responsibilities</p>
                     <ul className="pl-[10px] mt-[5px] space-y-[5px]">
                         <li>- Managed high-volume customer interactions, ensuring efficient query resolution and data accuracy.</li>
                         <li>- Processed financial transactions and account inquiries, demostrated structured problem-solving and attention to detail</li>
