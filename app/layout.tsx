@@ -24,7 +24,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <meta name="apple-mobile-web-app-title" content="Nivakaran" />
+      </head>
       <body
+      
       
         className={`${geistSans.variable} ${geistMono.variable} antialiased   overflow-x-hidden
         `}>
