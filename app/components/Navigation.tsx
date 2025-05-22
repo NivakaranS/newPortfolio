@@ -3,6 +3,7 @@ import { useRouter } from "next/navigation";
 import { MouseEvent } from "react";
 import Image from "next/image";
 import Menu from '../images/menu.png';
+import Logo from '../images/nivakaranLogo.png'
 
 interface ContactModelProps {
     onContactClick: () => void;
@@ -48,7 +49,8 @@ const Navigation : React.FC<ContactModelProps> = ({navSelection, onContactClick}
         <div className="flex items-center z-[50] fixed top-0 w-[100vw] justify-center">
             
             <div className="md:flex hidden flex-row  justify-between items-center px-[20px] h-[60px] 2xl:h-[55px] rounded-[8px] ring-[0.5px] ring-[#727376] w-[90vw] mt-[13px]  bg-[#373435] text-black ">
-                <div className="cursor-pointer text-[20px] text-white">
+                <div className="cursor-pointer flex flex-row items-center justify-center space-x-[10px]  text-[20px] text-white">
+                    <Image alt="test" src={Logo} height={20} width={35} />
                     <p>NivakaranS</p>
                 </div>
                 <div className="flex flex-row items-center text-[17px] justify-between text-white  w-[35%]">
