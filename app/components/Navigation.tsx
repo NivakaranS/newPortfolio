@@ -50,7 +50,7 @@ const Navigation : React.FC<ContactModelProps> = ({navSelection, onContactClick}
             
             <div className="md:flex hidden flex-row  justify-between items-center px-[20px] h-[60px] 2xl:h-[55px] rounded-[8px] ring-[0.5px] ring-[#727376] w-[90vw] mt-[13px]  bg-[#373435] text-black ">
                 <div className="cursor-pointer flex flex-row items-center justify-center space-x-[5px]  text-[20px] text-white">
-                    <Image alt="test" src={Logo} height={25} width={40} />
+                    <Image alt="test" src={Logo} height={20} width={35} />
                     <p>NivakaranS</p>
                 </div>
                 <div className="flex flex-row items-center text-[17px] justify-between text-white  w-[35%]">
