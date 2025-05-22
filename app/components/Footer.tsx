@@ -123,11 +123,14 @@ const Footer = () => {
                     <div>
                         <p className="text-[18px]">Let's Connect</p>
                         <div className="flex flex-row space-x-[10px] mt-[6px] ">
-                            <Image className="cursor-pointer" src={LinkedIn} alt="" height={38}/>
-                            <div className="h-[38px] cursor-pointer w-[38px] overflow-hidden rounded-[5px]  ">
-                                <Image src={Github} alt="" height={38}/>
-                            </div>
-                            
+                            <a href="www.linkedin.com/in/nivakaran">
+                                <Image className="cursor-pointer" src={LinkedIn} alt="" height={38}/>
+                            </a>
+                            <a href="https://github.com/NivakaranS">                                
+                                <div className="h-[38px] cursor-pointer w-[38px] overflow-hidden rounded-[5px]  ">
+                                    <Image src={Github} alt="" height={38}/>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>
