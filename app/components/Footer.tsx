@@ -123,7 +123,7 @@ const Footer = () => {
                     <div>
                         <p className="text-[18px]">Let's Connect</p>
                         <div className="flex flex-row space-x-[10px] mt-[6px] ">
-                            <a href="www.linkedin.com/in/nivakaran">
+                            <a href="https://www.linkedin.com/in/nivakaran">
                                 <Image className="cursor-pointer" src={LinkedIn} alt="" height={38}/>
                             </a>
                             <a href="https://github.com/NivakaranS">                                
