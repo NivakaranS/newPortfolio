@@ -324,7 +324,7 @@ useEffect(() => {
                 
                 
                 <div className="bg-[#373435] ring-[0.5px] ring-[#727376]  px-[20px] py-[15px] rounded-[10px] ">
-                  <p>B.Sc(Hons) in Information Technology</p>
+                  <p>B.Sc (Hons) in Information Technology</p>
                   <p>Sri Lanka Institute of Information Technology (SLIIT)</p>
                   <div className="flex flex-row px-[10px] justify-between">
                     <p className="text-[13px]">2023 - 2027</p>
@@ -389,7 +389,7 @@ useEffect(() => {
             
             <div className="flex flex-col space-y-[30px]  "> 
               <div className="flex flex-row items-center justify-center space-x-[20px] ">
-                <div className="w-[7px] min-h-[50vh] rounded-full bg-white">
+                <div className="w-[7px] min-h-[80vh] rounded-full bg-white">
 
                 </div>     
                 
@@ -422,7 +422,7 @@ useEffect(() => {
                 </div>    
               </div>  
               <div className="flex flex-row items-center justify-center space-x-[20px] ">
-                <div className="w-[7px] min-h-[36vh] rounded-full bg-white">
+                <div className="w-[7px] min-h-[40vh] rounded-full bg-white">
 
                 </div>     
                 
