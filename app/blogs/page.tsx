@@ -148,11 +148,36 @@ const Blogs = () => {
 
 
 
-            <div className=" h-[120vh] w-screen flex items-center justify-center">
+            <div className=" min-h-[120vh] py-[10vh] w-screen flex items-center justify-center">
                 <div className="w-[80%] flex  flex-col">
                     <div className="leading-[64px] blogs1 text-center">
                         <p className="text-[55px] bg-gradient-to-t from-[#433D3A] via-[#C6C4C3] font-bold to-[#CAC8C6] bg-clip-text text-transparent">Stay Updated</p>
                         <p className="text-[55px] bg-gradient-to-t from-[#433D3A] via-[#C6C4C3] font-bold to-[#CAC8C6] bg-clip-text text-transparent">with Latest Insights</p>
+                    </div>
+                    <div className="flex flex-row items-center justify-center space-x-[20px] mt-[30px]">
+                        <div className="blogs2 flex flex-row items-center justify-center space-x-[20px]">
+                        <BlogCard text="Blog 1" text1="Blog Title" onClick={onBlog1Click}/>
+                        <BlogCard text="Blog 1" text1="Blog Title" onClick={onBlog1Click}/>
+                        </div>
+                        <div className="blogs3 flex flex-row items-center justify-center space-x-[20px]">
+                        <BlogCard text="Blog 1" text1=" Blog Title" onClick={onBlog1Click}/>
+                        <BlogCard text="Blog 1" text1="Blog Title" onClick={onBlog1Click}/>
+                        </div>
+                        
+                        
+
+                    </div>
+                    <div className="flex flex-row items-center justify-center space-x-[20px] mt-[30px]">
+                        <div className="blogs2 flex flex-row items-center justify-center space-x-[20px]">
+                        <BlogCard text="Blog 1" text1="Blog Title" onClick={onBlog1Click}/>
+                        <BlogCard text="Blog 1" text1="Blog Title" onClick={onBlog1Click}/>
+                        </div>
+                        <div className="blogs3 flex flex-row items-center justify-center space-x-[20px]">
+                        <BlogCard text="Blog 1" text1=" Blog Title" onClick={onBlog1Click}/>
+                        <BlogCard text="Blog 1" text1="Blog Title" onClick={onBlog1Click}/>
+                        </div>
+                        
+                        
                     </div>
                     <div className="flex flex-row items-center justify-center space-x-[20px] mt-[30px]">
                         <div className="blogs2 flex flex-row items-center justify-center space-x-[20px]">
