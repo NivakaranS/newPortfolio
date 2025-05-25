@@ -11,6 +11,10 @@ import Certificate6 from '../certificates/UC-da378ead-b16d-407d-b199-9f50a88d90e
 import Certificate7 from '../certificates/UC-deb577d6-b72a-4ca6-86fc-b901dd127754.jpg';
 import Certificate8 from '../certificates/UC-f40d10df-c93e-4d1e-af98-b8802f58431d.jpg'
 
+import Certificate9 from '../certificates/UC-6c12dce8-1750-4ff2-a4bc-a95f1992f3ea.jpg';
+import Certificate10 from '../certificates/UC-435cb559-6d32-4c0b-82ba-92e1d49a7b51.jpg';
+
+
 const Certification = () => {
     useEffect(() => {
         if(typeof window !== 'undefined'){
@@ -67,6 +71,58 @@ const Certification = () => {
 
                 <div className=" mt-[30px]">
                     <div className=" grid grid-cols-1 sm:grid-cols-2  md:grid-cols-4 gap-[15px] items-center justify-center">
+                        
+
+
+                        <div className="cursor-pointer certification2 relative group bg-[#000] overflow-hidden w-[100%] ring-[0.5px] ring-[#4d4d4d] h-[195px] rounded-[10px] flex items-center justify-center">
+                        <div className=' absolute transition-transform duration-500 group-hover:translate-y-0  translate-y-[200%] flex flex-col items-center justify-center'>
+                                <Image alt="" src={Certificate6} className='h-[100%] w-[100%]'  />
+                            </div>
+                            <div className=' transition-transform duration-500 group-hover:scale-0  flex flex-col px-[20px]'>
+                                <p>Complete Generative AI Course With Langchain and Huggingface</p>
+                                <p className='text-[15px]'>Udemy</p>
+                                <p className='text-[14px] text-gray-400'>Date: Dec 07, 2023</p>
+                            </div>
+                        </div>
+
+                        <div className="cursor-pointer certification3 relative group bg-[#000] overflow-hidden w-[100%] ring-[0.5px] ring-[#4d4d4d] h-[195px] rounded-[10px] flex items-center justify-center">
+                        <div className=' absolute transition-transform duration-500 group-hover:translate-y-0  translate-y-[200%] flex flex-col items-center justify-center'>
+                                <Image alt="" src={Certificate9} className='h-[100%] w-[100%]'  />
+                            </div>
+                            <div className=' transition-transform duration-500 group-hover:scale-0  flex flex-col px-[20px]'>
+                                <p>Complete Data Science, Machine Learning, DL, NLP Bootcamp</p>
+                                <p className='text-[15px]'>Udemy</p>
+                                <p className='text-[14px] text-gray-400'>Date: May 24, 2025</p>
+                            </div>
+                        </div>
+
+                        <div className="cursor-pointer certification3 relative group bg-[#000] overflow-hidden w-[100%] ring-[0.5px] ring-[#4d4d4d] h-[195px] rounded-[10px] flex items-center justify-center">
+                        <div className=' absolute transition-transform duration-500 group-hover:translate-y-0  translate-y-[200%] flex flex-col items-center justify-center'>
+                                <Image alt="" src={Certificate10} className='h-[100%] w-[100%]'  />
+                            </div>
+                            <div className=' transition-transform duration-500 group-hover:scale-0  flex flex-col px-[20px]'>
+                                <p>Complete Computer Vision Bootcamp With PyTorch & Tensorflow</p>
+                                <p className='text-[15px]'>Udemy</p>
+                                <p className='text-[14px] text-gray-400'>Date: April 27, 2025</p>
+                            </div>
+                        </div>
+
+                        
+
+
+
+
+                        <div className="cursor-pointer certification3 relative group bg-[#000] overflow-hidden w-[100%] ring-[0.5px] ring-[#4d4d4d] h-[195px] rounded-[10px] flex items-center justify-center">
+                        <div className=' absolute transition-transform duration-500 group-hover:translate-y-0  translate-y-[200%] flex flex-col items-center justify-center'>
+                                <Image alt="" src={Certificate8} className='h-[100%] w-[100%]'  />
+                            </div>
+                            <div className=' transition-transform duration-500 group-hover:scale-0  flex flex-col px-[20px]'>
+                                <p>Complete AI & Machine Learning, Data Science Bootcamp</p>
+                                <p className='text-[15px]'>Udemy</p>
+                                <p className='text-[14px] text-gray-400'>Date: Feb 28, 2024</p>
+                            </div>
+                        </div>
+
                         <div className="cursor-pointer  certification2 relative group bg-[#000] overflow-hidden w-[100%] ring-[0.5px] ring-[#4d4d4d] h-[195px] rounded-[10px] flex items-center justify-center">
                             <div className=' absolute transition-transform duration-500 group-hover:translate-y-0  translate-y-[200%] flex flex-col items-center justify-center'>
                                 <Image alt="" src={Certificate1} className='h-[100%] w-[100%]'  />
@@ -122,16 +178,7 @@ const Certification = () => {
                             </div>
                         </div>
 
-                        <div className="cursor-pointer certification2 relative group bg-[#000] overflow-hidden w-[100%] ring-[0.5px] ring-[#4d4d4d] h-[195px] rounded-[10px] flex items-center justify-center">
-                        <div className=' absolute transition-transform duration-500 group-hover:translate-y-0  translate-y-[200%] flex flex-col items-center justify-center'>
-                                <Image alt="" src={Certificate6} className='h-[100%] w-[100%]'  />
-                            </div>
-                            <div className=' transition-transform duration-500 group-hover:scale-0  flex flex-col px-[20px]'>
-                                <p>Complete Generative AI Course With Langchain and Huggingface</p>
-                                <p className='text-[15px]'>Udemy</p>
-                                <p className='text-[14px] text-gray-400'>Date: Dec 07, 2023</p>
-                            </div>
-                        </div>
+                        
 
                         <div className="cursor-pointer certification3 relative group bg-[#000] overflow-hidden w-[100%] ring-[0.5px] ring-[#4d4d4d] h-[195px] rounded-[10px] flex items-center justify-center">
                         <div className=' absolute transition-transform duration-500 group-hover:translate-y-0  translate-y-[200%] flex flex-col items-center justify-center'>
@@ -144,16 +191,7 @@ const Certification = () => {
                             </div>
                         </div>
 
-                        <div className="cursor-pointer certification3 relative group bg-[#000] overflow-hidden w-[100%] ring-[0.5px] ring-[#4d4d4d] h-[195px] rounded-[10px] flex items-center justify-center">
-                        <div className=' absolute transition-transform duration-500 group-hover:translate-y-0  translate-y-[200%] flex flex-col items-center justify-center'>
-                                <Image alt="" src={Certificate8} className='h-[100%] w-[100%]'  />
-                            </div>
-                            <div className=' transition-transform duration-500 group-hover:scale-0  flex flex-col px-[20px]'>
-                                <p>Complete AI & Machine Learning, Data Science Bootcamp</p>
-                                <p className='text-[15px]'>Udemy</p>
-                                <p className='text-[14px] text-gray-400'>Date: Feb 28, 2024</p>
-                            </div>
-                        </div>
+                        
 
                         
                     </div>
