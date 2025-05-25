@@ -95,6 +95,7 @@ const Certification = () => {
                                 <p>Complete Data Science, Machine Learning, DL, NLP Bootcamp</p>
                                 <p className='text-[15px]'>Udemy</p>
                                 <p className='text-[14px] text-gray-400'>Date: May 24, 2025</p>
+                                <p className='text-[14px] text-gray-300 '>Instructors: Krish Naik</p>
                             </div>
                         </div>
 
@@ -106,6 +107,7 @@ const Certification = () => {
                                 <p>Complete Computer Vision Bootcamp With PyTorch & Tensorflow</p>
                                 <p className='text-[15px]'>Udemy</p>
                                 <p className='text-[14px] text-gray-400'>Date: April 27, 2025</p>
+                                <p className='text-[14px] text-gray-300 '>Instructors: Krish Naik, Monal Kumar, Sourangshu Pal</p>
                             </div>
                         </div>
 
@@ -122,6 +124,7 @@ const Certification = () => {
                                 <p>Complete AI & Machine Learning, Data Science Bootcamp</p>
                                 <p className='text-[15px]'>Udemy</p>
                                 <p className='text-[14px] text-gray-400'>Date: Feb 28, 2024</p>
+                                <p className='text-[14px] text-gray-300 '>Instructors: Andrei Neagoie</p>
                             </div>
                         </div>
 
@@ -133,6 +136,7 @@ const Certification = () => {
                                 <p>The Complete Web Developer in 2023: Zero to Mastery</p>
                                 <p className='text-[15px]'>Udemy</p>
                                 <p className='text-[14px] text-gray-400'>Date: Nov 25, 2023</p>
+                                <p className='text-[14px] text-gray-300 '>Instructors: Andrei Neagoie</p>
                             </div>
                         </div>
 
@@ -144,6 +148,7 @@ const Certification = () => {
                                 <p>Complete Web & Mobile Designer in 2023: UI/UX with Figma</p>
                                 <p className='text-[15px]'>Udemy</p>
                                 <p className='text-[14px] text-gray-400'>Date: Dec 31, 2023</p>
+                                <p className='text-[14px] text-gray-300 '>Instructors: Andrei Neagoie, Daniel Schifano</p>
                             </div>
                         </div>
 
@@ -155,6 +160,7 @@ const Certification = () => {
                                 <p>The Complete Data Structures and Algorithms Course in Python</p>
                                 <p className='text-[15px]'>Udemy</p>
                                 <p className='text-[14px] text-gray-400'>Date: Jan 12, 2025</p>
+                                <p className='text-[14px] text-gray-300 '>Instructors: Elshad Karimov</p>
                             </div>
                         </div>
 
@@ -166,6 +172,7 @@ const Certification = () => {
                                 <p>Learn Python & Ethial Hacking from Scratch</p>
                                 <p className='text-[15px]'>Udemy</p>
                                 <p className='text-[14px] text-gray-400'>Date: April 23, 2024</p>
+                                <p className='text-[14px] text-gray-300 '>Instructors: Zaid Sabih</p>
                             </div>
                         </div>
 
@@ -177,6 +184,7 @@ const Certification = () => {
                                 <p>TensorFlow for Deep Learning Bootcamp</p>
                                 <p className='text-[15px]'>Udemy</p>
                                 <p className='text-[14px] text-gray-400'>Date: July 31, 2024</p>
+                                <p className='text-[14px] text-gray-300 '>Instructors: Andrei Neagoie, Daniel Bourke</p>
                             </div>
                         </div>
 
@@ -188,6 +196,7 @@ const Certification = () => {
                                 <p>Complete NodeJS Developer (GraphQL, MongoDB & more)</p>
                                 <p className='text-[15px]'>Udemy</p>
                                 <p className='text-[14px] text-gray-400'>Date: March 07, 2025</p>
+                                <p className='text-[14px] text-gray-300 '>Instructors: Andrei Neagoie, Adam Odziemkowski</p>
                             </div>
                         </div>
 
@@ -201,6 +210,7 @@ const Certification = () => {
                                 <p>React Native - The Practical Guide [2024]</p>
                                 <p className='text-[15px]'>Udemy</p>
                                 <p className='text-[14px] text-gray-400'>Date: June 12, 2024</p>
+                                <p className='text-[14px] text-gray-300 '>Instructors: Maximilian Schwarzmuller</p>
                             </div>
                         </div>
 
