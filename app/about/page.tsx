@@ -409,7 +409,7 @@ useEffect(() => {
                     
                   </div>
                   <div>
-                    <p className="text-[17px] md:text-[18px] text-gray-300">Responsibilities</p>
+                    <p className="text-[15px] md:text-[18px] text-gray-300">Responsibilities</p>
                     <ul className="pl-[10px] mt-[5px] space-y-[5px]">
                       <li>- Was a primary scribe for a cardiologist, and have worked with multiple providers across multiple specialities, documenting real-time patient encounters, diagnoses, transcriptions and treatment plans.</li>
                       <li>- Trained and supervised junior scribes in EHR systems, cardiology-specific terminology, and efficient content capturing protocols.</li>
@@ -443,7 +443,7 @@ useEffect(() => {
 
                   <div>
                      <p className="text-[18px] text-gray-300">Responsibilities</p>
-                    <ul className="pl-[10px] mt-[5px] space-y-[5px]">
+                    <ul className="pl-[10px] text-[15px] mt-[5px] space-y-[5px]">
                         <li>- Managed high-volume customer interactions, ensuring efficient query resolution and data accuracy.</li>
                         <li>- Processed financial transactions and account inquiries, demostrated structured problem-solving and attention to detail</li>
                         <li>- Communicated with the clients to ensure clarity and compliance strenghtening analytical documentation skills.</li>
