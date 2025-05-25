@@ -13,6 +13,7 @@ import Certificate8 from '../certificates/UC-f40d10df-c93e-4d1e-af98-b8802f58431
 
 import Certificate9 from '../certificates/UC-6c12dce8-1750-4ff2-a4bc-a95f1992f3ea.jpg';
 import Certificate10 from '../certificates/UC-435cb559-6d32-4c0b-82ba-92e1d49a7b51.jpg';
+import Certificate11 from '../certificates/UC-5e929664-5636-40c0-bebe-9df2ad3a34af.jpg';
 
 
 const Certification = () => {
@@ -131,6 +132,17 @@ const Certification = () => {
                                 <p>The Complete Web Developer in 2023: Zero to Mastery</p>
                                 <p className='text-[15px]'>Udemy</p>
                                 <p className='text-[14px] text-gray-400'>Date: Nov 25, 2023</p>
+                            </div>
+                        </div>
+
+                        <div className="cursor-pointer  certification2 relative group bg-[#000] overflow-hidden w-[100%] ring-[0.5px] ring-[#4d4d4d] h-[195px] rounded-[10px] flex items-center justify-center">
+                            <div className=' absolute transition-transform duration-500 group-hover:translate-y-0  translate-y-[200%] flex flex-col items-center justify-center'>
+                                <Image alt="" src={Certificate11} className='h-[100%] w-[100%]'  />
+                            </div>
+                            <div className=' transition-transform duration-500 group-hover:scale-0  flex flex-col px-[20px]'>
+                                <p>Complete Web & Mobile Designer in 2023: UI/UX with Figma</p>
+                                <p className='text-[15px]'>Udemy</p>
+                                <p className='text-[14px] text-gray-400'>Date: Dec 31, 2023</p>
                             </div>
                         </div>
 
