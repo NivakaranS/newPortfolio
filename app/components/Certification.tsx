@@ -82,8 +82,8 @@ const Certification = () => {
                             <div className=' transition-transform duration-500 group-hover:scale-0  flex flex-col px-[20px]'>
                                 <p>Complete Generative AI Course With Langchain and Huggingface</p>
                                 <p className='text-[16px]'>Udemy</p>
-                                <p className='text-[14px] text-gray-30 '>Instructors: Krish Naik</p>
                                 <p className='text-[14px] text-gray-400'>Date: Dec 07, 2023</p>
+                                <p className='text-[14px] text-gray-300 '>Instructors: Krish Naik</p>
                             </div>
                         </div>
 
