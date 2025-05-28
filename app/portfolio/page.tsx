@@ -178,11 +178,11 @@ const Portfolio = () => {
             <div className=" py-[15vh] min-h-[200vh] flex items-center justify-center w-screen ">
 
             <div className=" w-[80%] ">
-                <div className=" portfolio1 leading-[60px] text-center">
+                <div className=" portfolio1 leading-[67px] text-center">
                     <p className="text-[60px] bg-gradient-to-t from-[#433D3A] via-[#C6C4C3] font-bold to-[#CAC8C6] bg-clip-text text-transparent">Explore the</p>
                     <p className="text-[60px] bg-gradient-to-t from-[#433D3A] via-[#C6C4C3] font-bold to-[#CAC8C6] bg-clip-text text-transparent">Development Journey</p>
                 </div>
-               
+                <p className="mt-[30px]">Please click on any project to explore a detailed overview.</p>
 
                 <p className=" portfolio2 text-[40px] mt-[40px]">Software Engineering</p>
                 <div className=" portfolio3 mt-[30px] flex md:flex-row flex-col space-y-[40px]  md:space-y-[0px] md:space-x-[20px] items-center justify-center">
@@ -200,6 +200,53 @@ const Portfolio = () => {
                     <PortfolioCard lang1="Python" lang2="MongoDB" lang3="Next.js" lang4="Node.js" lang5="Express.js" lang6="Docker" text2="A cross-platform grocery e-commerce app developed with React Native" text="Selvah: Mobile App" onClick={onPortfolioCard1Click}/>
                    
                 </div>
+                <p className=" portfolio3 text-[33px] text-center md:text-[30px] mt-[40px]">Mini Projects</p>
+                <div className=" portfolio3 mt-[30px]  flex md:flex-row flex-col space-y-[40px] md:space-y-[0px] md:space-x-[20px] items-center justify-center">
+                        <div className=" w-[220px] rounded-[15px] bg-black ring-gray-300 ring-[1px] cursor-pointer h-[320px]">
+                            <div className="flex items-center justify-center bg-[#101010] rounded-t-[15px] h-[50%]">
+
+                            </div>
+                            <div className="flex flex-col h-[50%] w-full px-[15px] justify-center">
+                                <p className="leading-[25px]">Project Title Project Title Project Title</p>
+                                <div className="text-[10px] ">
+                                    <p>Lorem ipsum dolor! Perspiciatis officia sit nemo error necessitatibus, cupiditate magnam numquam! Fugiat, reprehenderit placeat? Neque animi officia minus praesentium?</p>
+                                </div>
+                            </div>
+                        </div> 
+                        <div className=" w-[220px] rounded-[15px] bg-black ring-gray-300 ring-[1px] cursor-pointer h-[320px]">
+                            <div className="flex items-center justify-center bg-[#101010] rounded-t-[15px] h-[50%]">
+
+                            </div>
+                            <div className="flex flex-col h-[50%] w-full px-[15px] justify-center">
+                                <p className="leading-[25px]">Project Title Project Title Project Title</p>
+                                <div className="text-[10px] ">
+                                    <p>Lorem ipsum dolor! Perspiciatis officia sit nemo error necessitatibus, cupiditate magnam numquam! Fugiat, reprehenderit placeat? Neque animi officia minus praesentium?</p>
+                                </div>
+                            </div>
+                        </div> 
+                        <div className=" w-[220px] rounded-[15px] bg-black ring-gray-300 ring-[1px] cursor-pointer h-[320px]">
+                            <div className="flex items-center justify-center bg-[#101010] rounded-t-[15px] h-[50%]">
+
+                            </div>
+                            <div className="flex flex-col h-[50%] w-full px-[15px] justify-center">
+                                <p className="leading-[25px]">Project Title Project Title Project Title</p>
+                                <div className="text-[10px] ">
+                                    <p>Lorem ipsum dolor! Perspiciatis officia sit nemo error necessitatibus, cupiditate magnam numquam! Fugiat, reprehenderit placeat? Neque animi officia minus praesentium?</p>
+                                </div>
+                            </div>
+                        </div> 
+                        <div className=" w-[220px] rounded-[15px] bg-black ring-gray-300 ring-[1px] cursor-pointer h-[320px]">
+                            <div className="flex items-center justify-center bg-[#101010] rounded-t-[15px] h-[50%]">
+
+                            </div>
+                            <div className="flex flex-col h-[50%] w-full px-[15px] justify-center">
+                                <p className="leading-[25px]">Project Title Project Title Project Title</p>
+                                <div className="text-[10px] ">
+                                    <p>Lorem ipsum dolor! Perspiciatis officia sit nemo error necessitatibus, cupiditate magnam numquam! Fugiat, reprehenderit placeat? Neque animi officia minus praesentium?</p>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
                 <p className=" portfolio3 text-[33px] md:text-[40px] mt-[40px]">Data Science</p>
                 <div className=" portfolio3 mt-[30px] flex md:flex-row flex-col space-y-[40px] md:space-y-[0px] md:space-x-[20px] items-center justify-center">
                     <PortfolioCard lang1="Django" lang2="Matplotlib" lang3="Tensorflow" lang4="Pandas" lang5="" lang6="" text2="This AI-powered hybrid recommendation system is designed to provide personalized book and movie suggestions by intelligently combining collaborative filterinng (user-based preferences) and content-based filtering. Built with Python Flask for the backend and frontend, by leveraging Machine Learning and Natural Language Processing techniques. " text="Book / Movie Recommendation System" onClick={onPortfolioCard1Click}/>
@@ -216,6 +263,53 @@ const Portfolio = () => {
                    <PortfolioCard lang1="Django" lang2="Matplotlib" lang3="Tensorflow" lang4="Pandas" lang5="" lang6="" text2="A machine learning-powered pricing optimization system that automatically adjusts product prices in real-time based on demand, competitor pricing, inventory levels, and customer behavior. Built for e-commerce platforms, this engine uses reinforcement learning (RL) and predictive modeling to maximize revenue while staying competitive." text="Dynamic Pricing Enging for E-Commerce" onClick={onPortfolioCard1Click}/>
                    
                 </div>
+                <p className=" portfolio3 text-[33px] text-center md:text-[30px] mt-[40px]">Mini Projects</p>
+                <div className=" portfolio3 mt-[30px]  flex md:flex-row flex-col space-y-[40px] md:space-y-[0px] md:space-x-[20px] items-center justify-center">
+                        <div className=" w-[220px] rounded-[15px] bg-black ring-gray-300 ring-[1px] cursor-pointer h-[320px]">
+                            <div className="flex items-center justify-center bg-[#101010] rounded-t-[15px] h-[50%]">
+
+                            </div>
+                            <div className="flex flex-col h-[50%] w-full px-[15px] justify-center">
+                                <p className="leading-[25px]">Project Title Project Title Project Title</p>
+                                <div className="text-[10px] ">
+                                    <p>Lorem ipsum dolor! Perspiciatis officia sit nemo error necessitatibus, cupiditate magnam numquam! Fugiat, reprehenderit placeat? Neque animi officia minus praesentium?</p>
+                                </div>
+                            </div>
+                        </div> 
+                        <div className=" w-[220px] rounded-[15px] bg-black ring-gray-300 ring-[1px] cursor-pointer h-[320px]">
+                            <div className="flex items-center justify-center bg-[#101010] rounded-t-[15px] h-[50%]">
+
+                            </div>
+                            <div className="flex flex-col h-[50%] w-full px-[15px] justify-center">
+                                <p className="leading-[25px]">Project Title Project Title Project Title</p>
+                                <div className="text-[10px] ">
+                                    <p>Lorem ipsum dolor! Perspiciatis officia sit nemo error necessitatibus, cupiditate magnam numquam! Fugiat, reprehenderit placeat? Neque animi officia minus praesentium?</p>
+                                </div>
+                            </div>
+                        </div> 
+                        <div className=" w-[220px] rounded-[15px] bg-black ring-gray-300 ring-[1px] cursor-pointer h-[320px]">
+                            <div className="flex items-center justify-center bg-[#101010] rounded-t-[15px] h-[50%]">
+
+                            </div>
+                            <div className="flex flex-col h-[50%] w-full px-[15px] justify-center">
+                                <p className="leading-[25px]">Project Title Project Title Project Title</p>
+                                <div className="text-[10px] ">
+                                    <p>Lorem ipsum dolor! Perspiciatis officia sit nemo error necessitatibus, cupiditate magnam numquam! Fugiat, reprehenderit placeat? Neque animi officia minus praesentium?</p>
+                                </div>
+                            </div>
+                        </div> 
+                        <div className=" w-[220px] rounded-[15px] bg-black ring-gray-300 ring-[1px] cursor-pointer h-[320px]">
+                            <div className="flex items-center justify-center bg-[#101010] rounded-t-[15px] h-[50%]">
+
+                            </div>
+                            <div className="flex flex-col h-[50%] w-full px-[15px] justify-center">
+                                <p className="leading-[25px]">Project Title Project Title Project Title</p>
+                                <div className="text-[10px] ">
+                                    <p>Lorem ipsum dolor! Perspiciatis officia sit nemo error necessitatibus, cupiditate magnam numquam! Fugiat, reprehenderit placeat? Neque animi officia minus praesentium?</p>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
 
                 <p className=" portfolio3 text-[33px] md:text-[40px] mt-[40px]">Computer Vision</p>
                <div className=" portfolio3 mt-[30px] flex md:flex-row flex-col space-y-[40px] md:space-y-[0px] md:space-x-[20px] items-center justify-center">
@@ -233,6 +327,53 @@ const Portfolio = () => {
                     <PortfolioCard lang1="Django" lang2="Matplotlib" lang3="Tensorflow" lang4="Pandas" lang5="" lang6="" text2="An intelligent traffic enforcement solution that identifies red-light running, speeding, and unregistered vehicles in real-time. Processes 50+ camera feeds simultaneously with 92% accuracy, generating evidence packages for law enforcement. Pilot implementation reduced intersection accidents by 35%." text="Real-Time Traffic Violation System" onClick={onPortfolioCard1Click}/>
                     
                 </div>
+                <p className=" portfolio3 text-[33px] text-center md:text-[30px] mt-[40px]">Mini Projects</p>
+                <div className=" portfolio3 mt-[30px]  flex md:flex-row flex-col space-y-[40px] md:space-y-[0px] md:space-x-[20px] items-center justify-center">
+                        <div className=" w-[220px] rounded-[15px] bg-black ring-gray-300 ring-[1px] cursor-pointer h-[320px]">
+                            <div className="flex items-center justify-center bg-[#101010] rounded-t-[15px] h-[50%]">
+
+                            </div>
+                            <div className="flex flex-col h-[50%] w-full px-[15px] justify-center">
+                                <p className="leading-[25px]">Project Title Project Title Project Title</p>
+                                <div className="text-[10px] ">
+                                    <p>Lorem ipsum dolor! Perspiciatis officia sit nemo error necessitatibus, cupiditate magnam numquam! Fugiat, reprehenderit placeat? Neque animi officia minus praesentium?</p>
+                                </div>
+                            </div>
+                        </div> 
+                        <div className=" w-[220px] rounded-[15px] bg-black ring-gray-300 ring-[1px] cursor-pointer h-[320px]">
+                            <div className="flex items-center justify-center bg-[#101010] rounded-t-[15px] h-[50%]">
+
+                            </div>
+                            <div className="flex flex-col h-[50%] w-full px-[15px] justify-center">
+                                <p className="leading-[25px]">Project Title Project Title Project Title</p>
+                                <div className="text-[10px] ">
+                                    <p>Lorem ipsum dolor! Perspiciatis officia sit nemo error necessitatibus, cupiditate magnam numquam! Fugiat, reprehenderit placeat? Neque animi officia minus praesentium?</p>
+                                </div>
+                            </div>
+                        </div> 
+                        <div className=" w-[220px] rounded-[15px] bg-black ring-gray-300 ring-[1px] cursor-pointer h-[320px]">
+                            <div className="flex items-center justify-center bg-[#101010] rounded-t-[15px] h-[50%]">
+
+                            </div>
+                            <div className="flex flex-col h-[50%] w-full px-[15px] justify-center">
+                                <p className="leading-[25px]">Project Title Project Title Project Title</p>
+                                <div className="text-[10px] ">
+                                    <p>Lorem ipsum dolor! Perspiciatis officia sit nemo error necessitatibus, cupiditate magnam numquam! Fugiat, reprehenderit placeat? Neque animi officia minus praesentium?</p>
+                                </div>
+                            </div>
+                        </div> 
+                        <div className=" w-[220px] rounded-[15px] bg-black ring-gray-300 ring-[1px] cursor-pointer h-[320px]">
+                            <div className="flex items-center justify-center bg-[#101010] rounded-t-[15px] h-[50%]">
+
+                            </div>
+                            <div className="flex flex-col h-[50%] w-full px-[15px] justify-center">
+                                <p className="leading-[25px]">Project Title Project Title Project Title</p>
+                                <div className="text-[10px] ">
+                                    <p>Lorem ipsum dolor! Perspiciatis officia sit nemo error necessitatibus, cupiditate magnam numquam! Fugiat, reprehenderit placeat? Neque animi officia minus praesentium?</p>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
                 
                 <p className=" portfolio3 text-[33px] md:text-[40px] mt-[40px]">AI Agents</p>
                <div className=" portfolio3 mt-[30px] flex md:flex-row flex-col space-y-[40px] md:space-y-[0px] md:space-x-[20px] items-center justify-center">
@@ -240,7 +381,55 @@ const Portfolio = () => {
                     <PortfolioCard lang1="FastApi" lang2="Matplotlib" lang3="Tensorflow" lang4="Pandas" lang5="" lang6="" text2="Agent that collects symptoms, interprets radiology reports (e.g., X-rays), suggest actions or raise alarms" text="Medical Diagnosis + Assistant Agent" onClick={onPortfolioCard1Click}/>
                     
                 </div>
+                <p className=" portfolio3 text-[33px] text-center md:text-[30px] mt-[40px]">Mini Projects</p>
+                <div className=" portfolio3 mt-[30px]  flex md:flex-row flex-col space-y-[40px] md:space-y-[0px] md:space-x-[20px] items-center justify-center">
+                        <div className=" w-[220px] rounded-[15px] bg-black ring-gray-300 ring-[1px] cursor-pointer h-[320px]">
+                            <div className="flex items-center justify-center bg-[#101010] rounded-t-[15px] h-[50%]">
 
+                            </div>
+                            <div className="flex flex-col h-[50%] w-full px-[15px] justify-center">
+                                <p className="leading-[25px]">Project Title Project Title Project Title</p>
+                                <div className="text-[10px] ">
+                                    <p>Lorem ipsum dolor! Perspiciatis officia sit nemo error necessitatibus, cupiditate magnam numquam! Fugiat, reprehenderit placeat? Neque animi officia minus praesentium?</p>
+                                </div>
+                            </div>
+                        </div> 
+                        <div className=" w-[220px] rounded-[15px] bg-black ring-gray-300 ring-[1px] cursor-pointer h-[320px]">
+                            <div className="flex items-center justify-center bg-[#101010] rounded-t-[15px] h-[50%]">
+
+                            </div>
+                            <div className="flex flex-col h-[50%] w-full px-[15px] justify-center">
+                                <p className="leading-[25px]">Project Title Project Title Project Title</p>
+                                <div className="text-[10px] ">
+                                    <p>Lorem ipsum dolor! Perspiciatis officia sit nemo error necessitatibus, cupiditate magnam numquam! Fugiat, reprehenderit placeat? Neque animi officia minus praesentium?</p>
+                                </div>
+                            </div>
+                        </div> 
+                        <div className=" w-[220px] rounded-[15px] bg-black ring-gray-300 ring-[1px] cursor-pointer h-[320px]">
+                            <div className="flex items-center justify-center bg-[#101010] rounded-t-[15px] h-[50%]">
+
+                            </div>
+                            <div className="flex flex-col h-[50%] w-full px-[15px] justify-center">
+                                <p className="leading-[25px]">Project Title Project Title Project Title</p>
+                                <div className="text-[10px] ">
+                                    <p>Lorem ipsum dolor! Perspiciatis officia sit nemo error necessitatibus, cupiditate magnam numquam! Fugiat, reprehenderit placeat? Neque animi officia minus praesentium?</p>
+                                </div>
+                            </div>
+                        </div> 
+                        <div className=" w-[220px] rounded-[15px] bg-black ring-gray-300 ring-[1px] cursor-pointer h-[320px]">
+                            <div className="flex items-center justify-center bg-[#101010] rounded-t-[15px] h-[50%]">
+
+                            </div>
+                            <div className="flex flex-col h-[50%] w-full px-[15px] justify-center">
+                                <p className="leading-[25px]">Project Title Project Title Project Title</p>
+                                <div className="text-[10px] ">
+                                    <p>Lorem ipsum dolor! Perspiciatis officia sit nemo error necessitatibus, cupiditate magnam numquam! Fugiat, reprehenderit placeat? Neque animi officia minus praesentium?</p>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+
+                
                
 
             </div>

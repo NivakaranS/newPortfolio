@@ -191,6 +191,11 @@ const Blogs = () => {
                         
                         
                     </div>
+                    <div className="flex flex-row items-center justify-center space-x-[20px] mt-[30px]">
+                        <div className="w-[90%]">
+                            <p className="text-[35px] font-bold">Case Studies</p>
+                        </div>
+                    </div>
                     
                 </div>
             </div>
