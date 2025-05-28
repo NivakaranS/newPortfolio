@@ -202,44 +202,44 @@ const Portfolio = () => {
                 </div>
                 <p className=" portfolio3 text-[33px] text-center md:text-[30px] mt-[40px]">Mini Projects</p>
                 <div className=" portfolio3 mt-[30px]  flex md:flex-row flex-col space-y-[40px] md:space-y-[0px] md:space-x-[20px] items-center justify-center">
-                        <div className=" w-[220px] rounded-[15px] bg-black ring-gray-300 ring-[1px] cursor-pointer h-[320px]">
-                            <div className="flex items-center justify-center bg-[#101010] rounded-t-[15px] h-[50%]">
+                        <div className=" w-[220px] rounded-[15px] bg-black ring-[#373435] ring-[1px] cursor-pointer h-[320px]">
+                            <div className="flex items-center justify-center bg-[#373435] rounded-t-[15px] h-[50%]">
 
                             </div>
-                            <div className="flex flex-col h-[50%] w-full px-[15px] justify-center">
+                            <div className="flex flex-col h-[50%] rounded-b-[15px] bg-[#101010] w-full px-[15px] justify-center">
                                 <p className="leading-[25px]">Project Title Project Title Project Title</p>
                                 <div className="text-[10px] ">
                                     <p>Lorem ipsum dolor! Perspiciatis officia sit nemo error necessitatibus, cupiditate magnam numquam! Fugiat, reprehenderit placeat? Neque animi officia minus praesentium?</p>
                                 </div>
                             </div>
                         </div> 
-                        <div className=" w-[220px] rounded-[15px] bg-black ring-gray-300 ring-[1px] cursor-pointer h-[320px]">
-                            <div className="flex items-center justify-center bg-[#101010] rounded-t-[15px] h-[50%]">
+                        <div className=" w-[220px] rounded-[15px] bg-black ring-[#373435] ring-[1px] cursor-pointer h-[320px]">
+                            <div className="flex items-center justify-center bg-[#373435] rounded-t-[15px] h-[50%]">
 
                             </div>
-                            <div className="flex flex-col h-[50%] w-full px-[15px] justify-center">
+                            <div className="flex flex-col h-[50%] rounded-b-[15px] bg-[#101010] w-full px-[15px] justify-center">
+                                <p className="leading-[25px]">Project Title Project Title Project Title</p>
+                                <div className="text-[10px] ">
+                                    <p>Lorem ipsum dolor! Perspiciatis officia sit nemo error necessitatibus, cupiditate magnam numquam! Fugiat, reprehenderit placeat? Neque animi officia minus praesentium?</p>
+                                </div>
+                            </div>
+                        </div>  
+                        <div className=" w-[220px] rounded-[15px] bg-black ring-[#373435] ring-[1px] cursor-pointer h-[320px]">
+                            <div className="flex items-center justify-center bg-[#373435] rounded-t-[15px] h-[50%]">
+
+                            </div>
+                            <div className="flex flex-col h-[50%] rounded-b-[15px] bg-[#101010] w-full px-[15px] justify-center">
                                 <p className="leading-[25px]">Project Title Project Title Project Title</p>
                                 <div className="text-[10px] ">
                                     <p>Lorem ipsum dolor! Perspiciatis officia sit nemo error necessitatibus, cupiditate magnam numquam! Fugiat, reprehenderit placeat? Neque animi officia minus praesentium?</p>
                                 </div>
                             </div>
                         </div> 
-                        <div className=" w-[220px] rounded-[15px] bg-black ring-gray-300 ring-[1px] cursor-pointer h-[320px]">
-                            <div className="flex items-center justify-center bg-[#101010] rounded-t-[15px] h-[50%]">
+                        <div className=" w-[220px] rounded-[15px] bg-black ring-[#373435] ring-[1px] cursor-pointer h-[320px]">
+                            <div className="flex items-center justify-center bg-[#373435] rounded-t-[15px] h-[50%]">
 
                             </div>
-                            <div className="flex flex-col h-[50%] w-full px-[15px] justify-center">
-                                <p className="leading-[25px]">Project Title Project Title Project Title</p>
-                                <div className="text-[10px] ">
-                                    <p>Lorem ipsum dolor! Perspiciatis officia sit nemo error necessitatibus, cupiditate magnam numquam! Fugiat, reprehenderit placeat? Neque animi officia minus praesentium?</p>
-                                </div>
-                            </div>
-                        </div> 
-                        <div className=" w-[220px] rounded-[15px] bg-black ring-gray-300 ring-[1px] cursor-pointer h-[320px]">
-                            <div className="flex items-center justify-center bg-[#101010] rounded-t-[15px] h-[50%]">
-
-                            </div>
-                            <div className="flex flex-col h-[50%] w-full px-[15px] justify-center">
+                            <div className="flex flex-col h-[50%] rounded-b-[15px] bg-[#101010] w-full px-[15px] justify-center">
                                 <p className="leading-[25px]">Project Title Project Title Project Title</p>
                                 <div className="text-[10px] ">
                                     <p>Lorem ipsum dolor! Perspiciatis officia sit nemo error necessitatibus, cupiditate magnam numquam! Fugiat, reprehenderit placeat? Neque animi officia minus praesentium?</p>
@@ -265,50 +265,50 @@ const Portfolio = () => {
                 </div>
                 <p className=" portfolio3 text-[33px] text-center md:text-[30px] mt-[40px]">Mini Projects</p>
                 <div className=" portfolio3 mt-[30px]  flex md:flex-row flex-col space-y-[40px] md:space-y-[0px] md:space-x-[20px] items-center justify-center">
-                        <div className=" w-[220px] rounded-[15px] bg-black ring-gray-300 ring-[1px] cursor-pointer h-[320px]">
-                            <div className="flex items-center justify-center bg-[#101010] rounded-t-[15px] h-[50%]">
+                        <div className=" w-[220px] rounded-[15px] bg-black ring-[#373435] ring-[1px] cursor-pointer h-[320px]">
+                            <div className="flex items-center justify-center bg-[#373435] rounded-t-[15px] h-[50%]">
 
                             </div>
-                            <div className="flex flex-col h-[50%] w-full px-[15px] justify-center">
+                            <div className="flex flex-col h-[50%] rounded-b-[15px] bg-[#101010] w-full px-[15px] justify-center">
+                                <p className="leading-[25px]">Project Title Project Title Project Title</p>
+                                <div className="text-[10px] ">
+                                    <p>Lorem ipsum dolor! Perspiciatis officia sit nemo error necessitatibus, cupiditate magnam numquam! Fugiat, reprehenderit placeat? Neque animi officia minus praesentium?</p>
+                                </div>
+                            </div>
+                        </div>  
+                        <div className=" w-[220px] rounded-[15px] bg-black ring-[#373435] ring-[1px] cursor-pointer h-[320px]">
+                            <div className="flex items-center justify-center bg-[#373435] rounded-t-[15px] h-[50%]">
+
+                            </div>
+                            <div className="flex flex-col h-[50%] rounded-b-[15px] bg-[#101010] w-full px-[15px] justify-center">
                                 <p className="leading-[25px]">Project Title Project Title Project Title</p>
                                 <div className="text-[10px] ">
                                     <p>Lorem ipsum dolor! Perspiciatis officia sit nemo error necessitatibus, cupiditate magnam numquam! Fugiat, reprehenderit placeat? Neque animi officia minus praesentium?</p>
                                 </div>
                             </div>
                         </div> 
-                        <div className=" w-[220px] rounded-[15px] bg-black ring-gray-300 ring-[1px] cursor-pointer h-[320px]">
-                            <div className="flex items-center justify-center bg-[#101010] rounded-t-[15px] h-[50%]">
+                        <div className=" w-[220px] rounded-[15px] bg-black ring-[#373435] ring-[1px] cursor-pointer h-[320px]">
+                            <div className="flex items-center justify-center bg-[#373435] rounded-t-[15px] h-[50%]">
 
                             </div>
-                            <div className="flex flex-col h-[50%] w-full px-[15px] justify-center">
+                            <div className="flex flex-col h-[50%] rounded-b-[15px] bg-[#101010] w-full px-[15px] justify-center">
                                 <p className="leading-[25px]">Project Title Project Title Project Title</p>
                                 <div className="text-[10px] ">
                                     <p>Lorem ipsum dolor! Perspiciatis officia sit nemo error necessitatibus, cupiditate magnam numquam! Fugiat, reprehenderit placeat? Neque animi officia minus praesentium?</p>
                                 </div>
                             </div>
                         </div> 
-                        <div className=" w-[220px] rounded-[15px] bg-black ring-gray-300 ring-[1px] cursor-pointer h-[320px]">
-                            <div className="flex items-center justify-center bg-[#101010] rounded-t-[15px] h-[50%]">
+                        <div className=" w-[220px] rounded-[15px] bg-black ring-[#373435] ring-[1px] cursor-pointer h-[320px]">
+                            <div className="flex items-center justify-center bg-[#373435] rounded-t-[15px] h-[50%]">
 
                             </div>
-                            <div className="flex flex-col h-[50%] w-full px-[15px] justify-center">
+                            <div className="flex flex-col h-[50%] rounded-b-[15px] bg-[#101010] w-full px-[15px] justify-center">
                                 <p className="leading-[25px]">Project Title Project Title Project Title</p>
                                 <div className="text-[10px] ">
                                     <p>Lorem ipsum dolor! Perspiciatis officia sit nemo error necessitatibus, cupiditate magnam numquam! Fugiat, reprehenderit placeat? Neque animi officia minus praesentium?</p>
                                 </div>
                             </div>
-                        </div> 
-                        <div className=" w-[220px] rounded-[15px] bg-black ring-gray-300 ring-[1px] cursor-pointer h-[320px]">
-                            <div className="flex items-center justify-center bg-[#101010] rounded-t-[15px] h-[50%]">
-
-                            </div>
-                            <div className="flex flex-col h-[50%] w-full px-[15px] justify-center">
-                                <p className="leading-[25px]">Project Title Project Title Project Title</p>
-                                <div className="text-[10px] ">
-                                    <p>Lorem ipsum dolor! Perspiciatis officia sit nemo error necessitatibus, cupiditate magnam numquam! Fugiat, reprehenderit placeat? Neque animi officia minus praesentium?</p>
-                                </div>
-                            </div>
-                        </div> 
+                        </div>  
                     </div>
 
                 <p className=" portfolio3 text-[33px] md:text-[40px] mt-[40px]">Computer Vision</p>
@@ -329,44 +329,44 @@ const Portfolio = () => {
                 </div>
                 <p className=" portfolio3 text-[33px] text-center md:text-[30px] mt-[40px]">Mini Projects</p>
                 <div className=" portfolio3 mt-[30px]  flex md:flex-row flex-col space-y-[40px] md:space-y-[0px] md:space-x-[20px] items-center justify-center">
-                        <div className=" w-[220px] rounded-[15px] bg-black ring-gray-300 ring-[1px] cursor-pointer h-[320px]">
-                            <div className="flex items-center justify-center bg-[#101010] rounded-t-[15px] h-[50%]">
+                        <div className=" w-[220px] rounded-[15px] bg-black ring-[#373435] ring-[1px] cursor-pointer h-[320px]">
+                            <div className="flex items-center justify-center bg-[#373435] rounded-t-[15px] h-[50%]">
 
                             </div>
-                            <div className="flex flex-col h-[50%] w-full px-[15px] justify-center">
+                            <div className="flex flex-col h-[50%] rounded-b-[15px] bg-[#101010] w-full px-[15px] justify-center">
                                 <p className="leading-[25px]">Project Title Project Title Project Title</p>
                                 <div className="text-[10px] ">
                                     <p>Lorem ipsum dolor! Perspiciatis officia sit nemo error necessitatibus, cupiditate magnam numquam! Fugiat, reprehenderit placeat? Neque animi officia minus praesentium?</p>
                                 </div>
                             </div>
                         </div> 
-                        <div className=" w-[220px] rounded-[15px] bg-black ring-gray-300 ring-[1px] cursor-pointer h-[320px]">
-                            <div className="flex items-center justify-center bg-[#101010] rounded-t-[15px] h-[50%]">
+                       <div className=" w-[220px] rounded-[15px] bg-black ring-[#373435] ring-[1px] cursor-pointer h-[320px]">
+                            <div className="flex items-center justify-center bg-[#373435] rounded-t-[15px] h-[50%]">
 
                             </div>
-                            <div className="flex flex-col h-[50%] w-full px-[15px] justify-center">
+                            <div className="flex flex-col h-[50%] rounded-b-[15px] bg-[#101010] w-full px-[15px] justify-center">
                                 <p className="leading-[25px]">Project Title Project Title Project Title</p>
                                 <div className="text-[10px] ">
                                     <p>Lorem ipsum dolor! Perspiciatis officia sit nemo error necessitatibus, cupiditate magnam numquam! Fugiat, reprehenderit placeat? Neque animi officia minus praesentium?</p>
                                 </div>
                             </div>
                         </div> 
-                        <div className=" w-[220px] rounded-[15px] bg-black ring-gray-300 ring-[1px] cursor-pointer h-[320px]">
-                            <div className="flex items-center justify-center bg-[#101010] rounded-t-[15px] h-[50%]">
+                        <div className=" w-[220px] rounded-[15px] bg-black ring-[#373435] ring-[1px] cursor-pointer h-[320px]">
+                            <div className="flex items-center justify-center bg-[#373435] rounded-t-[15px] h-[50%]">
 
                             </div>
-                            <div className="flex flex-col h-[50%] w-full px-[15px] justify-center">
+                            <div className="flex flex-col h-[50%] rounded-b-[15px] bg-[#101010] w-full px-[15px] justify-center">
                                 <p className="leading-[25px]">Project Title Project Title Project Title</p>
                                 <div className="text-[10px] ">
                                     <p>Lorem ipsum dolor! Perspiciatis officia sit nemo error necessitatibus, cupiditate magnam numquam! Fugiat, reprehenderit placeat? Neque animi officia minus praesentium?</p>
                                 </div>
                             </div>
                         </div> 
-                        <div className=" w-[220px] rounded-[15px] bg-black ring-gray-300 ring-[1px] cursor-pointer h-[320px]">
-                            <div className="flex items-center justify-center bg-[#101010] rounded-t-[15px] h-[50%]">
+                        <div className=" w-[220px] rounded-[15px] bg-black ring-[#373435] ring-[1px] cursor-pointer h-[320px]">
+                            <div className="flex items-center justify-center bg-[#373435] rounded-t-[15px] h-[50%]">
 
                             </div>
-                            <div className="flex flex-col h-[50%] w-full px-[15px] justify-center">
+                            <div className="flex flex-col h-[50%] rounded-b-[15px] bg-[#101010] w-full px-[15px] justify-center">
                                 <p className="leading-[25px]">Project Title Project Title Project Title</p>
                                 <div className="text-[10px] ">
                                     <p>Lorem ipsum dolor! Perspiciatis officia sit nemo error necessitatibus, cupiditate magnam numquam! Fugiat, reprehenderit placeat? Neque animi officia minus praesentium?</p>
@@ -383,44 +383,44 @@ const Portfolio = () => {
                 </div>
                 <p className=" portfolio3 text-[33px] text-center md:text-[30px] mt-[40px]">Mini Projects</p>
                 <div className=" portfolio3 mt-[30px]  flex md:flex-row flex-col space-y-[40px] md:space-y-[0px] md:space-x-[20px] items-center justify-center">
-                        <div className=" w-[220px] rounded-[15px] bg-black ring-gray-300 ring-[1px] cursor-pointer h-[320px]">
-                            <div className="flex items-center justify-center bg-[#101010] rounded-t-[15px] h-[50%]">
+                        <div className=" w-[220px] rounded-[15px] bg-black ring-[#373435] ring-[1px] cursor-pointer h-[320px]">
+                            <div className="flex items-center justify-center bg-[#373435] rounded-t-[15px] h-[50%]">
 
                             </div>
-                            <div className="flex flex-col h-[50%] w-full px-[15px] justify-center">
+                            <div className="flex flex-col h-[50%] rounded-b-[15px] bg-[#101010] w-full px-[15px] justify-center">
                                 <p className="leading-[25px]">Project Title Project Title Project Title</p>
                                 <div className="text-[10px] ">
                                     <p>Lorem ipsum dolor! Perspiciatis officia sit nemo error necessitatibus, cupiditate magnam numquam! Fugiat, reprehenderit placeat? Neque animi officia minus praesentium?</p>
                                 </div>
                             </div>
                         </div> 
-                        <div className=" w-[220px] rounded-[15px] bg-black ring-gray-300 ring-[1px] cursor-pointer h-[320px]">
-                            <div className="flex items-center justify-center bg-[#101010] rounded-t-[15px] h-[50%]">
+                        <div className=" w-[220px] rounded-[15px] bg-black ring-[#373435] ring-[1px] cursor-pointer h-[320px]">
+                            <div className="flex items-center justify-center bg-[#373435] rounded-t-[15px] h-[50%]">
 
                             </div>
-                            <div className="flex flex-col h-[50%] w-full px-[15px] justify-center">
+                            <div className="flex flex-col h-[50%] rounded-b-[15px] bg-[#101010] w-full px-[15px] justify-center">
                                 <p className="leading-[25px]">Project Title Project Title Project Title</p>
                                 <div className="text-[10px] ">
                                     <p>Lorem ipsum dolor! Perspiciatis officia sit nemo error necessitatibus, cupiditate magnam numquam! Fugiat, reprehenderit placeat? Neque animi officia minus praesentium?</p>
                                 </div>
                             </div>
                         </div> 
-                        <div className=" w-[220px] rounded-[15px] bg-black ring-gray-300 ring-[1px] cursor-pointer h-[320px]">
-                            <div className="flex items-center justify-center bg-[#101010] rounded-t-[15px] h-[50%]">
+                        <div className=" w-[220px] rounded-[15px] bg-black ring-[#373435] ring-[1px] cursor-pointer h-[320px]">
+                            <div className="flex items-center justify-center bg-[#373435] rounded-t-[15px] h-[50%]">
 
                             </div>
-                            <div className="flex flex-col h-[50%] w-full px-[15px] justify-center">
+                            <div className="flex flex-col h-[50%] rounded-b-[15px] bg-[#101010] w-full px-[15px] justify-center">
                                 <p className="leading-[25px]">Project Title Project Title Project Title</p>
                                 <div className="text-[10px] ">
                                     <p>Lorem ipsum dolor! Perspiciatis officia sit nemo error necessitatibus, cupiditate magnam numquam! Fugiat, reprehenderit placeat? Neque animi officia minus praesentium?</p>
                                 </div>
                             </div>
-                        </div> 
-                        <div className=" w-[220px] rounded-[15px] bg-black ring-gray-300 ring-[1px] cursor-pointer h-[320px]">
-                            <div className="flex items-center justify-center bg-[#101010] rounded-t-[15px] h-[50%]">
+                        </div>  
+                        <div className=" w-[220px] rounded-[15px] bg-black ring-[#373435] ring-[1px] cursor-pointer h-[320px]">
+                            <div className="flex items-center justify-center bg-[#373435] rounded-t-[15px] h-[50%]">
 
                             </div>
-                            <div className="flex flex-col h-[50%] w-full px-[15px] justify-center">
+                            <div className="flex flex-col h-[50%] rounded-b-[15px] bg-[#101010] w-full px-[15px] justify-center">
                                 <p className="leading-[25px]">Project Title Project Title Project Title</p>
                                 <div className="text-[10px] ">
                                     <p>Lorem ipsum dolor! Perspiciatis officia sit nemo error necessitatibus, cupiditate magnam numquam! Fugiat, reprehenderit placeat? Neque animi officia minus praesentium?</p>
