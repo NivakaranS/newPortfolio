@@ -137,10 +137,10 @@ useEffect(() => {
                 <p className=" text-[40px] sm:text-[50px] md:text-[60px] aboutText4 aboutTitle1 bg-gradient-to-t from-[#433D3A] via-[#C6C4C3]  to-[#CAC8C6] bg-clip-text text-transparent">About Me</p>
                 <p className=" text-[65px] sm:text-[75px] md:text-[80px] aboutTitle2 bg-gradient-to-t from-[#433D3A] via-[#C6C4C3] font-[600] to-[#CAC8C6] bg-clip-text text-transparent" >An Introduction</p>
               </div>
-              <div className="w-[100%] md:w-[50%] text-center h-[160px]">
+              <div className="w-[100%] md:w-[50%] text-center h-[100px] sm:h-[160px]">
 
               </div>
-              <div className="w-[100%] md:w-[50%] text-center h-[100%]">
+              <div className="w-[100%] md:w-[50%] text-center  h-[100%]">
                 <p className=" aboutTitle3">Welcome to the story behind the code. </p>
               </div>
             </div>
