@@ -196,9 +196,9 @@ useEffect(() => {
               
       </div>
       
-      <div className="text-white space-y-[30px] bg-[#000] px-[10vw] flex flex-col items-center justify-center  min-h-[100vh]">
+      <div className="text-white space-y-[30px] py-[25px] bg-[#000] px-[10vw] flex flex-col items-center justify-center  min-h-[100vh]">
               
-      <div className="md:w-[50%] pt-[25px] pb-[40px]  w-[100%] text-center leading-[85px] min-h-[100vh]">
+      <div className="md:w-[50%]   w-[100%] text-center leading-[85px] h-[100%]">
                 
                 <p className=" text-[53px] sm:text-[70px] md:text-[85px] aboutTitle1 bg-gradient-to-t from-[#433D3A] via-[#C6C4C3] font-[600] to-[#CAC8C6] bg-clip-text text-transparent" >Tech Stack</p>
               </div>
