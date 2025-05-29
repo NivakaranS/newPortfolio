@@ -198,9 +198,9 @@ useEffect(() => {
       
       <div className="text-white space-y-[30px] bg-[#000] px-[10vw] flex flex-col items-center justify-center  min-h-[100vh]">
               
-      <div className="md:w-[50%] w-[100%] text-center leading-[85px] h-[100%]">
+      <div className="md:w-[50%] py-[25px]  w-[100%] text-center leading-[85px] h-[100%]">
                 
-                <p className=" text-[50px] sm:text-[70px] md:text-[85px] aboutTitle1 bg-gradient-to-t from-[#433D3A] via-[#C6C4C3] font-[600] to-[#CAC8C6] bg-clip-text text-transparent" >Tech Stack</p>
+                <p className=" text-[53px] sm:text-[70px] md:text-[85px] aboutTitle1 bg-gradient-to-t from-[#433D3A] via-[#C6C4C3] font-[600] to-[#CAC8C6] bg-clip-text text-transparent" >Tech Stack</p>
               </div>
               <div className="md:w-[55%] aboutTitle2 mt-[15px] grid grid-cols-3 sm:grid-cols-6 gap-[5px] space-x-[15px] flex flex-row  justify-center text-center h-[100%]">
                 <div className="flex flex-col items-center justify-center">
