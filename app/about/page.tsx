@@ -147,7 +147,7 @@ useEffect(() => {
       <div className="flex items-center justify-center py-[50px]  min-h-[100vh]">
         <div className="w-[85%] h-[100%] flex flex-col md:flex-row items-center justify-center space-x-[20px] about2">
           <div className="w-[100%] md:w-[50%] h-[100%]  flex flex-col items-center justify-center">
-            <p className="text-[80px] text-center md:text-left aboutText4 bg-gradient-to-t from-[#433D3A] via-[#C6C4C3] font-[600] to-[#CAC8C6] bg-clip-text text-transparent" >About Me</p>
+            <p className=" text-[65px] sm:text-[80px] text-center md:text-left aboutText4 bg-gradient-to-t from-[#433D3A] via-[#C6C4C3] font-[600] to-[#CAC8C6] bg-clip-text text-transparent" >About Me</p>
           </div>
           <div className="w-[100%] md:w-[50%] aboutText5 h-[100%] flex flex-col space-y-[20px] items-center justify-center">
             <p>
@@ -180,13 +180,13 @@ useEffect(() => {
               <div className="aboutText4 w-[100%] md:w-[55%] text-center h-[100%]">
                 <p>To become a leading force in shaping the future of technology by blending curiosity with creativity. I envision a world where data and software empower people to solve real-world challenges, drive innovation, and unlock boundless possibilities for the generations to come.</p>
               </div>
-              <div className="w-[45%] aboutText5 text-center leading-[60px] md:leading-[70px] h-[100%]">
+              <div className=" w-[100%] sm:w-[45%] aboutText5 text-center leading-[60px] md:leading-[70px] h-[100%]">
                 <p className="text-[40px] md:text-[50px] bg-gradient-to-t from-[#433D3A] via-[#C6C4C3] font-[600] to-[#CAC8C6] bg-clip-text text-transparent" >The</p>
                 <p className=" text-[80px] md:text-[100px] bg-gradient-to-t from-[#433D3A] via-[#C6C4C3] font-[600] to-[#CAC8C6] bg-clip-text text-transparent" >Vision</p>
               </div>
       </div>
       <div className="text-white space-y-[30px]  px-[10vw] flex flex-col py-[50px] md:py-[0px] md:flex-row items-center justify-center  min-h-[50vh]">
-          <div className="w-[45%] aboutText4 text-center leading-[50px] md:leading-[70px] h-[100%]">
+          <div className="w-[100%] sm:w-[45%] aboutText4 text-center leading-[50px] md:leading-[70px] h-[100%]">
           <p className="text-[40px] md:text-[50px] bg-gradient-to-t from-[#433D3A] via-[#C6C4C3] font-[600] to-[#CAC8C6] bg-clip-text text-transparent" >The</p>
             <p className="text-[68px] md:text-[100px] bg-gradient-to-t from-[#433D3A] via-[#C6C4C3] font-[600] to-[#CAC8C6] bg-clip-text text-transparent" >Mission</p>
           </div>
