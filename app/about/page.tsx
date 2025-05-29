@@ -202,7 +202,7 @@ useEffect(() => {
                 
                 <p className=" text-[53px] sm:text-[70px] md:text-[85px] aboutTitle1 bg-gradient-to-t from-[#433D3A] via-[#C6C4C3] font-[600] to-[#CAC8C6] bg-clip-text text-transparent" >Tech Stack</p>
               </div>
-              <div className="md:w-[55%] aboutTitle2 mt-[15px] grid grid-cols-3 sm:grid-cols-6 gap-[5px] space-x-[15px] flex flex-row  justify-center text-center h-[100%]">
+              <div className="md:w-[55%] aboutTitle2 mt-[15px] grid grid-cols-3 sm:grid-cols-6 gap-[10px] sm:gap-[5px] space-x-[15px] flex flex-row  justify-center text-center h-[100%]">
                 <div className="flex flex-col items-center justify-center">
                   <Image src={DjangoImage} height={75} width={75} alt="" />
                 </div>
