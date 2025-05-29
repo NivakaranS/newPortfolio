@@ -159,7 +159,7 @@ const Portfolio = () => {
       }
 
     return(
-        <div className="flex overflow-x-hidden flex-col">
+        <div className="flex w-[100vw] overflow-x-hidden flex-col">
             <Navigation navSelection={navSelection} onContactClick={onContactClick}/>
             <ContactModel showContactModel={showContactModel} onContactClick={onContactClick}/>
             <div className="text-white bg-[url('./images/heroBackground6.png')] bg-contain bg-no-repeat bg-center space-y-[30px] bg-[#000] px-[10vw] flex flex-col items-center justify-center pt-[20vh] min-h-[100vh]">
