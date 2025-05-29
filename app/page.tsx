@@ -23,7 +23,7 @@ export default function Home() {
   }
 
   return (
-    <div className="flex flex-col">
+    <div className="flex overflow-x-hidden flex-col">
     
       <Navigation navSelection={navSelection} onContactClick={onContactClick}/>
       <ContactModel showContactModel={showContactModel} onContactClick={onContactClick}/>

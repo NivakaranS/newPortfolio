@@ -126,7 +126,7 @@ useEffect(() => {
 }, [])
 
   return (
-    <div>
+    <div className="flex overflow-x-hidden flex-col">
       <Navigation navSelection={navSelection} onContactClick={onContactClick} />
       <ContactModel
         showContactModel={showContactModel}
