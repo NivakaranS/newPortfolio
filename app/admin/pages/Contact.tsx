@@ -66,7 +66,7 @@ const Contact = () => {
   // Delete a contact message
   const deleteMessage = async (id: string) => {
     try {
-      await axios.delete(`https://new-portfolio-backend-roan.vercel.app/contacts/${id}`);
+      await axios.delete(`https://new-portfolio-backend-roan.vercel.app/contact/${id}`);
       setMessages(messages.filter(message => message._id !== id));
     } catch (err) {
       console.error("Failed to delete message:", err);
