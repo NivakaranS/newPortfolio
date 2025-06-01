@@ -52,7 +52,7 @@ const Rooms = () => {
         setIsLoading(true);
         
         // Fetch projects
-        const projectsResponse = await axios.get('https://new-portfolio-backend-roan.vercel.app/project/');
+        const projectsResponse = await axios.get('https://new-portfolio-backend-roan.vercel.app/project');
         setProjects(projectsResponse.data);
         console.log("Projects fetched:", projectsResponse);
         
