@@ -8,7 +8,7 @@ interface BlogPost {
   content: string;
   category: string;
   description: string;
-  blogImageLink: string;
+  imageLink: string;
 }
 
 interface BlogCategory {
@@ -55,7 +55,7 @@ const BlogsManagement = () => {
         content: "React is a popular JavaScript library for building user interfaces...",
         category: "React",
         description: "Learn the basics of React and how to create your first component",
-        blogImageLink: "https://via.placeholder.com/300x200?text=React+Post"
+        imageLink: "https://via.placeholder.com/300x200?text=React+Post"
       },
       {
         id: "2",
@@ -64,7 +64,7 @@ const BlogsManagement = () => {
         content: "TypeScript offers powerful features that can help you write more maintainable code...",
         category: "TypeScript",
         description: "Explore advanced TypeScript patterns and techniques",
-        blogImageLink: "https://via.placeholder.com/300x200?text=TypeScript+Post"
+        imageLink: "https://via.placeholder.com/300x200?text=TypeScript+Post"
       }
     ];
 
@@ -79,23 +79,9 @@ const BlogsManagement = () => {
     setBlogCategories(mockCategories);
   }, []);
 
-  // Handle blog image upload
 
 
-  // Handle category image upload
-  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      const file = e.target.files[0];
-      setNewCategoryImage(file);
-
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setCategoryPreview(reader.result as string);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
+  
   // Handle category creation
   const handleAddCategory = () => {
     if (!newCategoryTitle.trim()) return;
@@ -131,7 +117,7 @@ const BlogsManagement = () => {
         content: blogContent,
         category: blogCategory,
         description,
-        blogImageLink: blogImageLink
+        imageLink: blogImageLink
       };
 
       if (editingPostId) {
@@ -174,7 +160,7 @@ const BlogsManagement = () => {
     setBlogContent(post.content);
     setBlogCategory(post.category);
     setDescription(post.description);
-    setBlogImageLink(post.blogImageLink);
+    setBlogImageLink(post.imageLink);
     setEditingPostId(post.id);
     setActiveTab("create");
     window.scrollTo(0, 0);
@@ -403,9 +389,9 @@ const BlogsManagement = () => {
                     <div key={post.id} className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
                       <div className="flex flex-col md:flex-row md:items-center md:justify-between">
                         <div className="flex items-start space-x-4">
-                          {post.blogImageLink && (
+                          {post.imageLink && (
                             <img 
-                              src={post.blogImageLink} 
+                              src={post.imageLink} 
                               alt={post.title} 
                               className="w-24 h-16 object-cover rounded-md"
                             />
@@ -465,31 +451,9 @@ const BlogsManagement = () => {
                         <div className="flex items-center justify-center w-full">
                           <label className="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100">
                             <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                              {categoryPreview ? (
-                                <img
-                                  src={categoryPreview}
-                                  alt="Preview"
-                                  className="h-24 object-contain"
-                                />
-                              ) : (
-                                <>
-                                  <svg className="w-8 h-8 mb-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
-                                  </svg>
-                                  <p className="mb-2 text-sm text-gray-500">
-                                    <span className="font-semibold">Click to upload</span> or drag and drop
-                                  </p>
-                                  <p className="text-xs text-gray-500">SVG, PNG, JPG (MAX. 5MB)</p>
-                                </>
-                              )}
+                             
                             </div>
-                            <input
-                              ref={fileInputRef}
-                              type="file"
-                              className="hidden"
-                              onChange={handleImageUpload}
-                              accept="image/*"
-                            />
+                          
                           </label>
                         </div>
                       </div>
