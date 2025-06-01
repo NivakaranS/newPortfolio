@@ -50,7 +50,7 @@ const Contact = () => {
   const fetchSubscribers = async () => {
     try {
       setLoadingSubscribers(true);
-      const response = await axios.get("/api/subscribers");
+      const response = await axios.get("https://new-portfolio-backend-roan.vercel.app/newsletter");
       setSubscribers(response.data);
       setSubscriberError("");
     } catch (err) {
@@ -75,7 +75,7 @@ const Contact = () => {
   // Delete a subscriber
   const deleteSubscriber = async (id: string) => {
     try {
-      await axios.delete(`/api/subscribers/${id}`);
+      await axios.delete(`https://new-portfolio-backend-roan.vercel.app/newsletter/${id}`);
       setSubscribers(subscribers.filter(subscriber => subscriber._id !== id));
     } catch (err) {
       console.error("Failed to delete subscriber:", err);
