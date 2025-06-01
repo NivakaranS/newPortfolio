@@ -5,10 +5,12 @@ interface Project {
   id: string;
   title: string;
   description: string;
-  programmingLanguages: string[];
+  technologies: string[];
   category: string;
-  githubLink?: string;
-  demoLink?: string;
+  githubUrl?: string;
+  demoUrl?: string;
+  imageUrl?: string;
+  status: 'completed' | 'in-progress' | 'planned';
 }
 
 interface ProjectCategory {
@@ -31,7 +33,9 @@ const MiniProjects = () => {
   const [projectSuccess, setProjectSuccess] = useState<boolean>(false);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [editingProjectId, setEditingProjectId] = useState<string | null>(null);
+  const [projectStatus, setProjectStatus] = useState<'completed' | 'in-progress' | 'planned'>('completed');
 
+  // Category states
   const [projectCategories, setProjectCategories] = useState<ProjectCategory[]>([]);
   const [newCategoryTitle, setNewCategoryTitle] = useState<string>("");
   const [newCategoryIcon, setNewCategoryIcon] = useState<string>("");
@@ -42,7 +46,55 @@ const MiniProjects = () => {
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
+  // Fetch initial data (simulated)
+  useEffect(() => {
+    // Simulate fetching projects
+    const mockProjects: Project[] = [
+      {
+        id: "1",
+        title: "Task Management App",
+        description: "A React application for managing daily tasks with drag-and-drop functionality",
+        technologies: ["React", "TypeScript", "TailwindCSS"],
+        category: "Web Application",
+        githubUrl: "https://github.com/example/task-manager",
+        demoUrl: "https://task-manager-demo.example.com",
+        imageUrl: "https://via.placeholder.com/300x200?text=Task+App",
+        status: "completed"
+      },
+      {
+        id: "2",
+        title: "Weather Dashboard",
+        description: "Real-time weather information dashboard using OpenWeather API",
+        technologies: ["JavaScript", "API Integration", "CSS"],
+        category: "Web Application",
+        githubUrl: "https://github.com/example/weather-dashboard",
+        demoUrl: "https://weather-demo.example.com",
+        imageUrl: "https://via.placeholder.com/300x200?text=Weather+App",
+        status: "completed"
+      },
+      {
+        id: "3",
+        title: "AI Image Generator",
+        description: "Generating images using Stable Diffusion API",
+        technologies: ["Python", "AI", "Flask"],
+        category: "AI/ML",
+        githubUrl: "https://github.com/example/ai-image-gen",
+        status: "in-progress"
+      }
+    ];
 
+    // Simulate fetching categories
+    const mockCategories: ProjectCategory[] = [
+      { id: 1, title: "Web Application", icon: "🌐" },
+      { id: 2, title: "Mobile App", icon: "📱" },
+      { id: 3, title: "AI/ML", icon: "🤖" },
+      { id: 4, title: "Data Visualization", icon: "📊" },
+      { id: 5, title: "Game Development", icon: "🎮" }
+    ];
+
+    setProjects(mockProjects);
+    setProjectCategories(mockCategories);
+  }, []);
 
   // Handle project image upload
   const handleProjectImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -90,10 +142,12 @@ const MiniProjects = () => {
         id: editingProjectId || Date.now().toString(),
         title: projectTitle,
         description: projectDescription,
-        programmingLanguages: techArray,
+        technologies: techArray,
         category: projectCategory,
-        githubLink: githubUrl || undefined,
-        demoLink: demoUrl || undefined,
+        githubUrl: githubUrl || undefined,
+        demoUrl: demoUrl || undefined,
+        imageUrl: projectImagePreview || "https://via.placeholder.com/300x200?text=Project+Image",
+        status: projectStatus
       };
 
       if (editingProjectId) {
@@ -128,6 +182,7 @@ const MiniProjects = () => {
     setProjectImage(null);
     setProjectImagePreview(null);
     setEditingProjectId(null);
+    setProjectStatus("completed");
     if (fileInputRef.current) fileInputRef.current.value = "";
   };
 
@@ -135,11 +190,13 @@ const MiniProjects = () => {
   const handleEditProject = (project: Project) => {
     setProjectTitle(project.title);
     setProjectDescription(project.description);
-    setTechnologies(project.programmingLanguages.join(', '));
+    setTechnologies(project.technologies.join(', '));
     setProjectCategory(project.category);
-    setGithubUrl(project.githubLink || "");
-    setDemoUrl(project.demoLink || "");
+    setGithubUrl(project.githubUrl || "");
+    setDemoUrl(project.demoUrl || "");
+    if (project.imageUrl) setProjectImagePreview(project.imageUrl);
     setEditingProjectId(project.id);
+    setProjectStatus(project.status);
     setActiveTab("create");
     window.scrollTo(0, 0);
   };
@@ -170,7 +227,15 @@ const MiniProjects = () => {
     );
   };
 
-
+  // Get status color
+  const getStatusColor = (status: Project['status']) => {
+    switch (status) {
+      case 'completed': return 'bg-green-100 text-green-800';
+      case 'in-progress': return 'bg-yellow-100 text-yellow-800';
+      case 'planned': return 'bg-blue-100 text-blue-800';
+      default: return 'bg-gray-100 text-gray-800';
+    }
+  };
 
   return (
     <div className="w-full text-black bg-gray-100 p-4">
@@ -211,7 +276,43 @@ const MiniProjects = () => {
                 </h2>
 
                 <div className="space-y-4">
-                 
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Project Image</label>
+                    <div className="mt-1 flex items-center">
+                      <div className="w-full">
+                        <div className="flex items-center justify-center w-full">
+                          <label className="flex flex-col items-center justify-center w-full h-48 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100">
+                            <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                              {projectImagePreview ? (
+                                <img
+                                  src={projectImagePreview}
+                                  alt="Preview"
+                                  className="h-40 object-contain"
+                                />
+                              ) : (
+                                <>
+                                  <svg className="w-8 h-8 mb-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+                                  </svg>
+                                  <p className="mb-2 text-sm text-gray-500">
+                                    <span className="font-semibold">Click to upload</span> or drag and drop
+                                  </p>
+                                  <p className="text-xs text-gray-500">SVG, PNG, JPG (MAX. 5MB)</p>
+                                </>
+                              )}
+                            </div>
+                            <input
+                              ref={fileInputRef}
+                              type="file"
+                              className="hidden"
+                              onChange={handleProjectImageUpload}
+                              accept="image/*"
+                            />
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">Title *</label>
@@ -240,7 +341,18 @@ const MiniProjects = () => {
                         ))}
                       </select>
                     </div>
-                    
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">Status *</label>
+                      <select
+                        value={projectStatus}
+                        onChange={(e) => setProjectStatus(e.target.value as Project['status'])}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      >
+                        <option value="completed">Completed</option>
+                        <option value="in-progress">In Progress</option>
+                        <option value="planned">Planned</option>
+                      </select>
+                    </div>
                   </div>
 
                   <div>
@@ -325,7 +437,9 @@ const MiniProjects = () => {
                       )}
                       <div className="flex justify-between items-start mb-2">
                         <h3 className="text-lg font-medium">{projectTitle}</h3>
-                       
+                        <span className={`text-xs px-2 py-1 rounded ${getStatusColor(projectStatus)}`}>
+                          {projectStatus.replace('-', ' ')}
+                        </span>
                       </div>
                       
                       {projectCategory && (
@@ -375,11 +489,19 @@ const MiniProjects = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                   {projects.map((project) => (
                     <div key={project.id} className="border border-gray-200 rounded-lg overflow-hidden hover:shadow-md transition-shadow">
-                      
+                      {project.imageUrl && (
+                        <img 
+                          src={project.imageUrl} 
+                          alt={project.title} 
+                          className="w-full h-48 object-cover"
+                        />
+                      )}
                       <div className="p-4">
                         <div className="flex justify-between items-start">
                           <h3 className="font-medium">{project.title}</h3>
-                        
+                          <span className={`text-xs px-2 py-0.5 rounded ${getStatusColor(project.status)}`}>
+                            {project.status.replace('-', ' ')}
+                          </span>
                         </div>
                         
                         <span className="inline-block bg-gray-100 text-gray-800 text-xs px-2 py-0.5 rounded mt-1 mb-2">
@@ -389,7 +511,7 @@ const MiniProjects = () => {
                         <p className="text-sm text-gray-600 mb-3 line-clamp-2">{project.description}</p>
                         
                         <div className="flex flex-wrap gap-1 mb-3">
-                          {project.programmingLanguages.map(tech => (
+                          {project.technologies.map(tech => (
                             <span key={tech} className="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-0.5 rounded">
                               {tech}
                             </span>
@@ -398,13 +520,13 @@ const MiniProjects = () => {
                         
                         <div className="flex justify-between items-center">
                           <div className="flex space-x-2">
-                            {project.githubLink && (
-                              <a href={project.githubLink} target="_blank" rel="noopener noreferrer" className="text-xs text-blue-600 hover:underline">
+                            {project.githubUrl && (
+                              <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="text-xs text-blue-600 hover:underline">
                                 GitHub
                               </a>
                             )}
-                            {project.demoLink && (
-                              <a href={project.demoLink} target="_blank" rel="noopener noreferrer" className="text-xs text-blue-600 hover:underline">
+                            {project.demoUrl && (
+                              <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" className="text-xs text-blue-600 hover:underline">
                                 Demo
                               </a>
                             )}
