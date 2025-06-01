@@ -470,7 +470,7 @@ const Rooms = () => {
               )}
             </div>
           ) : (
-            <div className="space-y-6 min-h-[70.5vh]">
+            <div className="space-y-6 min-h-[71.5vh]">
               <h2 className="text-xl font-semibold">Manage Categories</h2>
 
               {/* Add Category Form */}
