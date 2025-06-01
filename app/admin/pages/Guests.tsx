@@ -8,7 +8,7 @@ interface BlogPost {
   content: string;
   category: string;
   description: string;
-  imageUrl?: string;
+  blogImageLink: string;
 }
 
 interface BlogCategory {
@@ -25,8 +25,8 @@ const BlogsManagement = () => {
   const [blogContent, setBlogContent] = useState<string>("");
   const [blogCategory, setBlogCategory] = useState<string>("");
   const [description, setDescription] = useState<string>("");
-  const [blogImage, setBlogImage] = useState<File | null>(null);
-  const [blogImagePreview, setBlogImagePreview] = useState<string | null>(null);
+  const [blogImageLink, setBlogImageLink] = useState<string>("");
+  
   const [blogSuccess, setBlogSuccess] = useState<boolean>(false);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [editingPostId, setEditingPostId] = useState<string | null>(null);
@@ -55,7 +55,7 @@ const BlogsManagement = () => {
         content: "React is a popular JavaScript library for building user interfaces...",
         category: "React",
         description: "Learn the basics of React and how to create your first component",
-        imageUrl: "https://via.placeholder.com/300x200?text=React+Post"
+        blogImageLink: "https://via.placeholder.com/300x200?text=React+Post"
       },
       {
         id: "2",
@@ -64,7 +64,7 @@ const BlogsManagement = () => {
         content: "TypeScript offers powerful features that can help you write more maintainable code...",
         category: "TypeScript",
         description: "Explore advanced TypeScript patterns and techniques",
-        imageUrl: "https://via.placeholder.com/300x200?text=TypeScript+Post"
+        blogImageLink: "https://via.placeholder.com/300x200?text=TypeScript+Post"
       }
     ];
 
@@ -80,18 +80,7 @@ const BlogsManagement = () => {
   }, []);
 
   // Handle blog image upload
-  const handleBlogImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      const file = e.target.files[0];
-      setBlogImage(file);
 
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setBlogImagePreview(reader.result as string);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
 
   // Handle category image upload
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -142,7 +131,7 @@ const BlogsManagement = () => {
         content: blogContent,
         category: blogCategory,
         description,
-        imageUrl: blogImagePreview || "https://via.placeholder.com/300x200?text=Blog+Image"
+        blogImageLink: blogImageLink
       };
 
       if (editingPostId) {
@@ -173,8 +162,7 @@ const BlogsManagement = () => {
     setBlogContent("");
     setBlogCategory("");
     setDescription("");
-    setBlogImage(null);
-    setBlogImagePreview(null);
+    setBlogImageLink("");
     setEditingPostId(null);
     if (blogFileInputRef.current) blogFileInputRef.current.value = "";
   };
@@ -186,7 +174,7 @@ const BlogsManagement = () => {
     setBlogContent(post.content);
     setBlogCategory(post.category);
     setDescription(post.description);
-    if (post.imageUrl) setBlogImagePreview(post.imageUrl);
+    setBlogImageLink(post.blogImageLink);
     setEditingPostId(post.id);
     setActiveTab("create");
     window.scrollTo(0, 0);
@@ -260,42 +248,16 @@ const BlogsManagement = () => {
 
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Blog Image</label>
-                    <div className="mt-1 flex items-center">
-                      <div className="w-full">
-                        <div className="flex items-center justify-center w-full">
-                          <label className="flex flex-col items-center justify-center w-full h-48 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100">
-                            <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                              {blogImagePreview ? (
-                                <img
-                                  src={blogImagePreview}
-                                  alt="Preview"
-                                  className="h-40 object-contain"
-                                />
-                              ) : (
-                                <>
-                                  <svg className="w-8 h-8 mb-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
-                                  </svg>
-                                  <p className="mb-2 text-sm text-gray-500">
-                                    <span className="font-semibold">Click to upload</span> or drag and drop
-                                  </p>
-                                  <p className="text-xs text-gray-500">SVG, PNG, JPG (MAX. 5MB)</p>
-                                </>
-                              )}
-                            </div>
-                            <input
-                              ref={blogFileInputRef}
-                              type="file"
-                              className="hidden"
-                              onChange={handleBlogImageUpload}
-                              accept="image/*"
-                            />
-                          </label>
-                        </div>
-                      </div>
-                    </div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Blog Image Link</label>
+                    <input
+                      type="text"
+                      value={blogImageLink}
+                      onChange={(e) => setBlogImageLink(e.target.value)}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      placeholder="Enter blog title"
+                    />
                   </div>
+                  
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">Title *</label>
@@ -402,9 +364,9 @@ const BlogsManagement = () => {
                 <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
                   {blogTitle ? (
                     <>
-                      {blogImagePreview && (
+                      {blogImageLink && (
                         <img 
-                          src={blogImagePreview} 
+                          src={blogImageLink} 
                           alt="Blog preview" 
                           className="w-full h-48 object-cover rounded-md mb-4"
                         />
@@ -441,9 +403,9 @@ const BlogsManagement = () => {
                     <div key={post.id} className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
                       <div className="flex flex-col md:flex-row md:items-center md:justify-between">
                         <div className="flex items-start space-x-4">
-                          {post.imageUrl && (
+                          {post.blogImageLink && (
                             <img 
-                              src={post.imageUrl} 
+                              src={post.blogImageLink} 
                               alt={post.title} 
                               className="w-24 h-16 object-cover rounded-md"
                             />
