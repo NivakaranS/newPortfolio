@@ -183,6 +183,7 @@ const Rooms = () => {
       
       // Hide success message after 3 seconds
       setTimeout(() => setSuccess(false), 3000);
+      setTimeout(() => setProjectCategories([...projectCategories, response.data]), 3000)
     } catch (error) {
       console.error("Error adding category:", error);
     }
