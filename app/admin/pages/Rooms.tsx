@@ -54,6 +54,7 @@ const Rooms = () => {
         // Fetch projects
         const projectsResponse = await axios.get('https://new-portfolio-backend-roan.vercel.app/project/');
         setProjects(projectsResponse.data);
+        console.log("Projects fetched:", projectsResponse.data);
         
         // Fetch categories
         const categoriesResponse = await axios.get('https://new-portfolio-backend-roan.vercel.app/projectCategory');
@@ -429,7 +430,7 @@ const Rooms = () => {
                 <p className="text-gray-500 italic">No projects yet. Create your first project.</p>
               ) : (
                 <div className="space-y-4">
-                  { projects.map((project) => (
+                  { projects && projects.map((project) => (
                     <div key={project._id} className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
                       <div className="flex flex-col md:flex-row md:items-center md:justify-between">
                         <div>
