@@ -12,6 +12,8 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 
 import ContactAdmin from "./pages/Contact";
+import CaseStudies from "./pages/CaseStudies";
+import MiniProjects from "./pages/MiniProjects";
 
 export default function Home() {
   const [navClick, setNavClick] = useState("Portfolio Management");
@@ -61,6 +63,10 @@ export default function Home() {
         return <Guests />;
       case "Contact":
         return <ContactAdmin/>
+      case "Case Studies":
+        return <CaseStudies/>;
+      case "Mini Projects":
+        return <MiniProjects/>;
       
       default:
         return <div>Home Content</div>;

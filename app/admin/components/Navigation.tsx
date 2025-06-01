@@ -24,18 +24,23 @@ const Navigation: React.FC<NavigationProps> = ({ handleNavClick, navClick }) => 
                                 <p>Portfolio Management</p>
                             </div>
                         </div>
-                        <div onClick={handleNavClick} className={`${navClick == 'Reservations' ? 'bg-gray-200' : 'hover:bg-gray-500'} text-gray-300 cursor-pointer py-[5px]`} >
-                            <div className={`${navClick == 'Blogs Management' ? 'border-l-4 ' : 'ml-[14px]' }   border-gray-600 ml-[10px] py-[5px] px-[25px]`}>
-                                <p>Blogs Management</p>
-                            </div>
-                        </div>
                         <div onClick={handleNavClick} className={`${navClick == 'Rooms' ? 'bg-gray-200' : 'hover:bg-gray-500'} text-gray-300 cursor-pointer py-[5px]`} >
                             <div className={`${navClick == 'Blogs Organization' ? 'border-l-4 ' : 'ml-[14px]' }   border-gray-600 ml-[10px] py-[5px] px-[25px]`}>
                                 <p>Blogs Organization </p>
                             </div>
                         </div>
+                        <div onClick={handleNavClick} className={`${navClick == 'CaseStudies' ? 'bg-gray-200' : 'hover:bg-gray-500'} text-gray-300 cursor-pointer py-[5px]`} >
+                            <div className={`${navClick == 'Case Studies' ? 'border-l-4 ' : 'ml-[14px]' }   border-gray-600 ml-[10px] py-[5px] px-[25px]`}>
+                                <p>Case Studies</p>
+                            </div>
+                        </div>
+                        <div onClick={handleNavClick} className={`${navClick == 'MiniProjects' ? 'bg-gray-200' : 'hover:bg-gray-500'} text-gray-300 cursor-pointer py-[5px]`} >
+                            <div className={`${navClick == 'Mini Projects' ? 'border-l-4 ' : 'ml-[14px]' }   border-gray-600 ml-[10px] py-[5px] px-[25px]`}>
+                                <p>Mini Projects</p>
+                            </div>
+                        </div>
 
-                        <div onClick={handleNavClick} className={`${navClick == 'Contact' ? 'bg-gray-200' : 'hover:bg-gray-500'} text-gray-300 cursor-pointer py-[5px]`} >
+                        <div onClick={handleNavClick} className={`${navClick == 'Contactt' ? 'bg-gray-200' : 'hover:bg-gray-500'} text-gray-300 cursor-pointer py-[5px]`} >
                             <div className={`${navClick == 'Contact' ? 'border-l-4 ' : 'ml-[14px]' }   border-gray-600 ml-[10px] py-[5px] px-[25px]`}>
                                 <p>Contact</p>
                             </div>
