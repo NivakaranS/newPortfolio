@@ -35,7 +35,7 @@ const Contact = () => {
   const fetchContactMessages = async () => {
     try {
       setLoadingMessages(true);
-      const response = await axios.get("/api/contacts");
+      const response = await axios.get("https://new-portfolio-backend-roan.vercel.app/contact");
       setMessages(response.data);
       setMessageError("");
     } catch (err) {
@@ -152,7 +152,7 @@ const Contact = () => {
           </div>
 
           {activeTab === "messages" ? (
-            <div className="min-h-[61vh]">
+            <div className="min-h-[63vh]">
               <h2 className="text-xl font-semibold mb-4">Contact Messages</h2>
               
               {loadingMessages ? (
@@ -216,7 +216,7 @@ const Contact = () => {
               )}
             </div>
           ) : (
-            <div className="min-h-[61vh]">
+            <div className="min-h-[63vh]">
               <h2 className="text-xl font-semibold mb-4">Newsletter Subscribers</h2>
               
               {loadingSubscribers ? (
