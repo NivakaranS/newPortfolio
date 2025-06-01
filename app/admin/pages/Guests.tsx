@@ -100,46 +100,58 @@ const BlogsManagement = () => {
   };
 
   // Handle blog submission
-  const handleSubmitBlog = () => {
-    if (!blogTitle || !blogContent || !blogCategory) {
-      alert("Please fill all required fields");
-      return;
-    }
+  const handleSubmitBlog = async () => {
+  if (!blogTitle || !blogImageLink || !blogContent || !blogCategory) {
+    alert("Please fill all required fields");
+    return;
+  }
 
-    setIsSubmitting(true);
+  setIsSubmitting(true);
 
-    // Simulate API call
-    setTimeout(() => {
-      const newPost: BlogPost = {
-        id: editingPostId || Date.now().toString(),
+  try {
+    const response = await axios.post(
+      "https://new-portfolio-backend-roan.vercel.app/blog",
+      {
         title: blogTitle,
         subtitle: blogSubtitle,
         content: blogContent,
         category: blogCategory,
-        description,
-        imageLink: blogImageLink
-      };
-
-      if (editingPostId) {
-        // Update existing post
-        setBlogPosts(blogPosts.map(post => 
-          post.id === editingPostId ? newPost : post
-        ));
-      } else {
-        // Add new post
-        setBlogPosts([...blogPosts, newPost]);
+        description: description,
+        imageLink: blogImageLink,
+      },
+      {
+        withCredentials: true,
       }
+    );
 
-      setBlogSuccess(true);
-      setIsSubmitting(false);
+    const newPost: BlogPost = {
+      id: editingPostId || response.data.id || Date.now().toString(),
+      title: blogTitle,
+      subtitle: blogSubtitle,
+      content: blogContent,
+      category: blogCategory,
+      description: description,
+      imageLink: blogImageLink,
+    };
 
-      // Reset form
-      resetBlogForm();
+    if (editingPostId) {
+      setBlogPosts(blogPosts.map(post => post.id === editingPostId ? newPost : post));
+    } else {
+      setBlogPosts([...blogPosts, newPost]);
+    }
 
-      // Hide success message after 3 seconds
-      setTimeout(() => setBlogSuccess(false), 3000);
-    }, 1500);
-  };
+    setBlogSuccess(true);
+    resetBlogForm();
+
+    setTimeout(() => setBlogSuccess(false), 3000);
+
+  } catch (error) {
+    console.error("Error submitting blog post:", error);
+  } finally {
+    setIsSubmitting(false);
+  }
+};
+
 
   // Reset blog form
   const resetBlogForm = () => {
