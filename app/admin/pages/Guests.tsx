@@ -47,37 +47,24 @@ const BlogsManagement = () => {
 
   // Fetch initial data (simulated)
   useEffect(() => {
-    // Simulate fetching blog posts
-    const mockPosts: BlogPost[] = [
-      {
-        _id: "1",
-        title: "Getting Started with React",
-        subtitle: "A beginner's guide to React development",
-        content: "React is a popular JavaScript library for building user interfaces...",
-        category: "React",
-        description: "Learn the basics of React and how to create your first component",
-        imageLink: "https://via.placeholder.com/300x200?text=React+Post"
-      },
-      {
-        _id: "2",
-        title: "Advanced TypeScript Patterns",
-        subtitle: "Take your TypeScript skills to the next level",
-        content: "TypeScript offers powerful features that can help you write more maintainable code...",
-        category: "TypeScript",
-        description: "Explore advanced TypeScript patterns and techniques",
-        imageLink: "https://via.placeholder.com/300x200?text=TypeScript+Post"
+    // Fetch blog posts and categories asynchronously
+    const fetchData = async () => {
+      try {
+        const blogsResponse = await axios.get("https://new-portfolio-backend-roan.vercel.app/blog", {
+          withCredentials: true,
+        });
+        setBlogPosts(blogsResponse.data);
+
+        const categoriesResponse = await axios.get("https://new-portfolio-backend-roan.vercel.app/blogCategory", {
+          withCredentials: true,
+        });
+        setBlogCategories(categoriesResponse.data);
+      } catch (error) {
+        console.error("Error fetching blog posts:", error);
       }
-    ];
+    };
 
-    // Simulate fetching categories
-    const mockCategories: BlogCategory[] = [
-      { _id: 1, name: "React" },
-      { _id: 2, name: "TypeScript" },
-      { _id: 3, name: "JavaScript" }
-    ];
-
-    setBlogPosts(mockPosts);
-    setBlogCategories(mockCategories);
+    fetchData();
   }, []);
 
 
