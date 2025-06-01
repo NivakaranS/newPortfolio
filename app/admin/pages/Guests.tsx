@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 
 interface BlogPost {
-  id: string;
+  _id: string;
   title: string;
   subtitle: string;
   content: string;
@@ -12,9 +12,8 @@ interface BlogPost {
 }
 
 interface BlogCategory {
-  id: number;
-  title: string;
-  image?: string;
+  _id: number;
+  name: string;
 }
 
 const BlogsManagement = () => {
@@ -44,12 +43,14 @@ const BlogsManagement = () => {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const blogFileInputRef = useRef<HTMLInputElement>(null);
 
+  const [deleteCategoryId, setDeleteCategoryId] = useState<string | null>(null);
+
   // Fetch initial data (simulated)
   useEffect(() => {
     // Simulate fetching blog posts
     const mockPosts: BlogPost[] = [
       {
-        id: "1",
+        _id: "1",
         title: "Getting Started with React",
         subtitle: "A beginner's guide to React development",
         content: "React is a popular JavaScript library for building user interfaces...",
@@ -58,7 +59,7 @@ const BlogsManagement = () => {
         imageLink: "https://via.placeholder.com/300x200?text=React+Post"
       },
       {
-        id: "2",
+        _id: "2",
         title: "Advanced TypeScript Patterns",
         subtitle: "Take your TypeScript skills to the next level",
         content: "TypeScript offers powerful features that can help you write more maintainable code...",
@@ -70,9 +71,9 @@ const BlogsManagement = () => {
 
     // Simulate fetching categories
     const mockCategories: BlogCategory[] = [
-      { id: 1, title: "React", image: "https://via.placeholder.com/100x100?text=React" },
-      { id: 2, title: "TypeScript", image: "https://via.placeholder.com/100x100?text=TypeScript" },
-      { id: 3, title: "JavaScript", image: "https://via.placeholder.com/100x100?text=JavaScript" }
+      { _id: 1, name: "React" },
+      { _id: 2, name: "TypeScript" },
+      { _id: 3, name: "JavaScript" }
     ];
 
     setBlogPosts(mockPosts);
@@ -83,25 +84,44 @@ const BlogsManagement = () => {
 
   
   // Handle category creation
-  const handleAddCategory = () => {
-    if (!newCategoryTitle.trim()) return;
+  const handleAddCategory = async () => {
+  if (!newCategoryTitle.trim()) {
+    alert("Please enter a category name");
+    return;
+  }
 
+  try {
+    // Clear previous state
+    setNewCategoryTitle("");
+    
+    // Send request to server
+    const response = await axios.post(
+      "https://new-portfolio-backend-roan.vercel.app/blogCategory",
+      {
+        name: newCategoryTitle,
+        
+      },
+      { withCredentials: true }  // Added credentials if needed
+    );
+
+    // Use server response for the new category
     const newCategory: BlogCategory = {
-      id: Date.now(),
-      title: newCategoryTitle,
-      image: categoryPreview || undefined
+      _id: response.data._id || Date.now().toString(),  // Prefer server ID
+      name: newCategoryTitle
     };
 
-    setBlogCategories([...blogCategories, newCategory]);
-    setNewCategoryTitle("");
-    setNewCategoryImage(null);
-    setCategoryPreview(null);
-    if (fileInputRef.current) fileInputRef.current.value = "";
-  };
+    // Update state with the new category
+    setBlogCategories(prev => [...prev, newCategory]);
+
+  } catch (error) {
+    console.error("Error adding category:", error);
+    alert("Failed to add category. Please try again.");
+    // Optionally restore form values if you want to let user retry
+  }
+};
 
   // Handle blog submission
   const handleSubmitBlog = async () => {
-  // Validate required fields
   if (!blogTitle || !blogImageLink || !blogContent || !blogCategory) {
     alert("Please fill all required fields");
     return;
@@ -110,7 +130,23 @@ const BlogsManagement = () => {
   setIsSubmitting(true);
 
   try {
-    const payload = {
+    const response = await axios.post(
+      "https://new-portfolio-backend-roan.vercel.app/blog",
+      {
+        title: blogTitle,
+        subtitle: blogSubtitle,
+        content: blogContent,
+        category: blogCategory,
+        description: description,
+        imageLink: blogImageLink,
+      },
+      {
+        withCredentials: true,
+      }
+    );
+
+    const newPost: BlogPost = {
+      _id: editingPostId || response.data.id || Date.now().toString(),
       title: blogTitle,
       subtitle: blogSubtitle,
       content: blogContent,
@@ -119,38 +155,19 @@ const BlogsManagement = () => {
       imageLink: blogImageLink,
     };
 
-    const response = await axios.post(
-      "https://new-portfolio-backend-roan.vercel.app/blog",
-      payload,
-      { withCredentials: true }
-    );
-
-    // Validate response has expected data
-    if (!response.data?.id && !editingPostId) {
-      throw new Error("Invalid response from server");
+    if (editingPostId) {
+      setBlogPosts(blogPosts.map(post => post._id === editingPostId ? newPost : post));
+    } else {
+      setBlogPosts([...blogPosts, newPost]);
     }
 
-    const newPost: BlogPost = {
-      id: editingPostId || response.data.id,
-      ...payload,
-    };
-
-    // Update state
-    setBlogPosts(prevPosts => 
-      editingPostId 
-        ? prevPosts.map(post => post.id === editingPostId ? newPost : post)
-        : [...prevPosts, newPost]
-    );
-
-    // Show success and reset
     setBlogSuccess(true);
     resetBlogForm();
+
     setTimeout(() => setBlogSuccess(false), 3000);
 
   } catch (error) {
     console.error("Error submitting blog post:", error);
-    // Consider adding user-facing error feedback here
-    alert("Failed to submit blog post. Please try again.");
   } finally {
     setIsSubmitting(false);
   }
@@ -177,34 +194,65 @@ const BlogsManagement = () => {
     setBlogCategory(post.category);
     setDescription(post.description);
     setBlogImageLink(post.imageLink);
-    setEditingPostId(post.id);
+    setEditingPostId(post._id);
     setActiveTab("create");
     window.scrollTo(0, 0);
   };
 
   // Delete blog post
   const handleDeleteBlog = (id: string) => {
-    setBlogPosts(blogPosts.filter(post => post.id !== id));
+    try {
+      axios.delete(`https://new-portfolio-backend-roan.vercel.app/blog/${id}`, {
+        withCredentials: true,
+      });
+      setBlogPosts(blogPosts.filter(post => post._id !== id));
+    
+    } catch (error) {
+      console.error("Error deleting blog post:", error);
+      alert("Failed to delete blog post. Please try again.");
+    }
   };
 
   // Handle category deletion
-  const handleDeleteCategories = () => {
-    if (selectedCategories.length === 0) return;
+  const handleDeleteCategories = async () => {
+  if (selectedCategories.length === 0) return;
 
+  try {
+    // Wait for ALL deletions to complete
+    await Promise.all(
+      selectedCategories.map(async (categoryName) => {
+        const categoryObj = blogCategories.find((cat) => cat.name === categoryName);
+        if (categoryObj) {
+          await axios.delete(
+            `https://new-portfolio-backend-roan.vercel.app/blogCategory/${categoryObj._id}`,
+            { withCredentials: true }
+          );
+        }
+      })
+    );
+
+    // Only update UI after successful deletions
     const updatedCategories = blogCategories.filter(
-      category => !selectedCategories.includes(category.title)
+      (category) => !selectedCategories.includes(category.name)
     );
 
     setBlogCategories(updatedCategories);
     setSelectedCategories([]);
-  };
+
+  } catch (error) {
+    console.error("Error deleting categories:", error);
+    alert("Failed to delete categories. Please try again.");
+  }
+};
 
   // Toggle category selection
-  const toggleCategorySelection = (title: string) => {
+  const toggleCategorySelection = (category: any) => {
+    setDeleteCategoryId(category._id);
+    
     setSelectedCategories(prev =>
-      prev.includes(title)
-        ? prev.filter(t => t !== title)
-        : [...prev, title]
+      prev.includes(category.name)
+        ? prev.filter(t => t !== category.name)
+        : [...prev, category.name]
     );
   };
 
@@ -292,8 +340,8 @@ const BlogsManagement = () => {
                     >
                       <option value="">Select a category</option>
                       {blogCategories.map((category) => (
-                        <option key={category.id} value={category.title}>
-                          {category.title}
+                        <option key={category._id} value={category.name}>
+                          {category.name}
                         </option>
                       ))}
                     </select>
@@ -402,7 +450,7 @@ const BlogsManagement = () => {
               ) : (
                 <div className="space-y-4">
                   {blogPosts.map((post) => (
-                    <div key={post.id} className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                    <div key={post._id} className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
                       <div className="flex flex-col md:flex-row md:items-center md:justify-between">
                         <div className="flex items-start space-x-4">
                           {post.imageLink && (
@@ -428,7 +476,7 @@ const BlogsManagement = () => {
                             Edit
                           </button>
                           <button
-                            onClick={() => handleDeleteBlog(post.id)}
+                            onClick={() => handleDeleteBlog(post._id)}
                             className="px-3 py-1 bg-red-500 text-white text-sm rounded hover:bg-red-600 focus:outline-none"
                           >
                             Delete
@@ -465,12 +513,7 @@ const BlogsManagement = () => {
                     <div className="mt-1 flex items-center">
                       <div className="w-full">
                         <div className="flex items-center justify-center w-full">
-                          <label className="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100">
-                            <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                             
-                            </div>
                           
-                          </label>
                         </div>
                       </div>
                     </div>
@@ -508,18 +551,12 @@ const BlogsManagement = () => {
                   <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
                     {blogCategories.map((category) => (
                       <div
-                        key={category.id}
-                        onClick={() => toggleCategorySelection(category.title)}
-                        className={`p-3 rounded-lg border cursor-pointer flex flex-col items-center ${selectedCategories.includes(category.title) ? 'ring-2 ring-blue-500 bg-blue-50' : 'border-gray-200 bg-white'}`}
+                        key={category._id}
+                        onClick={() => toggleCategorySelection(category)}
+                        className={`p-3 rounded-lg border cursor-pointer flex flex-col items-center ${selectedCategories.includes(category.name) ? 'ring-2 ring-blue-500 bg-blue-50' : 'border-gray-200 bg-white'}`}
                       >
-                        {category.image && (
-                          <img
-                            src={category.image}
-                            alt={category.title}
-                            className="w-16 h-16 object-cover rounded-md mb-2"
-                          />
-                        )}
-                        <span className="text-sm font-medium text-center">{category.title}</span>
+                      
+                        <span className="text-sm font-medium text-center">{category.name}</span>
                       </div>
                     ))}
                   </div>
