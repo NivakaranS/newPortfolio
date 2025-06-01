@@ -101,6 +101,7 @@ const BlogsManagement = () => {
 
   // Handle blog submission
   const handleSubmitBlog = async () => {
+  // Validate required fields
   if (!blogTitle || !blogImageLink || !blogContent || !blogCategory) {
     alert("Please fill all required fields");
     return;
@@ -109,23 +110,7 @@ const BlogsManagement = () => {
   setIsSubmitting(true);
 
   try {
-    const response = await axios.post(
-      "https://new-portfolio-backend-roan.vercel.app/blog",
-      {
-        title: blogTitle,
-        subtitle: blogSubtitle,
-        content: blogContent,
-        category: blogCategory,
-        description: description,
-        imageLink: blogImageLink,
-      },
-      {
-        withCredentials: true,
-      }
-    );
-
-    const newPost: BlogPost = {
-      id: editingPostId || response.data.id || Date.now().toString(),
+    const payload = {
       title: blogTitle,
       subtitle: blogSubtitle,
       content: blogContent,
@@ -134,19 +119,38 @@ const BlogsManagement = () => {
       imageLink: blogImageLink,
     };
 
-    if (editingPostId) {
-      setBlogPosts(blogPosts.map(post => post.id === editingPostId ? newPost : post));
-    } else {
-      setBlogPosts([...blogPosts, newPost]);
+    const response = await axios.post(
+      "https://new-portfolio-backend-roan.vercel.app/blog",
+      payload,
+      { withCredentials: true }
+    );
+
+    // Validate response has expected data
+    if (!response.data?.id && !editingPostId) {
+      throw new Error("Invalid response from server");
     }
 
+    const newPost: BlogPost = {
+      id: editingPostId || response.data.id,
+      ...payload,
+    };
+
+    // Update state
+    setBlogPosts(prevPosts => 
+      editingPostId 
+        ? prevPosts.map(post => post.id === editingPostId ? newPost : post)
+        : [...prevPosts, newPost]
+    );
+
+    // Show success and reset
     setBlogSuccess(true);
     resetBlogForm();
-
     setTimeout(() => setBlogSuccess(false), 3000);
 
   } catch (error) {
     console.error("Error submitting blog post:", error);
+    // Consider adding user-facing error feedback here
+    alert("Failed to submit blog post. Please try again.");
   } finally {
     setIsSubmitting(false);
   }
