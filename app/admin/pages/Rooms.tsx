@@ -420,7 +420,7 @@ const Rooms = () => {
               </div>
             </div>
           ) : activeTab === "manage" ? (
-            <div className="space-y-6 min-h-[71vh]">
+            <div className="space-y-6 min-h-[72vh]">
               <h2 className="text-xl font-semibold">Manage Projects</h2>
               
               {projects.length === 0 || !projects.map ? (
@@ -470,7 +470,7 @@ const Rooms = () => {
               )}
             </div>
           ) : (
-            <div className="space-y-6 min-h-[71.5vh]">
+            <div className="space-y-6 min-h-[72vh]">
               <h2 className="text-xl font-semibold">Manage Categories</h2>
 
               {/* Add Category Form */}
