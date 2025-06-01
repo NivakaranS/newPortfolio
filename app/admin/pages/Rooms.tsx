@@ -173,7 +173,7 @@ const Rooms = () => {
     if (!newCategoryName.trim()) return;
 
     try {
-      const response = await axios.post('https://new-portfolio-backend-roan.vercel.app/projectCategory', {
+      const response = await axios.post('https://new-portfolio-backend-roan.vercel.app/projectCategory/', {
         name: newCategoryName
       });
       
