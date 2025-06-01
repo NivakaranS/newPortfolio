@@ -52,7 +52,7 @@ const Rooms = () => {
         setIsLoading(true);
         
         // Fetch projects
-        const projectsResponse = await axios.get('https://new-portfolio-backend-roan.vercel.app/project');
+        const projectsResponse = await axios.get('https://new-portfolio-backend-roan.vercel.app/project/');
         setProjects(projectsResponse.data);
         
         // Fetch categories
@@ -425,7 +425,7 @@ const Rooms = () => {
             <div className="space-y-6 min-h-[72vh]">
               <h2 className="text-xl font-semibold">Manage Projects</h2>
               
-              {projects.length === 0 || !projects.map ? (
+              {projects.length === 0  ? (
                 <p className="text-gray-500 italic">No projects yet. Create your first project.</p>
               ) : (
                 <div className="space-y-4">
