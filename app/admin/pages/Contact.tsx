@@ -37,6 +37,7 @@ const Contact = () => {
       setLoadingMessages(true);
       const response = await axios.get("https://new-portfolio-backend-roan.vercel.app/contact");
       setMessages(response.data);
+        console.log("Fetched contact messages:", response.data);
       setMessageError("");
     } catch (err) {
       console.error("Failed to fetch contact messages:", err);
@@ -52,6 +53,7 @@ const Contact = () => {
       setLoadingSubscribers(true);
       const response = await axios.get("https://new-portfolio-backend-roan.vercel.app/newsletter");
       setSubscribers(response.data);
+      console.log("Fetched subscribers:", response.data);
       setSubscriberError("");
     } catch (err) {
       console.error("Failed to fetch subscribers:", err);
@@ -64,7 +66,7 @@ const Contact = () => {
   // Delete a contact message
   const deleteMessage = async (id: string) => {
     try {
-      await axios.delete(`/api/contacts/${id}`);
+      await axios.delete(`https://new-portfolio-backend-roan.vercel.app/contacts/${id}`);
       setMessages(messages.filter(message => message._id !== id));
     } catch (err) {
       console.error("Failed to delete message:", err);
