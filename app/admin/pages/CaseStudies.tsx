@@ -20,166 +20,150 @@ interface CaseStudy {
 }
 
 interface CaseStudyCategory {
-  _id: number;
+  _id: string;
   name: string;
-  
 }
 
 const CaseStudies = () => {
   // Case studies states
   const [caseStudies, setCaseStudies] = useState<CaseStudy[]>([]);
-  const [title, setTitle] = useState<string>("");
-  const [client, setClient] = useState<string>("");
-  const [challenge, setChallenge] = useState<string>("");
-  const [solution, setSolution] = useState<string>("");
-  const [results, setResults] = useState<string>("");
-  const [industry, setIndustry] = useState<string>("");
-  const [duration, setDuration] = useState<string>("");
-  const [teamSize, setTeamSize] = useState<string>("");
-    const [demoLink, setDemoLink] = useState<string>("");
-    const [githubLink, setGithubLink] = useState<string>("");
-    const [imageLink, setImageLink] = useState<string>("");
-  const [technologies, setTechnologies] = useState<string>("");
-  const [testimonial, setTestimonial] = useState<string>("");
-  const [testimonialAuthor, setTestimonialAuthor] = useState<string>("");
-  const [image, setImage] = useState<File | null>(null);
-  const [imagePreview, setImagePreview] = useState<string | null>(null);
-  const [success, setSuccess] = useState<boolean>(false);
-  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [title, setTitle] = useState("");
+  const [client, setClient] = useState("");
+  const [challenge, setChallenge] = useState("");
+  const [solution, setSolution] = useState("");
+  const [results, setResults] = useState("");
+  const [industry, setIndustry] = useState("");
+  const [duration, setDuration] = useState("");
+  const [teamSize, setTeamSize] = useState("");
+  const [demoLink, setDemoLink] = useState("");
+  const [githubLink, setGithubLink] = useState("");
+  const [imageLink, setImageLink] = useState("");
+  const [technologies, setTechnologies] = useState("");
+  const [testimonial, setTestimonial] = useState("");
+  const [testimonialAuthor, setTestimonialAuthor] = useState("");
+  const [success, setSuccess] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   // Category states
   const [categories, setCategories] = useState<CaseStudyCategory[]>([]);
-  const [newCategoryTitle, setNewCategoryTitle] = useState<string>("");
-  const [newCategoryImage, setNewCategoryImage] = useState<File | null>(null);
-  const [categoryPreview, setCategoryPreview] = useState<string | null>(null);
+  const [newCategoryTitle, setNewCategoryTitle] = useState("");
 
   // UI states
   const [activeTab, setActiveTab] = useState<"create" | "manage" | "categories">("create");
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
 
-  const fileInputRef = useRef<HTMLInputElement>(null);
-  const caseStudyFileInputRef = useRef<HTMLInputElement>(null);
-
-  // Fetch initial data (simulated)
+  // Fetch initial data
   useEffect(() => {
-    
     const fetchData = async () => {
-        try {
-            const categories = await axios.get("https://new-portfolio-backend-roan.vercel.app/industry", {
-                withCredentials: true,
-            });
+      try {
+        setIsLoading(true);
+        setError(null);
+        
+        const [categoriesResponse, caseStudiesResponse] = await Promise.all([
+          axios.get("https://new-portfolio-backend-roan.vercel.app/industry", { withCredentials: true }),
+          axios.get("https://new-portfolio-backend-roan.vercel.app/caseStudies", { withCredentials: true })
+        ]);
 
-            setCategories(categories.data);
-            console.log("Fetched categories:", categories.data);
+        setCategories(categoriesResponse.data);
+        setCaseStudies(caseStudiesResponse.data);
+      } catch (err) {
+        console.error("Error fetching data:", err);
+        setError("Failed to load data. Please refresh the page.");
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
-            const caseStudies = await axios.get("https://new-portfolio-backend-roan.vercel.app/caseStudies", {
-                withCredentials: true,
-            });
-            setCaseStudies(caseStudies.data);
-        } catch (error) {
-            console.error("Error fetching categories:", error);
-        }
-    }
-
-    fetchData()
-    
+    fetchData();
   }, []);
 
-  
-
-  
-
   // Handle category creation
-  const handleAddCategory = () => {
-    if (!newCategoryTitle.trim()) return;
-
-    try {
-        axios.post(`https://new-portfolio-backend-roan.vercel.app/industry`, {
-                name: newCategoryTitle 
-        }, {
-            withCredentials: true,
-        });
-        const newCategory: CaseStudyCategory = {
-            _id: Date.now(),
-            name: newCategoryTitle,
-        };
-        setCategories([...categories, newCategory]);
-        setNewCategoryTitle("");
-
-
-    } catch (error) {
-        console.error("Error adding category:", error);
+  const handleAddCategory = async () => {
+    if (!newCategoryTitle.trim()) {
+      alert("Please enter a category name");
+      return;
     }
 
-    
+    try {
+      const response = await axios.post(
+        "https://new-portfolio-backend-roan.vercel.app/industry",
+        { name: newCategoryTitle },
+        { withCredentials: true }
+      );
 
-    
+      setCategories(prev => [...prev, response.data]);
+      setNewCategoryTitle("");
+    } catch (error) {
+      console.error("Error adding category:", error);
+      alert("Failed to add category. Please try again.");
+    }
   };
 
   // Handle case study submission
   const handleSubmitCaseStudy = async () => {
-  // Validate required fields
-  if (!title || !client || !challenge || !solution || !results) {
-    alert("Please fill all required fields");
-    return;
-  }
+    if (!title || !client || !challenge || !solution || !results) {
+      alert("Please fill all required fields");
+      return;
+    }
 
-  setIsSubmitting(true);
+    setIsSubmitting(true);
 
-  try {
-    // Prepare the data payload
-    const payload = {
-      title,
-      client,
-      challenge,
-      solution,
-      results,
-      industry,
-      duration,
-      teamSize,
-      demoLink: demoLink || "undefined",
-      githubLink: githubLink || "undefined",
-      programmingLanguages: technologies.split(',').map(tech => tech.trim()).filter(tech => tech),
-      testimonial: testimonial || 'undefined',
-      testimonialAuthor: testimonialAuthor || 'undefined',
-      imageLink: imageLink 
-    };
+    try {
+      const payload = {
+        title,
+        client,
+        challenge,
+        solution,
+        results,
+        industry,
+        duration,
+        teamSize,
+        demoLink: demoLink || undefined,
+        githubLink: githubLink || undefined,
+        programmingLanguages: technologies.split(',').map(tech => tech.trim()).filter(tech => tech),
+        testimonial: testimonial || undefined,
+        testimonialAuthor: testimonialAuthor || undefined,
+        imageLink: imageLink || undefined
+      };
 
-    // Make the API call
-    const response = await axios.post(
-      "https://new-portfolio-backend-roan.vercel.app/caseStudies",
-      payload,
-      { withCredentials: true }
-    );
+      let response;
+      if (editingId) {
+        response = await axios.put(
+          `https://new-portfolio-backend-roan.vercel.app/caseStudies/${editingId}`,
+          payload,
+          { withCredentials: true }
+        );
+      } else {
+        response = await axios.post(
+          "https://new-portfolio-backend-roan.vercel.app/caseStudies",
+          payload,
+          { withCredentials: true }
+        );
+      }
 
-    // Create the new case study object using server response
-    const newCaseStudy: CaseStudy = {
-      _id: editingId || response.data._id, // Use server-generated ID for new entries
-      ...payload,
-    };
+      const updatedCaseStudy = {
+        _id: editingId || response.data._id,
+        ...payload
+      };
 
-    // Update state based on whether we're editing or creating
-    setCaseStudies(prev => 
-      editingId
-        ? prev.map(cs => cs._id === editingId ? newCaseStudy : cs)
-        : [...prev, newCaseStudy]
-    );
+      setCaseStudies(prev =>
+        editingId
+          ? prev.map(cs => cs._id === editingId ? updatedCaseStudy : cs)
+          : [...prev, updatedCaseStudy]
+      );
 
-    // Show success and reset form
-    setSuccess(true);
-    resetForm();
-
-    // Hide success message after 3 seconds
-    setTimeout(() => setSuccess(false), 3000);
-
-  } catch (error) {
-    console.error("Error submitting case study:", error);
-    alert("Failed to submit case study. Please try again.");
-  } finally {
-    setIsSubmitting(false);
-  }
-};
+      setSuccess(true);
+      resetForm();
+      setTimeout(() => setSuccess(false), 3000);
+    } catch (error) {
+      console.error("Error submitting case study:", error);
+      alert("Failed to submit case study. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   // Reset form
   const resetForm = () => {
@@ -191,13 +175,13 @@ const CaseStudies = () => {
     setIndustry("");
     setDuration("");
     setTeamSize("");
+    setDemoLink("");
+    setGithubLink("");
+    setImageLink("");
     setTechnologies("");
     setTestimonial("");
     setTestimonialAuthor("");
-    setImage(null);
-    setImagePreview(null);
     setEditingId(null);
-    
   };
 
   // Edit existing case study
@@ -210,61 +194,80 @@ const CaseStudies = () => {
     setIndustry(caseStudy.industry);
     setDuration(caseStudy.duration);
     setTeamSize(caseStudy.teamSize);
-    setDemoLink(caseStudy.demoLink) ;
+    setDemoLink(caseStudy.demoLink);
     setGithubLink(caseStudy.githubLink);
+    setImageLink(caseStudy.imageLink);
     setTechnologies(caseStudy.programmingLanguages.join(', '));
     setTestimonial(caseStudy.testimonial || "");
     setTestimonialAuthor(caseStudy.testimonialAuthor || "");
-    if (caseStudy.imageLink) setImagePreview(caseStudy.imageLink);
     setEditingId(caseStudy._id);
     setActiveTab("create");
     window.scrollTo(0, 0);
   };
 
   // Delete case study
-  const handleDeleteCaseStudy = (id: string) => {
-    
+  const handleDeleteCaseStudy = async (id: string) => {
+    if (!window.confirm("Are you sure you want to delete this case study?")) return;
 
     try {
-        axios.delete(`https://new-portfolio-backend-roan.vercel.app/caseStudies/${id}`, {
-            withCredentials: true,
-        });
-
-        setCaseStudies(caseStudies.filter(cs => cs._id !== id));
-    } catch(error) {
-        console.log('Error in deleting case study', error)
+      await axios.delete(
+        `https://new-portfolio-backend-roan.vercel.app/caseStudies/${id}`,
+        { withCredentials: true }
+      );
+      setCaseStudies(prev => prev.filter(cs => cs._id !== id));
+    } catch (error) {
+      console.error("Error deleting case study:", error);
+      alert("Failed to delete case study. Please try again.");
     }
   };
 
   // Handle category deletion
-  const handleDeleteCategories = async (id: string) => {
-    if (window.confirm("Are you sure you want to delete this category? Projects using it will need to be updated.")) {
-      try {
-        await axios.delete(`https://new-portfolio-backend-roan.vercel.app/projectCategory/${id}`);
-        setCategories(categories.filter(cat => String(cat._id) !== id));
-      } catch (error) {
-        console.error("Error deleting category:", error);
-      }
+  const handleDeleteCategory = async (id: string) => {
+    if (!window.confirm("Are you sure you want to delete this category?")) return;
+
+    try {
+      await axios.delete(
+        `https://new-portfolio-backend-roan.vercel.app/industry/${id}`,
+        { withCredentials: true }
+      );
+      setCategories(prev => prev.filter(cat => cat._id !== id));
+    } catch (error) {
+      console.error("Error deleting category:", error);
+      alert("Failed to delete category. Please try again.");
     }
   };
 
-  // Toggle category selection
-  const toggleCategorySelection = (title: string) => {
-    setSelectedCategories(prev =>
-      prev.includes(title)
-        ? prev.filter(t => t !== title)
-        : [...prev, title]
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+      </div>
     );
-  };
+  }
+
+  if (error) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="text-red-500 text-center p-4 bg-red-100 rounded-lg">
+          {error}
+          <button 
+            onClick={() => window.location.reload()}
+            className="mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+          >
+            Refresh Page
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="w-full text-black bg-gray-100 p-4">
       <div className="max-w-7xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
-
         {/* Tabs */}
         <div className="flex border-b">
           <button
-            className={`px-4 py-2 font-medium ${activeTab === "create" ? "text-blue-600 border-b-2 border-blue-600" : "cursor-pointer text-gray-600"}`}
+            className={`px-4 py-2 font-medium ${activeTab === "create" ? "text-blue-600 border-b-2 border-blue-600" : "text-gray-600"}`}
             onClick={() => {
               setActiveTab("create");
               resetForm();
@@ -273,13 +276,13 @@ const CaseStudies = () => {
             Create Case Study
           </button>
           <button
-            className={`px-4 py-2 font-medium ${activeTab === "manage" ? "text-blue-600 border-b-2 border-blue-600" : "text-gray-600 cursor-pointer"}`}
+            className={`px-4 py-2 font-medium ${activeTab === "manage" ? "text-blue-600 border-b-2 border-blue-600" : "text-gray-600"}`}
             onClick={() => setActiveTab("manage")}
           >
             Manage Case Studies
           </button>
           <button
-            className={`px-4 py-2 font-medium ${activeTab === "categories" ? "text-blue-600 border-b-2 border-blue-600" : "text-gray-600 cursor-pointer"}`}
+            className={`px-4 py-2 font-medium ${activeTab === "categories" ? "text-blue-600 border-b-2 border-blue-600" : "text-gray-600"}`}
             onClick={() => setActiveTab("categories")}
           >
             Manage Industries
@@ -297,8 +300,6 @@ const CaseStudies = () => {
                 </h2>
 
                 <div className="space-y-4">
-                  
-
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">Title *</label>
                     <input
@@ -348,6 +349,7 @@ const CaseStudies = () => {
                         placeholder="e.g. 6 months"
                       />
                     </div>
+
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1">Team Size</label>
                       <input
@@ -359,8 +361,6 @@ const CaseStudies = () => {
                       />
                     </div>
 
-                    
-
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1">Demo Link</label>
                       <input
@@ -368,7 +368,7 @@ const CaseStudies = () => {
                         value={demoLink}
                         onChange={(e) => setDemoLink(e.target.value)}
                         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        placeholder="e.g. www.google.com"
+                        placeholder="e.g. www.example.com/demo"
                       />
                     </div>
 
@@ -379,22 +379,20 @@ const CaseStudies = () => {
                         value={imageLink}
                         onChange={(e) => setImageLink(e.target.value)}
                         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        placeholder=" www.google.com/image.jpg"
+                        placeholder="e.g. www.example.com/image.jpg"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">Github Link</label>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">GitHub Link</label>
                       <input
                         type="text"
                         value={githubLink}
                         onChange={(e) => setGithubLink(e.target.value)}
                         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        placeholder="e.g. https:/github.com"
+                        placeholder="e.g. github.com/username/repo"
                       />
                     </div>
-
-                    
                   </div>
 
                   <div>
@@ -459,17 +457,6 @@ const CaseStudies = () => {
                     />
                   </div>
 
-                  <div className="flex items-center">
-                    <input
-                      type="checkbox"
-                      id="confirmation"
-                      className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
-                    />
-                    <label htmlFor="confirmation" className="ml-2 block text-sm text-gray-700">
-                      I confirm that I have permission to share this case study
-                    </label>
-                  </div>
-
                   <div className="pt-2 flex space-x-3">
                     <button
                       onClick={handleSubmitCaseStudy}
@@ -500,7 +487,16 @@ const CaseStudies = () => {
                 <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
                   {title ? (
                     <>
-                      
+                      {imageLink && (
+                        <img 
+                          src={imageLink} 
+                          alt={title}
+                          className="w-full h-48 object-cover rounded-md mb-4"
+                          onError={(e) => {
+                            (e.target as HTMLImageElement).src = "https://via.placeholder.com/300x200?text=Image+Not+Found";
+                          }}
+                        />
+                      )}
                       <h3 className="text-lg font-medium mb-2">{title}</h3>
                       {client && <p className="text-gray-600 mb-1"><strong>Client:</strong> {client}</p>}
                       {industry && <p className="text-gray-600 mb-3"><strong>Industry:</strong> {industry}</p>}
@@ -574,6 +570,9 @@ const CaseStudies = () => {
                               src={caseStudy.imageLink} 
                               alt={caseStudy.title} 
                               className="w-24 h-16 object-cover rounded-md"
+                              onError={(e) => {
+                                (e.target as HTMLImageElement).src = "https://via.placeholder.com/96x64?text=Image+Not+Found";
+                              }}
                             />
                           )}
                           <div>
@@ -625,7 +624,7 @@ const CaseStudies = () => {
                 <h3 className="font-medium mb-3">Add New Industry</h3>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div>
+                  <div className="md:col-span-2">
                     <label className="block text-sm font-medium text-gray-700 mb-1">Industry Name *</label>
                     <input
                       type="text"
@@ -636,42 +635,21 @@ const CaseStudies = () => {
                     />
                   </div>
 
-                  <div className="md:col-span-2">
-                    
+                  <div className="flex items-end">
+                    <button
+                      onClick={handleAddCategory}
+                      disabled={!newCategoryTitle.trim()}
+                      className={`px-4 py-2 rounded-md text-white ${!newCategoryTitle.trim() ? 'bg-gray-400' : 'bg-green-600 hover:bg-green-700'} focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 w-full`}
+                    >
+                      Add Industry
+                    </button>
                   </div>
-                </div>
-
-                <div className="mt-4 flex justify-end">
-                  <button
-                    onClick={handleAddCategory}
-                    disabled={!newCategoryTitle.trim()}
-                    className={`px-4 py-2 rounded-md text-white ${!newCategoryTitle.trim() ? 'bg-gray-400' : 'bg-green-600 hover:bg-green-700'} focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2`}
-                  >
-                    Add Industry
-                  </button>
                 </div>
               </div>
 
               {/* Categories List */}
               <div>
-                <div className="flex justify-between items-center mb-3">
-                  <h3 className="font-medium">Existing Industries</h3>
-                  {selectedCategories.length > 0 && (
-                    <button
-                      onClick={() => {
-                        selectedCategories.forEach((title) => {
-                          const category = categories.find(cat => cat.name === title);
-                          if (category) {
-                            handleDeleteCategories(String(category._id));
-                          }
-                        });
-                      }}
-                      className="px-3 py-1 bg-red-500 text-white text-sm rounded hover:bg-red-600 focus:outline-none"
-                    >
-                      Delete Selected
-                    </button>
-                  )}
-                </div>
+                <h3 className="font-medium mb-3">Existing Industries</h3>
 
                 {categories.length === 0 ? (
                   <p className="text-gray-500 italic">No industries yet. Add your first industry above.</p>
@@ -680,11 +658,17 @@ const CaseStudies = () => {
                     {categories.map((category) => (
                       <div
                         key={category._id}
-                        onClick={() => toggleCategorySelection(category.name)}
-                        className={`p-3 rounded-lg border cursor-pointer flex flex-col items-center ${selectedCategories.includes(category.name) ? 'ring-2 ring-blue-500 bg-blue-50' : 'border-gray-200 bg-white'}`}
+                        className="p-3 rounded-lg border border-gray-200 bg-white flex justify-between items-center"
                       >
-                        
-                        <span className="text-sm font-medium text-center">{category.name}</span>
+                        <span className="text-sm font-medium">{category.name}</span>
+                        <button
+                          onClick={() => handleDeleteCategory(category._id)}
+                          className="text-red-500 hover:text-red-700"
+                        >
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fillRule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" />
+                          </svg>
+                        </button>
                       </div>
                     ))}
                   </div>
