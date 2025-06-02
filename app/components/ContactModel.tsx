@@ -6,9 +6,10 @@ import axios from "axios";
 interface ContactModelProps {
     onContactClick: () => void;
     showContactModel: boolean;
+    onMessageSuccess: () => void;
   }
   
-const ContactModel: React.FC<ContactModelProps> = ({ onContactClick, showContactModel }) => {
+const ContactModel: React.FC<ContactModelProps> = ({ onMessageSuccess, onContactClick, showContactModel }) => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [title, setTitle] = useState('');
@@ -36,6 +37,7 @@ const ContactModel: React.FC<ContactModelProps> = ({ onContactClick, showContact
         setName('');
         setTitle('');
         setMessage('');
+        onMessageSuccess();
 
       } catch(err) {
         console.log(err)

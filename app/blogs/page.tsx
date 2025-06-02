@@ -194,7 +194,7 @@ const Blogs = () => {
                     <div className="flex flex-row items-center justify-center space-x-[20px] mt-[30px]">
                         <div className="w-[90%]">
                             <p className="text-[50px] font-bold">Case Studies</p>
-                            <div className="grid px-[15px] grid-cols-2 gap-[25px] items-center justify-center space-x-[20px] mt-[30px]">
+                            <div className="grid px-[15px] grid-cols-2 gap-[20px] items-center justify-center space-x-[20px] mt-[30px]">
                                 <div className="h-[350px] hover:scale-[105%] transition duration-300 ease-in-out    flex flex-row items-center justify-center cursor-pointer ring-[#5F5F62] ring-[1.5px] rounded-[20px] w-[100%] bg-[#373435]" >
                                     <div className="w-[40%] h-[100%] rounded-l-[20px] ">
 
