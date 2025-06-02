@@ -282,16 +282,7 @@ const CaseStudies = () => {
                 </h2>
 
                 <div className="space-y-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Featured Image</label>
-                    <div className="mt-1 flex items-center">
-                      <div className="w-full">
-                        <div className="flex items-center justify-center w-full">
-                        
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">Title *</label>
@@ -342,40 +333,6 @@ const CaseStudies = () => {
                         placeholder="e.g. 6 months"
                       />
                     </div>
-
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">Project Duration</label>
-                      <input
-                        type="text"
-                        value={githubLink}
-                        onChange={(e) => setGithubLink(e.target.value)}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        placeholder="e.g. https:/github.com"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">Project Duration</label>
-                      <input
-                        type="text"
-                        value={demoLink}
-                        onChange={(e) => setDemoLink(e.target.value)}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        placeholder="e.g. www.google.com"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">Project Duration</label>
-                      <input
-                        type="text"
-                        value={imageLink}
-                        onChange={(e) => setImageLink(e.target.value)}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        placeholder="e.g. www.google.com/image.jpg"
-                      />
-                    </div>
-
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1">Team Size</label>
                       <input
@@ -386,6 +343,43 @@ const CaseStudies = () => {
                         placeholder="e.g. 5 people"
                       />
                     </div>
+
+                    
+
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">Demo Link</label>
+                      <input
+                        type="text"
+                        value={demoLink}
+                        onChange={(e) => setDemoLink(e.target.value)}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        placeholder="e.g. www.google.com"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">Image Link</label>
+                      <input
+                        type="text"
+                        value={imageLink}
+                        onChange={(e) => setImageLink(e.target.value)}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        placeholder=" www.google.com/image.jpg"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">Github Link</label>
+                      <input
+                        type="text"
+                        value={githubLink}
+                        onChange={(e) => setGithubLink(e.target.value)}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        placeholder="e.g. https:/github.com"
+                      />
+                    </div>
+
+                    
                   </div>
 
                   <div>
