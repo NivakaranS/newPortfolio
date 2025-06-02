@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 
 interface CaseStudy {
-  id: string;
+  _id: string;
   title: string;
   client: string;
   challenge: string;
@@ -11,16 +11,18 @@ interface CaseStudy {
   industry: string;
   duration: string;
   teamSize: string;
-  technologies: string[];
+  programmingLanguages: string[];
   testimonial?: string;
   testimonialAuthor?: string;
-  imageUrl?: string;
+  imageLink: string;
+  demoLink: string;
+  githubLink: string;
 }
 
 interface CaseStudyCategory {
-  id: number;
+  _id: number;
   title: string;
-  image?: string;
+  
 }
 
 const CaseStudies = () => {
@@ -34,6 +36,9 @@ const CaseStudies = () => {
   const [industry, setIndustry] = useState<string>("");
   const [duration, setDuration] = useState<string>("");
   const [teamSize, setTeamSize] = useState<string>("");
+    const [demoLink, setDemoLink] = useState<string>("");
+    const [githubLink, setGithubLink] = useState<string>("");
+    const [imageLink, setImageLink] = useState<string>("");
   const [technologies, setTechnologies] = useState<string>("");
   const [testimonial, setTestimonial] = useState<string>("");
   const [testimonialAuthor, setTestimonialAuthor] = useState<string>("");
@@ -58,144 +63,108 @@ const CaseStudies = () => {
 
   // Fetch initial data (simulated)
   useEffect(() => {
-    // Simulate fetching case studies
-    const mockCaseStudies: CaseStudy[] = [
-      {
-        id: "1",
-        title: "Digital Transformation for Retail Chain",
-        client: "Fashion Forward Inc.",
-        challenge: "Legacy systems were unable to handle increasing online orders during peak seasons.",
-        solution: "Implemented a cloud-based e-commerce platform with auto-scaling capabilities.",
-        results: "300% increase in peak order capacity, 40% reduction in checkout abandonment.",
-        industry: "Retail",
-        duration: "6 months",
-        teamSize: "8 people",
-        technologies: ["AWS", "React", "Node.js", "MongoDB"],
-        testimonial: "The team delivered beyond our expectations with their technical expertise.",
-        testimonialAuthor: "Jane Smith, CTO",
-        imageUrl: "https://via.placeholder.com/300x200?text=Retail+Case+Study"
-      },
-      {
-        id: "2",
-        title: "Healthcare Data Analytics Platform",
-        client: "MediCare Systems",
-        challenge: "Unable to derive insights from disparate healthcare data sources.",
-        solution: "Built a unified data warehouse with predictive analytics capabilities.",
-        results: "Reduced report generation time from 2 weeks to real-time, identified 15% cost savings opportunities.",
-        industry: "Healthcare",
-        duration: "9 months",
-        teamSize: "12 people",
-        technologies: ["Python", "TensorFlow", "BigQuery", "Tableau"],
-        imageUrl: "https://via.placeholder.com/300x200?text=Healthcare+Case+Study"
-      }
-    ];
+    
+    const fetchData = async () => {
+        try {
+            const categories = await axios.get("https://new-portfolio-backend-roan.vercel.app/industry", {
+                withCredentials: true,
+            });
+            setCategories(categories.data);
 
-    // Simulate fetching categories
-    const mockCategories: CaseStudyCategory[] = [
-      { id: 1, title: "Retail", image: "https://via.placeholder.com/100x100?text=Retail" },
-      { id: 2, title: "Healthcare", image: "https://via.placeholder.com/100x100?text=Healthcare" },
-      { id: 3, title: "Finance", image: "https://via.placeholder.com/100x100?text=Finance" },
-      { id: 4, title: "Manufacturing", image: "https://via.placeholder.com/100x100?text=Manufacturing" }
-    ];
+            const caseStudies = await axios.get("https://new-portfolio-backend-roan.vercel.app/caseStudies", {
+                withCredentials: true,
+            });
+            setCaseStudies(caseStudies.data);
+        } catch (error) {
+            console.error("Error fetching categories:", error);
+        }
+    }
 
-    setCaseStudies(mockCaseStudies);
-    setCategories(mockCategories);
+    fetchData()
+    
   }, []);
 
-  // Handle image upload
-  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      const file = e.target.files[0];
-      setImage(file);
+  
 
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setImagePreview(reader.result as string);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
-  // Handle category image upload
-  const handleCategoryImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      const file = e.target.files[0];
-      setNewCategoryImage(file);
-
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setCategoryPreview(reader.result as string);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
+  
 
   // Handle category creation
   const handleAddCategory = () => {
     if (!newCategoryTitle.trim()) return;
 
     const newCategory: CaseStudyCategory = {
-      id: Date.now(),
+      _id: Date.now(),
       title: newCategoryTitle,
-      image: categoryPreview || undefined
+      
     };
 
     setCategories([...categories, newCategory]);
     setNewCategoryTitle("");
-    setNewCategoryImage(null);
-    setCategoryPreview(null);
-    if (fileInputRef.current) fileInputRef.current.value = "";
   };
 
   // Handle case study submission
-  const handleSubmitCaseStudy = () => {
-    if (!title || !client || !challenge || !solution || !results) {
-      alert("Please fill all required fields");
-      return;
-    }
+  const handleSubmitCaseStudy = async () => {
+  // Validate required fields
+  if (!title || !client || !challenge || !solution || !results) {
+    alert("Please fill all required fields");
+    return;
+  }
 
-    setIsSubmitting(true);
+  setIsSubmitting(true);
 
-    // Simulate API call
-    setTimeout(() => {
-      const techArray = technologies.split(',').map(tech => tech.trim()).filter(tech => tech);
-      
-      const newCaseStudy: CaseStudy = {
-        id: editingId || Date.now().toString(),
-        title,
-        client,
-        challenge,
-        solution,
-        results,
-        industry,
-        duration,
-        teamSize,
-        technologies: techArray,
-        testimonial: testimonial || undefined,
-        testimonialAuthor: testimonialAuthor || undefined,
-        imageUrl: imagePreview || "https://via.placeholder.com/300x200?text=Case+Study"
-      };
+  try {
+    // Prepare the data payload
+    const payload = {
+      title,
+      client,
+      challenge,
+      solution,
+      results,
+      industry,
+      duration,
+      teamSize,
+      demoLink: demoLink || "undefined",
+      githubLink: githubLink || "undefined",
+      programmingLanguages: technologies.split(',').map(tech => tech.trim()).filter(tech => tech),
+      testimonial: testimonial || 'undefined',
+      testimonialAuthor: testimonialAuthor || 'undefined',
+      imageLink: imageLink 
+    };
 
-      if (editingId) {
-        // Update existing case study
-        setCaseStudies(caseStudies.map(cs => 
-          cs.id === editingId ? newCaseStudy : cs
-        ));
-      } else {
-        // Add new case study
-        setCaseStudies([...caseStudies, newCaseStudy]);
-      }
+    // Make the API call
+    const response = await axios.post(
+      "https://new-portfolio-backend-roan.vercel.app/caseStudies",
+      payload,
+      { withCredentials: true }
+    );
 
-      setSuccess(true);
-      setIsSubmitting(false);
+    // Create the new case study object using server response
+    const newCaseStudy: CaseStudy = {
+      _id: editingId || response.data._id, // Use server-generated ID for new entries
+      ...payload,
+    };
 
-      // Reset form
-      resetForm();
+    // Update state based on whether we're editing or creating
+    setCaseStudies(prev => 
+      editingId
+        ? prev.map(cs => cs._id === editingId ? newCaseStudy : cs)
+        : [...prev, newCaseStudy]
+    );
 
-      // Hide success message after 3 seconds
-      setTimeout(() => setSuccess(false), 3000);
-    }, 1500);
-  };
+    // Show success and reset form
+    setSuccess(true);
+    resetForm();
+
+    // Hide success message after 3 seconds
+    setTimeout(() => setSuccess(false), 3000);
+
+  } catch (error) {
+    console.error("Error submitting case study:", error);
+    alert("Failed to submit case study. Please try again.");
+  } finally {
+    setIsSubmitting(false);
+  }
+};
 
   // Reset form
   const resetForm = () => {
@@ -213,7 +182,7 @@ const CaseStudies = () => {
     setImage(null);
     setImagePreview(null);
     setEditingId(null);
-    if (caseStudyFileInputRef.current) caseStudyFileInputRef.current.value = "";
+    
   };
 
   // Edit existing case study
@@ -226,30 +195,42 @@ const CaseStudies = () => {
     setIndustry(caseStudy.industry);
     setDuration(caseStudy.duration);
     setTeamSize(caseStudy.teamSize);
-    setTechnologies(caseStudy.technologies.join(', '));
+    setDemoLink(caseStudy.demoLink) ;
+    setGithubLink(caseStudy.githubLink);
+    setTechnologies(caseStudy.programmingLanguages.join(', '));
     setTestimonial(caseStudy.testimonial || "");
     setTestimonialAuthor(caseStudy.testimonialAuthor || "");
-    if (caseStudy.imageUrl) setImagePreview(caseStudy.imageUrl);
-    setEditingId(caseStudy.id);
+    if (caseStudy.imageLink) setImagePreview(caseStudy.imageLink);
+    setEditingId(caseStudy._id);
     setActiveTab("create");
     window.scrollTo(0, 0);
   };
 
   // Delete case study
   const handleDeleteCaseStudy = (id: string) => {
-    setCaseStudies(caseStudies.filter(cs => cs.id !== id));
+    
+
+    try {
+        axios.delete(`https://new-portfolio-backend-roan.vercel.app/caseStudies/${id}`, {
+            withCredentials: true,
+        });
+
+        setCaseStudies(caseStudies.filter(cs => cs._id !== id));
+    } catch(error) {
+        console.log('Error in deleting case study', error)
+    }
   };
 
   // Handle category deletion
-  const handleDeleteCategories = () => {
-    if (selectedCategories.length === 0) return;
-
-    const updatedCategories = categories.filter(
-      category => !selectedCategories.includes(category.title)
-    );
-
-    setCategories(updatedCategories);
-    setSelectedCategories([]);
+  const handleDeleteCategories = async (id: string) => {
+    if (window.confirm("Are you sure you want to delete this category? Projects using it will need to be updated.")) {
+      try {
+        await axios.delete(`https://new-portfolio-backend-roan.vercel.app/projectCategory/${id}`);
+        setCategories(categories.filter(cat => String(cat._id) !== id));
+      } catch (error) {
+        console.error("Error deleting category:", error);
+      }
+    }
   };
 
   // Toggle category selection
@@ -306,34 +287,7 @@ const CaseStudies = () => {
                     <div className="mt-1 flex items-center">
                       <div className="w-full">
                         <div className="flex items-center justify-center w-full">
-                          <label className="flex flex-col items-center justify-center w-full h-48 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100">
-                            <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                              {imagePreview ? (
-                                <img
-                                  src={imagePreview}
-                                  alt="Preview"
-                                  className="h-40 object-contain"
-                                />
-                              ) : (
-                                <>
-                                  <svg className="w-8 h-8 mb-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
-                                  </svg>
-                                  <p className="mb-2 text-sm text-gray-500">
-                                    <span className="font-semibold">Click to upload</span> or drag and drop
-                                  </p>
-                                  <p className="text-xs text-gray-500">SVG, PNG, JPG (MAX. 5MB)</p>
-                                </>
-                              )}
-                            </div>
-                            <input
-                              ref={caseStudyFileInputRef}
-                              type="file"
-                              className="hidden"
-                              onChange={handleImageUpload}
-                              accept="image/*"
-                            />
-                          </label>
+                        
                         </div>
                       </div>
                     </div>
@@ -371,7 +325,7 @@ const CaseStudies = () => {
                       >
                         <option value="">Select industry</option>
                         {categories.map((category) => (
-                          <option key={category.id} value={category.title}>
+                          <option key={category._id} value={category.title}>
                             {category.title}
                           </option>
                         ))}
@@ -386,6 +340,39 @@ const CaseStudies = () => {
                         onChange={(e) => setDuration(e.target.value)}
                         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                         placeholder="e.g. 6 months"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">Project Duration</label>
+                      <input
+                        type="text"
+                        value={githubLink}
+                        onChange={(e) => setGithubLink(e.target.value)}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        placeholder="e.g. https:/github.com"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">Project Duration</label>
+                      <input
+                        type="text"
+                        value={demoLink}
+                        onChange={(e) => setDemoLink(e.target.value)}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        placeholder="e.g. www.google.com"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">Project Duration</label>
+                      <input
+                        type="text"
+                        value={imageLink}
+                        onChange={(e) => setImageLink(e.target.value)}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        placeholder="e.g. www.google.com/image.jpg"
                       />
                     </div>
 
@@ -504,13 +491,7 @@ const CaseStudies = () => {
                 <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
                   {title ? (
                     <>
-                      {imagePreview && (
-                        <img 
-                          src={imagePreview} 
-                          alt="Case study preview" 
-                          className="w-full h-48 object-cover rounded-md mb-4"
-                        />
-                      )}
+                      
                       <h3 className="text-lg font-medium mb-2">{title}</h3>
                       {client && <p className="text-gray-600 mb-1"><strong>Client:</strong> {client}</p>}
                       {industry && <p className="text-gray-600 mb-3"><strong>Industry:</strong> {industry}</p>}
@@ -576,12 +557,12 @@ const CaseStudies = () => {
               ) : (
                 <div className="space-y-4">
                   {caseStudies.map((caseStudy) => (
-                    <div key={caseStudy.id} className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                    <div key={caseStudy._id} className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
                       <div className="flex flex-col md:flex-row md:items-center md:justify-between">
                         <div className="flex items-start space-x-4">
-                          {caseStudy.imageUrl && (
+                          {caseStudy.imageLink && (
                             <img 
-                              src={caseStudy.imageUrl} 
+                              src={caseStudy.imageLink} 
                               alt={caseStudy.title} 
                               className="w-24 h-16 object-cover rounded-md"
                             />
@@ -593,14 +574,14 @@ const CaseStudies = () => {
                               <span className="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-0.5 rounded">
                                 {caseStudy.industry}
                               </span>
-                              {caseStudy.technologies.slice(0, 2).map((tech, index) => (
+                              {caseStudy.programmingLanguages.slice(0, 2).map((tech, index) => (
                                 <span key={index} className="inline-block bg-gray-100 text-gray-800 text-xs px-2 py-0.5 rounded">
                                   {tech}
                                 </span>
                               ))}
-                              {caseStudy.technologies.length > 2 && (
+                              {caseStudy.programmingLanguages.length > 2 && (
                                 <span className="inline-block bg-gray-100 text-gray-800 text-xs px-2 py-0.5 rounded">
-                                  +{caseStudy.technologies.length - 2} more
+                                  +{caseStudy.programmingLanguages.length - 2} more
                                 </span>
                               )}
                             </div>
@@ -614,7 +595,7 @@ const CaseStudies = () => {
                             Edit
                           </button>
                           <button
-                            onClick={() => handleDeleteCaseStudy(caseStudy.id)}
+                            onClick={() => handleDeleteCaseStudy(caseStudy._id)}
                             className="px-3 py-1 bg-red-500 text-white text-sm rounded hover:bg-red-600 focus:outline-none"
                           >
                             Delete
@@ -647,41 +628,7 @@ const CaseStudies = () => {
                   </div>
 
                   <div className="md:col-span-2">
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Industry Image</label>
-                    <div className="mt-1 flex items-center">
-                      <div className="w-full">
-                        <div className="flex items-center justify-center w-full">
-                          <label className="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100">
-                            <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                              {categoryPreview ? (
-                                <img
-                                  src={categoryPreview}
-                                  alt="Preview"
-                                  className="h-24 object-contain"
-                                />
-                              ) : (
-                                <>
-                                  <svg className="w-8 h-8 mb-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
-                                  </svg>
-                                  <p className="mb-2 text-sm text-gray-500">
-                                    <span className="font-semibold">Click to upload</span> or drag and drop
-                                  </p>
-                                  <p className="text-xs text-gray-500">SVG, PNG, JPG (MAX. 5MB)</p>
-                                </>
-                              )}
-                            </div>
-                            <input
-                              ref={fileInputRef}
-                              type="file"
-                              className="hidden"
-                              onChange={handleCategoryImageUpload}
-                              accept="image/*"
-                            />
-                          </label>
-                        </div>
-                      </div>
-                    </div>
+                    
                   </div>
                 </div>
 
@@ -702,7 +649,14 @@ const CaseStudies = () => {
                   <h3 className="font-medium">Existing Industries</h3>
                   {selectedCategories.length > 0 && (
                     <button
-                      onClick={handleDeleteCategories}
+                      onClick={() => {
+                        selectedCategories.forEach((title) => {
+                          const category = categories.find(cat => cat.title === title);
+                          if (category) {
+                            handleDeleteCategories(String(category._id));
+                          }
+                        });
+                      }}
                       className="px-3 py-1 bg-red-500 text-white text-sm rounded hover:bg-red-600 focus:outline-none"
                     >
                       Delete Selected
@@ -716,17 +670,11 @@ const CaseStudies = () => {
                   <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
                     {categories.map((category) => (
                       <div
-                        key={category.id}
+                        key={category._id}
                         onClick={() => toggleCategorySelection(category.title)}
                         className={`p-3 rounded-lg border cursor-pointer flex flex-col items-center ${selectedCategories.includes(category.title) ? 'ring-2 ring-blue-500 bg-blue-50' : 'border-gray-200 bg-white'}`}
                       >
-                        {category.image && (
-                          <img
-                            src={category.image}
-                            alt={category.title}
-                            className="w-16 h-16 object-cover rounded-md mb-2"
-                          />
-                        )}
+                        
                         <span className="text-sm font-medium text-center">{category.title}</span>
                       </div>
                     ))}
