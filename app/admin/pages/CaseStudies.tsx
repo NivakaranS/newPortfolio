@@ -543,7 +543,7 @@ const CaseStudies = () => {
               </div>
             </div>
           ) : activeTab === "manage" ? (
-            <div className="space-y-6 h-[70vh]">
+            <div className="space-y-6 min-h-[72vh]">
               <h2 className="text-xl font-semibold">Manage Case Studies</h2>
               
               {caseStudies.length === 0 ? (
@@ -602,7 +602,7 @@ const CaseStudies = () => {
               )}
             </div>
           ) : (
-            <div className="space-y-6">
+            <div className="space-y-6 min-h-[72vh]">
               <h2 className="text-xl font-semibold">Manage Industries</h2>
 
               {/* Add Category Form */}
