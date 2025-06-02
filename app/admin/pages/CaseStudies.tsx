@@ -143,9 +143,22 @@ const CaseStudies = () => {
         );
       }
 
-      const updatedCaseStudy = {
+      const updatedCaseStudy: CaseStudy = {
         _id: editingId || response.data._id,
-        ...payload
+        title: payload.title,
+        client: payload.client,
+        challenge: payload.challenge,
+        solution: payload.solution,
+        results: payload.results,
+        industry: payload.industry,
+        duration: payload.duration,
+        teamSize: payload.teamSize,
+        programmingLanguages: payload.programmingLanguages,
+        testimonial: payload.testimonial,
+        testimonialAuthor: payload.testimonialAuthor,
+        imageLink: payload.imageLink ?? "",
+        demoLink: payload.demoLink ?? "",
+        githubLink: payload.githubLink ?? ""
       };
 
       setCaseStudies(prev =>
