@@ -92,14 +92,27 @@ const CaseStudies = () => {
   const handleAddCategory = () => {
     if (!newCategoryTitle.trim()) return;
 
-    const newCategory: CaseStudyCategory = {
-      _id: Date.now(),
-      title: newCategoryTitle,
-      
-    };
+    try {
+        axios.post(`https://new-portfolio-backend-roan.vercel.app/industry`, {
+                name: newCategoryTitle 
+        }, {
+            withCredentials: true,
+        });
+        const newCategory: CaseStudyCategory = {
+            _id: Date.now(),
+            title: newCategoryTitle,
+        };
+        setCategories([...categories, newCategory]);
+        setNewCategoryTitle("");
 
-    setCategories([...categories, newCategory]);
-    setNewCategoryTitle("");
+
+    } catch (error) {
+        console.error("Error adding category:", error);
+    }
+
+    
+
+    
   };
 
   // Handle case study submission
