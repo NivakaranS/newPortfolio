@@ -54,11 +54,13 @@ const BlogsManagement = () => {
           withCredentials: true,
         });
         setBlogPosts(blogsResponse.data);
+        console.log("Fetched blog posts:", blogsResponse.data);
 
         const categoriesResponse = await axios.get("https://new-portfolio-backend-roan.vercel.app/blogCategory", {
           withCredentials: true,
         });
         setBlogCategories(categoriesResponse.data);
+        console.log("Fetched blog categories:", categoriesResponse.data);
       } catch (error) {
         console.error("Error fetching blog posts:", error);
       }
@@ -496,14 +498,7 @@ const BlogsManagement = () => {
                   </div>
 
                   <div className="md:col-span-2">
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Category Image</label>
-                    <div className="mt-1 flex items-center">
-                      <div className="w-full">
-                        <div className="flex items-center justify-center w-full">
-                          
-                        </div>
-                      </div>
-                    </div>
+                    
                   </div>
                 </div>
 

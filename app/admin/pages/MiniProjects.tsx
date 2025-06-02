@@ -2,21 +2,20 @@ import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 
 interface Project {
-  id: string;
+  _id: string;
   title: string;
   description: string;
-  technologies: string[];
+  programmingLanguages: string[];
   category: string;
-  githubUrl?: string;
-  demoUrl?: string;
-  imageUrl?: string;
-  status: 'completed' | 'in-progress' | 'planned';
+  githubLink?: string;
+  demoLink?: string;
+  imageLink?: string;
 }
 
 interface ProjectCategory {
-  id: number;
-  title: string;
-  icon?: string;
+    _id: number;
+    name: string;
+    
 }
 
 const MiniProjects = () => {
@@ -33,7 +32,6 @@ const MiniProjects = () => {
   const [projectSuccess, setProjectSuccess] = useState<boolean>(false);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [editingProjectId, setEditingProjectId] = useState<string | null>(null);
-  const [projectStatus, setProjectStatus] = useState<'completed' | 'in-progress' | 'planned'>('completed');
 
   // Category states
   const [projectCategories, setProjectCategories] = useState<ProjectCategory[]>([]);
@@ -48,128 +46,110 @@ const MiniProjects = () => {
 
   // Fetch initial data (simulated)
   useEffect(() => {
-    // Simulate fetching projects
-    const mockProjects: Project[] = [
-      {
-        id: "1",
-        title: "Task Management App",
-        description: "A React application for managing daily tasks with drag-and-drop functionality",
-        technologies: ["React", "TypeScript", "TailwindCSS"],
-        category: "Web Application",
-        githubUrl: "https://github.com/example/task-manager",
-        demoUrl: "https://task-manager-demo.example.com",
-        imageUrl: "https://via.placeholder.com/300x200?text=Task+App",
-        status: "completed"
-      },
-      {
-        id: "2",
-        title: "Weather Dashboard",
-        description: "Real-time weather information dashboard using OpenWeather API",
-        technologies: ["JavaScript", "API Integration", "CSS"],
-        category: "Web Application",
-        githubUrl: "https://github.com/example/weather-dashboard",
-        demoUrl: "https://weather-demo.example.com",
-        imageUrl: "https://via.placeholder.com/300x200?text=Weather+App",
-        status: "completed"
-      },
-      {
-        id: "3",
-        title: "AI Image Generator",
-        description: "Generating images using Stable Diffusion API",
-        technologies: ["Python", "AI", "Flask"],
-        category: "AI/ML",
-        githubUrl: "https://github.com/example/ai-image-gen",
-        status: "in-progress"
-      }
-    ];
-
-    // Simulate fetching categories
-    const mockCategories: ProjectCategory[] = [
-      { id: 1, title: "Web Application", icon: "🌐" },
-      { id: 2, title: "Mobile App", icon: "📱" },
-      { id: 3, title: "AI/ML", icon: "🤖" },
-      { id: 4, title: "Data Visualization", icon: "📊" },
-      { id: 5, title: "Game Development", icon: "🎮" }
-    ];
-
-    setProjects(mockProjects);
-    setProjectCategories(mockCategories);
-  }, []);
-
-  // Handle project image upload
-  const handleProjectImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      const file = e.target.files[0];
-      setProjectImage(file);
-
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setProjectImagePreview(reader.result as string);
-      };
-      reader.readAsDataURL(file);
+  // Define fetch functions
+  const fetchProjects = async () => {
+    try {
+      const response = await axios.get('https://new-portfolio-backend-roan.vercel.app/projects');
+      setProjects(response.data);
+    } catch (error) {
+      console.error("Error fetching projects:", error);
+      // Optional: set error state for UI feedback
     }
   };
+
+  const fetchCategories = async () => {
+    try {
+      const response = await axios.get('https://new-portfolio-backend-roan.vercel.app/project-categories');
+      setProjectCategories(response.data);
+    } catch (error) {
+      console.error("Error fetching categories:", error);
+      // Optional: set error state for UI feedback
+    }
+  };
+
+  // Execute both fetches
+  fetchProjects();
+  fetchCategories();
+}, []);
+
+ 
 
   // Handle category creation
-  const handleAddCategory = () => {
-    if (!newCategoryTitle.trim()) return;
+  const handleAddCategory = async () => {
+  if (!newCategoryTitle.trim()) {
+    alert("Please enter a category name");
+    return;
+  }
 
+  try {
+    // First send data to server
+    const response = await axios.post(
+      'https://new-portfolio-backend-roan.vercel.app/projectCategory', 
+      {
+        name: newCategoryTitle,
+      },
+      { withCredentials: true } // Include if auth is needed
+    );
+
+    // Then update local state with server response
     const newCategory: ProjectCategory = {
-      id: Date.now(),
-      title: newCategoryTitle,
-      icon: newCategoryIcon || undefined
+      _id: response.data._id, // Use server-generated ID
+      name: newCategoryTitle,
+      
     };
 
-    setProjectCategories([...projectCategories, newCategory]);
+    setProjectCategories(prev => [...prev, newCategory]);
     setNewCategoryTitle("");
     setNewCategoryIcon("");
-  };
+    
+  } catch (error) {
+    console.error("Error adding category:", error);
+    alert("Failed to add category. Please try again.");
+  }
+};
 
   // Handle project submission
-  const handleSubmitProject = () => {
-    if (!projectTitle || !projectDescription || !projectCategory) {
-      alert("Please fill all required fields");
-      return;
-    }
+  const handleSubmitProject = async () => {
+  // Validate required fields
+  if (!projectTitle || !projectDescription || !projectCategory || !technologies || !demoUrl || !githubUrl) {
+    alert("Please fill all required fields");
+    return;
+  }
 
-    setIsSubmitting(true);
+  setIsSubmitting(true);
 
-    // Simulate API call
-    setTimeout(() => {
-      const techArray = technologies.split(',').map(tech => tech.trim()).filter(tech => tech);
-      
-      const newProject: Project = {
-        id: editingProjectId || Date.now().toString(),
+  try {
+    // Make API request
+    await axios.post(
+      'https://new-portfolio-backend-roan.vercel.app/project',
+      {
         title: projectTitle,
         description: projectDescription,
-        technologies: techArray,
+        programmingLanguages: technologies.split(',')
+          .map(tech => tech.trim())
+          .filter(tech => tech),
         category: projectCategory,
-        githubUrl: githubUrl || undefined,
-        demoUrl: demoUrl || undefined,
-        imageUrl: projectImagePreview || "https://via.placeholder.com/300x200?text=Project+Image",
-        status: projectStatus
-      };
+        githubLink: githubUrl ,
+        demoLink: demoUrl ,
+        imageLink: projectImagePreview || "https://via.placeholder.com/300x200?text=Project+Image",
+      },
+      { withCredentials: true }
+    );
 
-      if (editingProjectId) {
-        // Update existing project
-        setProjects(projects.map(project => 
-          project.id === editingProjectId ? newProject : project
-        ));
-      } else {
-        // Add new project
-        setProjects([...projects, newProject]);
-      }
+    // Only show success and reset if API call succeeds
+    setProjectSuccess(true);
+    resetProjectForm();
 
-      setProjectSuccess(true);
-      setIsSubmitting(false);
+    // Hide success message after 3 seconds
+    setTimeout(() => setProjectSuccess(false), 3000);
 
-      // Reset form
-      resetProjectForm();
-
-      // Hide success message after 3 seconds
-      setTimeout(() => setProjectSuccess(false), 3000);
-    }, 1500);
-  };
+  } catch (error) {
+    console.error("Error submitting project:", error);
+    alert("Failed to submit project. Please try again.");
+  } finally {
+    setIsSubmitting(false);
+  }
+};
 
   // Reset project form
   const resetProjectForm = () => {
@@ -182,7 +162,7 @@ const MiniProjects = () => {
     setProjectImage(null);
     setProjectImagePreview(null);
     setEditingProjectId(null);
-    setProjectStatus("completed");
+    
     if (fileInputRef.current) fileInputRef.current.value = "";
   };
 
@@ -190,20 +170,20 @@ const MiniProjects = () => {
   const handleEditProject = (project: Project) => {
     setProjectTitle(project.title);
     setProjectDescription(project.description);
-    setTechnologies(project.technologies.join(', '));
+    setTechnologies(project.programmingLanguages.join(', '));
     setProjectCategory(project.category);
-    setGithubUrl(project.githubUrl || "");
-    setDemoUrl(project.demoUrl || "");
-    if (project.imageUrl) setProjectImagePreview(project.imageUrl);
-    setEditingProjectId(project.id);
-    setProjectStatus(project.status);
+    setGithubUrl(project.githubLink || "");
+    setDemoUrl(project.demoLink || "");
+    if (project.imageLink) setProjectImagePreview(project.imageLink);
+    setEditingProjectId(project._id);
+
     setActiveTab("create");
     window.scrollTo(0, 0);
   };
 
   // Delete project
   const handleDeleteProject = (id: string) => {
-    setProjects(projects.filter(project => project.id !== id));
+    setProjects(projects.filter(project => project._id !== id));
   };
 
   // Handle category deletion
@@ -211,7 +191,7 @@ const MiniProjects = () => {
     if (selectedCategories.length === 0) return;
 
     const updatedCategories = projectCategories.filter(
-      category => !selectedCategories.includes(category.title)
+      category => !selectedCategories.includes(category.name)
     );
 
     setProjectCategories(updatedCategories);
@@ -227,15 +207,7 @@ const MiniProjects = () => {
     );
   };
 
-  // Get status color
-  const getStatusColor = (status: Project['status']) => {
-    switch (status) {
-      case 'completed': return 'bg-green-100 text-green-800';
-      case 'in-progress': return 'bg-yellow-100 text-yellow-800';
-      case 'planned': return 'bg-blue-100 text-blue-800';
-      default: return 'bg-gray-100 text-gray-800';
-    }
-  };
+
 
   return (
     <div className="w-full text-black bg-gray-100 p-4">
@@ -283,31 +255,11 @@ const MiniProjects = () => {
                         <div className="flex items-center justify-center w-full">
                           <label className="flex flex-col items-center justify-center w-full h-48 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100">
                             <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                              {projectImagePreview ? (
-                                <img
-                                  src={projectImagePreview}
-                                  alt="Preview"
-                                  className="h-40 object-contain"
-                                />
-                              ) : (
-                                <>
-                                  <svg className="w-8 h-8 mb-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
-                                  </svg>
-                                  <p className="mb-2 text-sm text-gray-500">
-                                    <span className="font-semibold">Click to upload</span> or drag and drop
-                                  </p>
-                                  <p className="text-xs text-gray-500">SVG, PNG, JPG (MAX. 5MB)</p>
-                                </>
-                              )}
+                              
+                                
+                              
                             </div>
-                            <input
-                              ref={fileInputRef}
-                              type="file"
-                              className="hidden"
-                              onChange={handleProjectImageUpload}
-                              accept="image/*"
-                            />
+                            
                           </label>
                         </div>
                       </div>
@@ -335,24 +287,13 @@ const MiniProjects = () => {
                       >
                         <option value="">Select a category</option>
                         {projectCategories.map((category) => (
-                          <option key={category.id} value={category.title}>
-                            {category.icon} {category.title}
+                          <option key={category._id} value={category.name}>
+                            {category.name}
                           </option>
                         ))}
                       </select>
                     </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">Status *</label>
-                      <select
-                        value={projectStatus}
-                        onChange={(e) => setProjectStatus(e.target.value as Project['status'])}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                      >
-                        <option value="completed">Completed</option>
-                        <option value="in-progress">In Progress</option>
-                        <option value="planned">Planned</option>
-                      </select>
-                    </div>
+                   
                   </div>
 
                   <div>
@@ -437,9 +378,7 @@ const MiniProjects = () => {
                       )}
                       <div className="flex justify-between items-start mb-2">
                         <h3 className="text-lg font-medium">{projectTitle}</h3>
-                        <span className={`text-xs px-2 py-1 rounded ${getStatusColor(projectStatus)}`}>
-                          {projectStatus.replace('-', ' ')}
-                        </span>
+                        
                       </div>
                       
                       {projectCategory && (
@@ -488,10 +427,10 @@ const MiniProjects = () => {
               ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                   {projects.map((project) => (
-                    <div key={project.id} className="border border-gray-200 rounded-lg overflow-hidden hover:shadow-md transition-shadow">
-                      {project.imageUrl && (
+                    <div key={project._id} className="border border-gray-200 rounded-lg overflow-hidden hover:shadow-md transition-shadow">
+                      {project.imageLink && (
                         <img 
-                          src={project.imageUrl} 
+                          src={project.imageLink} 
                           alt={project.title} 
                           className="w-full h-48 object-cover"
                         />
@@ -499,9 +438,7 @@ const MiniProjects = () => {
                       <div className="p-4">
                         <div className="flex justify-between items-start">
                           <h3 className="font-medium">{project.title}</h3>
-                          <span className={`text-xs px-2 py-0.5 rounded ${getStatusColor(project.status)}`}>
-                            {project.status.replace('-', ' ')}
-                          </span>
+                         
                         </div>
                         
                         <span className="inline-block bg-gray-100 text-gray-800 text-xs px-2 py-0.5 rounded mt-1 mb-2">
@@ -511,7 +448,7 @@ const MiniProjects = () => {
                         <p className="text-sm text-gray-600 mb-3 line-clamp-2">{project.description}</p>
                         
                         <div className="flex flex-wrap gap-1 mb-3">
-                          {project.technologies.map(tech => (
+                          {project.programmingLanguages.map(tech => (
                             <span key={tech} className="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-0.5 rounded">
                               {tech}
                             </span>
@@ -520,13 +457,13 @@ const MiniProjects = () => {
                         
                         <div className="flex justify-between items-center">
                           <div className="flex space-x-2">
-                            {project.githubUrl && (
-                              <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="text-xs text-blue-600 hover:underline">
+                            {project.githubLink && (
+                              <a href={project.githubLink} target="_blank" rel="noopener noreferrer" className="text-xs text-blue-600 hover:underline">
                                 GitHub
                               </a>
                             )}
-                            {project.demoUrl && (
-                              <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" className="text-xs text-blue-600 hover:underline">
+                            {project.demoLink && (
+                              <a href={project.demoLink} target="_blank" rel="noopener noreferrer" className="text-xs text-blue-600 hover:underline">
                                 Demo
                               </a>
                             )}
@@ -540,7 +477,7 @@ const MiniProjects = () => {
                               Edit
                             </button>
                             <button
-                              onClick={() => handleDeleteProject(project.id)}
+                              onClick={() => handleDeleteProject(project._id)}
                               className="text-red-600 hover:text-red-800 text-sm"
                             >
                               Delete
@@ -617,14 +554,12 @@ const MiniProjects = () => {
                   <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
                     {projectCategories.map((category) => (
                       <div
-                        key={category.id}
-                        onClick={() => toggleCategorySelection(category.title)}
-                        className={`p-3 rounded-lg border cursor-pointer flex flex-col items-center ${selectedCategories.includes(category.title) ? 'ring-2 ring-blue-500 bg-blue-50' : 'border-gray-200 bg-white'}`}
+                        key={category._id}
+                        onClick={() => toggleCategorySelection(category.name)}
+                        className={`p-3 rounded-lg border cursor-pointer flex flex-col items-center ${selectedCategories.includes(category.name) ? 'ring-2 ring-blue-500 bg-blue-50' : 'border-gray-200 bg-white'}`}
                       >
-                        {category.icon && (
-                          <span className="text-2xl mb-2">{category.icon}</span>
-                        )}
-                        <span className="text-sm font-medium text-center">{category.title}</span>
+                      
+                        <span className="text-sm font-medium text-center">{category.name}</span>
                       </div>
                     ))}
                   </div>
