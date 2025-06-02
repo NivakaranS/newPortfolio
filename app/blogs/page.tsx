@@ -194,6 +194,35 @@ const Blogs = () => {
                     <div className="flex flex-row items-center justify-center space-x-[20px] mt-[30px]">
                         <div className="w-[90%]">
                             <p className="text-[35px] font-bold">Case Studies</p>
+                            <div className="grid grid-cols-2 gap-[30px] items-center justify-center space-x-[20px] mt-[30px]">
+                                <div className="h-[300px] hover:scale-[105%] transition duration-300 ease-in-out    flex flex-row items-center justify-center cursor-pointer ring-[#5F5F62] ring-[1.5px] rounded-[20px] w-[100%] bg-[#373435]" >
+                                    <div className="w-[40%] h-[100%] rounded-l-[20px] ">
+
+                                    </div>
+                                    <div className="w-[60%] px-[20px] h-[100%] bg-[#101010] rounded-r-[20px] flex flex-col items-center justify-center">
+                                        <p className="text-[23px]">Title Number Main</p>
+                                        <p className="text-[15px] leading-[19px] ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi non itaque officia eligendi sed at veniam eos quod tempora  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Earum beatae ut repellendus maxime excepturi suscipit. Recusandae ex culpa animi deleniti, quisquam voluptatem est aliquid suscipit, esse quaerat impedit? Officiis, tenetur!</p>
+                                    </div>
+                                </div>
+                                <div className="h-[300px] hover:scale-[105%] transition duration-300 ease-in-out    flex flex-row items-center justify-center cursor-pointer ring-[#5F5F62] ring-[1.5px] rounded-[20px] w-[100%] bg-[#373435]" >
+                                    <div className="w-[40%] h-[100%] rounded-l-[20px] ">
+
+                                    </div>
+                                    <div className="w-[60%] px-[20px] h-[100%] bg-[#101010] rounded-r-[20px] flex flex-col items-center justify-center">
+                                        <p className="text-[23px]">Title Number Main</p>
+                                        <p className="text-[15px] leading-[19px] ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi non itaque officia eligendi sed at veniam eos quod tempora  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Earum beatae ut repellendus maxime excepturi suscipit. Recusandae ex culpa animi deleniti, quisquam voluptatem est aliquid suscipit, esse quaerat impedit? Officiis, tenetur!</p>
+                                    </div>
+                                </div>
+                                <div className="h-[300px] hover:scale-[105%] transition duration-300 ease-in-out    flex flex-row items-center justify-center cursor-pointer ring-[#5F5F62] ring-[1.5px] rounded-[20px] w-[100%] bg-[#373435]" >
+                                    <div className="w-[40%] h-[100%] rounded-l-[20px] ">
+
+                                    </div>
+                                    <div className="w-[60%] px-[20px] h-[100%] bg-[#101010] rounded-r-[20px] flex flex-col items-center justify-center">
+                                        <p className="text-[23px]">Title Number Main</p>
+                                        <p className="text-[15px] leading-[19px] ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi non itaque officia eligendi sed at veniam eos quod tempora  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Earum beatae ut repellendus maxime excepturi suscipit. Recusandae ex culpa animi deleniti, quisquam voluptatem est aliquid suscipit, esse quaerat impedit? Officiis, tenetur!</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
