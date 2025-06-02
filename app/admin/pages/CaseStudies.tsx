@@ -69,7 +69,9 @@ const CaseStudies = () => {
             const categories = await axios.get("https://new-portfolio-backend-roan.vercel.app/industry", {
                 withCredentials: true,
             });
+
             setCategories(categories.data);
+            console.log("Fetched categories:", categories.data);
 
             const caseStudies = await axios.get("https://new-portfolio-backend-roan.vercel.app/caseStudies", {
                 withCredentials: true,
