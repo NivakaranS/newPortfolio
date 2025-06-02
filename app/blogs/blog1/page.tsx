@@ -10,6 +10,14 @@ import React, { useState } from 'react'
 const Blog1 = () => {
     const [showContactModel, setShowContactModel] = useState(false);
         const [navSelection, setNavSelection] = useState('Blogs');
+        const [showMessageSuccess, setShowMessageSuccess] = useState(false);
+    
+       const onMessageSuccess = () => {
+        setShowMessageSuccess(true);
+        setTimeout(() => {
+          setShowMessageSuccess(false);
+        }, 3000);
+      };
         
           const onContactClick = () => {
             setShowContactModel(!showContactModel);
@@ -20,7 +28,7 @@ const Blog1 = () => {
     return(
         <div>
             <Navigation navSelection={navSelection} onContactClick={onContactClick}/>
-            <ContactModel showContactModel={showContactModel} onContactClick={onContactClick}/>
+            <ContactModel onMessageSuccess={onMessageSuccess} showContactModel={showContactModel} onContactClick={onContactClick}/>
             <div className="min-h-[100vh]  flex items-center justify-center ">
                 <div className="h-[100vh] w-[80%]  flex flex-col justify-end py-[80px]  ">
                     <p className="text-[50px] w-[90%] leading-[60px] ">How to improve your UI design skills: Quickly develop an "eye" for great design</p>
@@ -97,6 +105,9 @@ const Blog1 = () => {
                 <Contact onContactClick={onContactClick}/>
                 <Footer/>
             </div>
+            {showMessageSuccess && <div className="bg-[#101010] z-[40] w-[250px] fixed text-[13px] mb-[20px] ml-[30px] px-[20px] py-[20px] ring-white ring-[0.5px] rounded-[10px] text-white absolute left-0 bottom-0">
+                <p>Message saved successfully. Will get back to you soon:)</p>
+            </div>}
         </div>
     )
 }

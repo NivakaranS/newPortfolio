@@ -13,6 +13,14 @@ import Max from "../components/Max";
 const Portfolio = () => {
     const [showContactModel, setShowContactModel] = useState(false);
     const [navSelection, setNavSelection] = useState('Portfolio');
+     const [showMessageSuccess, setShowMessageSuccess] = useState(false);
+    
+       const onMessageSuccess = () => {
+        setShowMessageSuccess(true);
+        setTimeout(() => {
+          setShowMessageSuccess(false);
+        }, 3000);
+      };
 
     useEffect(() => {
         if(typeof window !== 'undefined'){
@@ -161,7 +169,7 @@ const Portfolio = () => {
     return(
         <div className="flex w-[100vw] overflow-x-hidden flex-col">
             <Navigation navSelection={navSelection} onContactClick={onContactClick}/>
-            <ContactModel showContactModel={showContactModel} onContactClick={onContactClick}/>
+            <ContactModel onMessageSuccess={onMessageSuccess} showContactModel={showContactModel} onContactClick={onContactClick}/>
             <div className="text-white bg-[url('./images/heroBackground6.png')] bg-contain bg-no-repeat bg-center space-y-[30px] bg-[#000] px-[10vw] flex flex-col items-center justify-center pt-[20vh] min-h-[100vh]">
               <div className="w-[80%] text-center leading-[53px]  h-[100%]">
                 
