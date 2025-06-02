@@ -49,7 +49,7 @@ const MiniProjects = () => {
   // Define fetch functions
   const fetchProjects = async () => {
     try {
-      const response = await axios.get('https://new-portfolio-backend-roan.vercel.app/project');
+      const response = await axios.get('https://new-portfolio-backend-roan.vercel.app/miniProject');
       setProjects(response.data);
     } catch (error) {
       console.error("Error fetching projects:", error);
