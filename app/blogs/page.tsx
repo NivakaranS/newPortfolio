@@ -14,6 +14,14 @@ import Max from "../components/Max";
 const Blogs = () => {
     const [showContactModel, setShowContactModel] = useState(false);
     const [navSelection, setNavSelection] = useState('Blogs');
+    const [showMessageSuccess, setShowMessageSuccess] = useState(false);
+    
+       const onMessageSuccess = () => {
+        setShowMessageSuccess(true);
+        setTimeout(() => {
+          setShowMessageSuccess(false);
+        }, 3000);
+      };
     
       const onContactClick = () => {
         setShowContactModel(!showContactModel);
@@ -132,7 +140,7 @@ const Blogs = () => {
     return(
         <div className="flex w-[100vw] overflow-x-hidden flex-col">
             <Navigation navSelection={navSelection} onContactClick={onContactClick}/>
-            <ContactModel showContactModel={showContactModel} onContactClick={onContactClick}/>
+            <ContactModel onMessageSuccess={onMessageSuccess} showContactModel={showContactModel} onContactClick={onContactClick}/>
             <div className="text-white bg-[url('./images/heroBackground6.png')] bg-contain bg-no-repeat bg-center space-y-[30px] bg-[#000] px-[10vw] flex flex-col items-center justify-center pt-[20vh] min-h-[100vh]">
               <div className="w-[80%] text-center leading-[85px] md:leading-[100px] h-[100%]">
                 <p className=" text-[50px] md:text-[50px] aboutText4 aboutTitle1 leading-[50px] bg-gradient-to-t from-[#433D3A] via-[#C6C4C3]  to-[#CAC8C6] bg-clip-text text-transparent">Look Into</p>

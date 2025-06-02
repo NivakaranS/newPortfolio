@@ -19,17 +19,19 @@ export default function Home() {
   const [navSelection, setNavSelection] = useState('Home');
   const [showMessageSuccess, setShowMessageSuccess] = useState(false);
 
-  const onContactClick = () => {
-    setShowContactModel(!showContactModel);
-  }
-
-
-  const onMessageSuccess = () => {
+   const onMessageSuccess = () => {
     setShowMessageSuccess(true);
     setTimeout(() => {
       setShowMessageSuccess(false);
     }, 3000);
   };
+  
+  const onContactClick = () => {
+    setShowContactModel(!showContactModel);
+  }
+
+
+ 
 
   return (
     <div className="flex w-[100vw] overflow-x-hidden flex-col">
