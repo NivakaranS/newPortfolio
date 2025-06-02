@@ -183,19 +183,30 @@ const MiniProjects = () => {
 
   // Delete project
   const handleDeleteProject = (id: string) => {
-    setProjects(projects.filter(project => project._id !== id));
+    try {
+        axios.delete(`https://new-portfolio-backend-roan.vercel.app/miniProject/${id}`, { withCredentials: true })
+            .then(() => {
+            setProjects(prev => prev.filter(project => project._id !== id));
+            alert("Project deleted successfully");
+            });
+    } catch (error) {
+        console.error("Error deleting project:", error);
+        alert("Failed to delete project. Please try again.");
+    }
   };
 
   // Handle category deletion
-  const handleDeleteCategories = () => {
-    if (selectedCategories.length === 0) return;
 
-    const updatedCategories = projectCategories.filter(
-      category => !selectedCategories.includes(category.name)
-    );
 
-    setProjectCategories(updatedCategories);
-    setSelectedCategories([]);
+    const handleDeleteCategories = async (id: string) => {
+    if (window.confirm("Are you sure you want to delete this category? Projects using it will need to be updated.")) {
+      try {
+        await axios.delete(`https://new-portfolio-backend-roan.vercel.app/projectCategory/${id}`);
+        setProjectCategories(projectCategories.filter(cat => String(cat._id) !== id));
+      } catch (error) {
+        console.error("Error deleting category:", error);
+      }
+    }
   };
 
   // Toggle category selection
@@ -522,7 +533,15 @@ const MiniProjects = () => {
                   <h3 className="font-medium">Existing Categories</h3>
                   {selectedCategories.length > 0 && (
                     <button
-                      onClick={handleDeleteCategories}
+                      onClick={async () => {
+                        for (const catName of selectedCategories) {
+                          const category = projectCategories.find(c => c.name === catName);
+                          if (category) {
+                            await handleDeleteCategories(String(category._id));
+                          }
+                        }
+                        setSelectedCategories([]);
+                      }}
                       className="px-3 py-1 bg-red-500 text-white text-sm rounded hover:bg-red-600 focus:outline-none"
                     >
                       Delete Selected
