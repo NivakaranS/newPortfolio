@@ -21,7 +21,7 @@ interface CaseStudy {
 
 interface CaseStudyCategory {
   _id: number;
-  title: string;
+  name: string;
   
 }
 
@@ -102,7 +102,7 @@ const CaseStudies = () => {
         });
         const newCategory: CaseStudyCategory = {
             _id: Date.now(),
-            title: newCategoryTitle,
+            name: newCategoryTitle,
         };
         setCategories([...categories, newCategory]);
         setNewCategoryTitle("");
@@ -331,8 +331,8 @@ const CaseStudies = () => {
                       >
                         <option value="">Select industry</option>
                         {categories.map((category) => (
-                          <option key={category._id} value={category.title}>
-                            {category.title}
+                          <option key={category._id} value={category.name}>
+                            {category.name}
                           </option>
                         ))}
                       </select>
@@ -660,7 +660,7 @@ const CaseStudies = () => {
                     <button
                       onClick={() => {
                         selectedCategories.forEach((title) => {
-                          const category = categories.find(cat => cat.title === title);
+                          const category = categories.find(cat => cat.name === title);
                           if (category) {
                             handleDeleteCategories(String(category._id));
                           }
@@ -680,11 +680,11 @@ const CaseStudies = () => {
                     {categories.map((category) => (
                       <div
                         key={category._id}
-                        onClick={() => toggleCategorySelection(category.title)}
-                        className={`p-3 rounded-lg border cursor-pointer flex flex-col items-center ${selectedCategories.includes(category.title) ? 'ring-2 ring-blue-500 bg-blue-50' : 'border-gray-200 bg-white'}`}
+                        onClick={() => toggleCategorySelection(category.name)}
+                        className={`p-3 rounded-lg border cursor-pointer flex flex-col items-center ${selectedCategories.includes(category.name) ? 'ring-2 ring-blue-500 bg-blue-50' : 'border-gray-200 bg-white'}`}
                       >
                         
-                        <span className="text-sm font-medium text-center">{category.title}</span>
+                        <span className="text-sm font-medium text-center">{category.name}</span>
                       </div>
                     ))}
                   </div>
