@@ -51,6 +51,7 @@ const MiniProjects = () => {
     try {
       const response = await axios.get('https://new-portfolio-backend-roan.vercel.app/miniProject');
       setProjects(response.data);
+      console.log("Projects fetched successfully:", response.data);
     } catch (error) {
       console.error("Error fetching projects:", error);
       // Optional: set error state for UI feedback
