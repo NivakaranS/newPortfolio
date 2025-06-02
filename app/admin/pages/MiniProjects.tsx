@@ -121,7 +121,7 @@ const MiniProjects = () => {
   try {
     // Make API request
     await axios.post(
-      'https://new-portfolio-backend-roan.vercel.app/project',
+      'https://new-portfolio-backend-roan.vercel.app/miniProject',
       {
         title: projectTitle,
         description: projectDescription,
@@ -131,7 +131,7 @@ const MiniProjects = () => {
         category: projectCategory,
         githubLink: githubUrl ,
         demoLink: demoUrl ,
-        imageLink: projectImagePreview || "https://via.placeholder.com/300x200?text=Project+Image",
+        imageLink: projectImageLink 
       },
       { withCredentials: true }
     );
